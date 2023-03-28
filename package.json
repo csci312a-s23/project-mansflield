@@ -1,11 +1,20 @@
 {
-  "name": "project-skeleton",
+  "name": "Project Mansflield",
   "version": "0.1.0",
   "private": true,
   "contributors": [
-    "Team Member 1 <member1@middlebury.edu>",
-    "Team Member 2 <member2@middlebury.edu>"
+    "John Bermudez <jbermudez@middlebury.edu>",
+    "James Ohr <johr@middlebury.edu>",
+    "Jimmy Rasolosoa <jrasolosoa@middlebury.edu>",
+    "KK Newton <knewton@middlebury.edu>",
+    "Sirui Chen <siruic@middlebury.edu>",
+    "Yifei Luo <yl8@middlebury.edu>"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/csci312a-s23/project-mansflield"
+  },
+  "description": "Displays the status of dining halls at Middlebury",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
