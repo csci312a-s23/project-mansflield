@@ -13,11 +13,13 @@ export default function PlacePage({}) {
   // TODO: opening times
 
   // TODO: get these from backend
-  busy = "Not very";
+  const busy = "Not very";
   // adjust hue from red to green
-  busyColor = "background-color: " + "#008140";
-  tables = "Few";
-  menu = [
+  const busyColor = {
+    background: "#008140",
+  };
+  const tables = "Few";
+  const menu = [
     {
       name: "Maple Glazed Salmon",
       description:
@@ -34,7 +36,7 @@ export default function PlacePage({}) {
 
   // TODO: add date for history in future sprint
   // Also, use datetime format
-  date = "2020-03-14";
+  const date = "2020-03-14";
 
   return (
     <div>

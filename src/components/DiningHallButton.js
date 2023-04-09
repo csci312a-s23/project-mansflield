@@ -8,10 +8,12 @@
 
 export default function DiningHallButton({ id }) {
   // backend returns these
-  busy = "Not very";
+  const busy = "Not very";
   // adjust hue from red to green
-  busyColor = "background-color: " + "#008140";
-  tables = "Few";
+  const busyColor = {
+    background: "#008140",
+  };
+  const tables = "Few";
 
   return (
     <>
