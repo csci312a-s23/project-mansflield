@@ -9,7 +9,7 @@ import { useState } from "react";
 export default function BusynessView({ busy, busyColor }) {
   const [value, setValue] = useState(50);
   const onChange = (event) => {
-    setValue(parseInt(event.target.value, 50));
+    setValue(parseInt(event.target.value));
   };
 
   return (
@@ -17,6 +17,7 @@ export default function BusynessView({ busy, busyColor }) {
       <button className="dining-hall" style={busyColor}>
         {busy}
       </button>
+      <br />
       <input
         type="range"
         min="1"

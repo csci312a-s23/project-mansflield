@@ -9,8 +9,9 @@
 export default function MenuItem({ item }) {
   return (
     <li key={item.name}>
-      {item.description}
-      {item.rating}
+      <p>{item.name}</p>
+      <p>{item.description}</p>
+      <p>{item.rating}/5.0</p>
     </li>
   );
 }

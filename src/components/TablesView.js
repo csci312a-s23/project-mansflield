@@ -9,7 +9,7 @@ import { useState } from "react";
 export default function TablesView({ tables }) {
   const [value, setValue] = useState(50);
   const onChange = (event) => {
-    setValue(parseInt(event.target.value, 50));
+    setValue(parseInt(event.target.value));
   };
 
   return (
