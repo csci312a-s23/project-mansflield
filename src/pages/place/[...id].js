@@ -8,7 +8,7 @@ import MenuView from "@/components/MenuView";
 export default function PlacePage({}) {
   const router = useRouter();
 
-  const { id } = router.query.id;
+  const { id } = router.query;
 
   // TODO: opening times
 
@@ -48,7 +48,7 @@ export default function PlacePage({}) {
         <h1 className="title">{id}</h1>
         <BusynessView busy={busy} busyColor={busyColor} />
         <TablesView tables={tables} />
-        <MenuView menu={menu} date={date} />
+        <MenuView menu={menu} date={date} id={id} />
       </main>
     </div>
   );

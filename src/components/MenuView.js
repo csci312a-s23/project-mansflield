@@ -8,7 +8,7 @@
 
 import MenuItem from "./MenuItem.js";
 
-export default function MenuView({ menu, date }) {
+export default function MenuView({ menu, date, id }) {
   // TODO: change menu based on date
   const itemList = menu.map((item) => <MenuItem key={item.key} item={item} />);
 
