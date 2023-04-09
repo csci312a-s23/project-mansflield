@@ -5,7 +5,7 @@ import DiningHallView from "../components/DiningHallView";
 
 export default function MealHow() {
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>MealHow</title>
         <link rel="icon" href="/favicon.ico" />
