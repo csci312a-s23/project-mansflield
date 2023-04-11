@@ -6,21 +6,22 @@
 
 import { useState, useEffect, useRef } from "react";
 
-export default function BusynessView({ busy, busyColor, inputBusyness }) {
+export default function BusynessView({ busy, busyColor }) {
   const [busyness, setBusyness] = useState(50);
 
   const onChange = (event) => {
     setBusyness(parseInt(event.target.value));
   };
 
-  //Makes sure that the slider doesn't get spammed with values every time you move it
   const queryTimeout = useRef(null);
   useEffect(() => {
     clearTimeout(queryTimeout.current);
     queryTimeout.current = setTimeout(() => {
-      inputBusyness(busyness);
+      //This is where we process the input value from the slider.
+      //The useEffect code makes sure the slider doesn't send a ton of values every
+      //time you move it
     }, 400);
-  }, [busyness, inputBusyness]);
+  }, []);
 
   return (
     <>
