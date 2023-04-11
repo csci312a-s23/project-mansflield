@@ -4,13 +4,23 @@
   This component provides the busyness button and slider in individial pages.
 */
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
-export default function BusynessView({ busy, busyColor }) {
-  const [value, setValue] = useState(50);
+export default function BusynessView({ busy, busyColor, inputBusyness }) {
+  const [busyness, setBusyness] = useState(50);
+
   const onChange = (event) => {
-    setValue(parseInt(event.target.value));
+    setBusyness(parseInt(event.target.value));
   };
+
+  //Makes sure that the slider doesn't get spammed with values every time you move it
+  const queryTimeout = useRef(null);
+  useEffect(() => {
+    clearTimeout(queryTimeout.current);
+    queryTimeout.current = setTimeout(() => {
+      inputBusyness(busyness);
+    }, 400);
+  }, [busyness, inputBusyness]);
 
   return (
     <>
@@ -22,8 +32,8 @@ export default function BusynessView({ busy, busyColor }) {
         type="range"
         min="1"
         max="100"
-        value={value}
-        class="slider"
+        value={busyness}
+        className="slider"
         onChange={onChange}
       />
     </>

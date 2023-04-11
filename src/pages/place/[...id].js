@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 import Head from "next/head";
 import BusynessView from "@/components/BusynessView";
@@ -6,18 +7,40 @@ import TablesView from "@/components/TablesView";
 import MenuView from "@/components/MenuView";
 
 export default function PlacePage({}) {
-  const router = useRouter();
+  const [busy, setBusy] = useState("No Info");
 
+  const router = useRouter();
   const { id } = router.query;
+
+  //Temporarily creating an array to store all user inputs on busyness. We use its elements to determine the "busy" value
+  let busynessInputs = [];
+
+  function inputBusyness(input) {
+    busynessInputs = busynessInputs.map((item) => item);
+    busynessInputs.push(input);
+    // eslint-disable no-console
+    console.log(busynessInputs);
+  }
 
   // TODO: opening times
 
   // TODO: get these from backend
-  const busy = "Not very";
+
+  //Temporary method of setting the array. Need to out how to calculate an average that doesn't make React angry
+  useEffect(() => {
+    if (busynessInputs.length > 0) {
+      const total = busynessInputs.reduce((a, b) => a + b, 0);
+      const avg = total / busynessInputs.length;
+      setBusy(avg); // Round to two decimal places
+      console.log(avg);
+    }
+  }, [busynessInputs]);
+
   // adjust hue from red to green
   const busyColor = {
     background: "#008140",
   };
+
   const tables = "Few";
   const menu = [
     {
@@ -46,7 +69,11 @@ export default function PlacePage({}) {
       </Head>
       <main>
         <h1 className="title">{id}</h1>
-        <BusynessView busy={busy} busyColor={busyColor} />
+        <BusynessView
+          busy={busy}
+          busyColor={busyColor}
+          inputBusyness={inputBusyness}
+        />
         <TablesView tables={tables} />
         <MenuView menu={menu} date={date} id={id} />
       </main>
