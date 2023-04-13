@@ -6,7 +6,7 @@
 
 import { useState, useEffect, useRef } from "react";
 
-export default function BusynessView({ busy, busyColor }) {
+export default function BusynessView({ id, busy, busyColor }) {
   const [busyness, setBusyness] = useState(50);
 
   const onChange = (event) => {
@@ -20,6 +20,9 @@ export default function BusynessView({ busy, busyColor }) {
       //This is where we process the input value from the slider.
       //The useEffect code makes sure the slider doesn't send a ton of values every
       //time you move it
+
+      //placeholder use of id
+      id;
     }, 400);
   }, []);
 

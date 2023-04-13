@@ -6,7 +6,7 @@
 
 // import { useState } from "react";
 
-export default function DiningHallButton({ id, setDiningHall }) {
+export default function DiningHallButton({ id, routeDiningHall }) {
   // backend returns these
   const busy = "Not very";
 
@@ -16,6 +16,8 @@ export default function DiningHallButton({ id, setDiningHall }) {
   };
   const tables = "Few";
 
+  const diningHallName = id.charAt(0).toUpperCase() + id.slice(1);
+
   return (
     <>
       {/* TODO: go to /place/proctor on click*/}
@@ -23,10 +25,10 @@ export default function DiningHallButton({ id, setDiningHall }) {
         className="dining-hall"
         style={busyColor}
         onClick={() => {
-          setDiningHall(id);
+          routeDiningHall(id);
         }}
       >
-        {id}
+        {diningHallName}
       </button>
       <p>{busy}</p>
       <p>{tables}</p>
