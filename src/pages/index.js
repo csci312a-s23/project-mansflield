@@ -4,6 +4,14 @@ import Head from "next/head";
 import DiningHallView from "../components/DiningHallView";
 
 export default function MealHow() {
+  function routeDiningHall(diningHall) {
+    if (diningHall) {
+      router.push(`/place/${diningHall}`);
+    } else {
+      router.back;
+    }
+  }
+
   return (
     <div>
       <Head>
@@ -13,7 +21,7 @@ export default function MealHow() {
 
       <main>
         <h1 className="title">MealHow</h1>
-        <DiningHallView />
+        <DiningHallView routeDiningHall={routeDiningHall} />
       </main>
 
       <footer>CS 312 Project</footer>

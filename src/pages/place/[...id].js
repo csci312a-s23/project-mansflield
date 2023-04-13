@@ -1,4 +1,5 @@
-import { useRouter } from "next/router";
+//import { useRouter } from "next/router";
+//import { useEffect, useState } from "react";
 
 import Head from "next/head";
 import BusynessView from "@/components/BusynessView";
@@ -6,18 +7,16 @@ import TablesView from "@/components/TablesView";
 import MenuView from "@/components/MenuView";
 
 export default function PlacePage({}) {
-  const router = useRouter();
-
-  const { id } = router.query;
-
   // TODO: opening times
 
   // TODO: get these from backend
-  const busy = "Not very";
+  const busy = "Not busy";
+
   // adjust hue from red to green
   const busyColor = {
     background: "#008140",
   };
+
   const tables = "Few";
   const menu = [
     {

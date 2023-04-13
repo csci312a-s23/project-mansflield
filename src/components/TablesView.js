@@ -20,7 +20,7 @@ export default function TablesView({ tables }) {
         min="1"
         max="100"
         value={value}
-        class="slider"
+        className="slider"
         onChange={onChange}
       />
     </>

@@ -8,12 +8,12 @@
 
 import DiningHallButton from "./DiningHallButton.js";
 
-export default function DiningHallView() {
+export default function DiningHallView({ routeDiningHall }) {
   return (
     <div>
-      <DiningHallButton id="proctor" />
-      <DiningHallButton id="ross" />
-      <DiningHallButton id="atwater" />
+      <DiningHallButton id="proctor" routeDiningHall={routeDiningHall} />
+      <DiningHallButton id="ross" routeDiningHall={routeDiningHall} />
+      <DiningHallButton id="atwater" routeDiningHall={routeDiningHall} />
     </div>
   );
 }
