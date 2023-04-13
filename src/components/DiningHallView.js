@@ -5,15 +5,14 @@
 */
 
 // import { useState } from "react";
-
 import DiningHallButton from "./DiningHallButton.js";
 
 export default function DiningHallView() {
   return (
     <div>
-      <DiningHallButton id="proctor" />
-      <DiningHallButton id="ross" />
-      <DiningHallButton id="atwater" />
+      <DiningHallButton id="Proctor" />
+      <DiningHallButton id="Ross" />
+      <DiningHallButton id="Atwater" />
     </div>
   );
 }
