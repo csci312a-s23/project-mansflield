@@ -14,7 +14,7 @@ export default function TablesView({ tables }) {
 
   return (
     <>
-      <p>{tables}</p>
+      <p>Tables: {tables}</p>
       <input
         type="range"
         min="1"

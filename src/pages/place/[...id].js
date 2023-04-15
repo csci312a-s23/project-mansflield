@@ -5,8 +5,12 @@ import Head from "next/head";
 import BusynessView from "@/components/BusynessView";
 import TablesView from "@/components/TablesView";
 import MenuView from "@/components/MenuView";
+import { useRouter } from "next/router";
 
 export default function PlacePage({}) {
+  const router = useRouter();
+
+  const {id} = router.query;
   // TODO: opening times
 
   // TODO: get these from backend
