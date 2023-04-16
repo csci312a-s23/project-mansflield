@@ -1,0 +1,23 @@
+{
+  "busy": "Not busy",
+  "busyColor": {
+    "background": "#008140"
+  },
+  "tables": "Few",
+  "menu": [
+    {
+      "key": "cajun-chicken",
+      "hall": "proctor",
+      "name": "Grilled Cajun Style Chicken Breast",
+      "description": "Full of bold flavours, this Cajun grilled chicken is marinated in a homemade Cajun seasoning and then grilled to perfection.",
+      "rating": "3.2"
+    },
+    {
+      "key": "clam-chowder",
+      "hall": "proctor",
+      "name": "New England Clam Chowder",
+      "description": "This cravilicious white creamy clam chowder is bursting with delectable clams, tender potatoes, and salty bacon.",
+      "rating": "5.0"
+    }
+  ]
+}
