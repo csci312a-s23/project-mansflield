@@ -18,15 +18,18 @@ import fetchMock from "fetch-mock-jest";
 import res from "../../data/test-data.json";
 
 describe("End-to-end testing", () => {
-  test("Render index.js component", () => {
-    act(() => {
+  beforeAll(() => {
+    fetchMock.get("*", () => {
+      return res;
+    });
+  });
+
+  test("Render index.js component", async () => {
+    await act(() => {
       render(<Home />);
     });
   });
   test("Render page for Proctor", async () => {
-    fetchMock.get("*", () => {
-      return res;
-    });
     mockRouter.push("/place/proctor/");
     await act(() => {
       render(<PlacePage />);

@@ -70,7 +70,7 @@ export default function PlacePage({}) {
       <main>
         <h1 className="title">{id}</h1>
         <BusynessView busy={busy} busyColor={busyColor} />
-        <TablesView tables={tables} />
+        <TablesView id={id} tables={tables} />
         {menu ? (
           <MenuView menu={menu} date={date} id={id} />
         ) : (
