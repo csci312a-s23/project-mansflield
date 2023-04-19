@@ -17,14 +17,17 @@ export default function TablesView({ id, tables }) {
       <p>
         Tables at {id}: {tables}
       </p>
-      <input
-        type="range"
-        min="1"
-        max="100"
-        value={value}
-        className="slider"
-        onChange={onChange}
-      />
+      <div>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value={value}
+          className="slider"
+          onChange={onChange}
+        />
+        <button>Submit</button>
+      </div>
     </>
   );
 }

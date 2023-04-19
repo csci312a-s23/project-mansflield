@@ -35,14 +35,17 @@ export default function BusynessView({ id, busy, busyColor }) {
         {busy}
       </button>
       <br />
-      <input
-        type="range"
-        min="1"
-        max="100"
-        value={busyness}
-        className="slider"
-        onChange={onChange}
-      />
+      <div>
+        <input
+          type="range"
+          min="1"
+          max="100"
+          value={busyness}
+          className="slider"
+          onChange={onChange}
+        />
+        <button>Submit</button>
+      </div>
     </>
   );
 }

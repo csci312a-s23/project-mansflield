@@ -1,9 +1,7 @@
 import "../styles/globals.css";
 import Head from "next/head";
-import DiningHallView from "../components/DiningHallView";
 
 export default function App({ Component, pageProps }) {
-  <Component {...pageProps} />;
   return (
     <div>
       <Head>
@@ -13,7 +11,7 @@ export default function App({ Component, pageProps }) {
 
       <main>
         <h1 className="title">MealHow</h1>
-        <DiningHallView />
+        <Component {...pageProps} />
       </main>
 
       <footer>CS 312 Project</footer>
