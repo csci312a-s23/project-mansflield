@@ -6,6 +6,7 @@ import BusynessView from "@/components/BusynessView";
 import TablesView from "@/components/TablesView";
 import MenuView from "@/components/MenuView";
 import { useRouter } from "next/router";
+import styles from "../../styles/button.module.css";
 
 export default function PlacePage({}) {
   const router = useRouter();
@@ -68,7 +69,9 @@ export default function PlacePage({}) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1 className="title">{id}</h1>
+        <h1 className="title" class={styles.dining_hall}>
+          {id}
+        </h1>
         <BusynessView busy={busy} busyColor={busyColor} />
         <TablesView id={id} tables={tables} />
         {menu ? (
