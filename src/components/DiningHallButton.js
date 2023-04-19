@@ -5,6 +5,7 @@
 */
 
 import { useEffect, useState } from "react";
+import styles from "../styles/button.module.css";
 
 export default function DiningHallButton({ id, routeDiningHall }) {
   const [busy, setBusy] = useState();
@@ -44,7 +45,7 @@ export default function DiningHallButton({ id, routeDiningHall }) {
   return (
     <>
       <button
-        className="dining-hall-button"
+        className={styles.dining_hall}
         style={busyColor}
         onClick={() => {
           routeDiningHall(id);
