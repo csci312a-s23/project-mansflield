@@ -5,10 +5,11 @@
 */
 
 import { useEffect, useState } from "react";
+import styles from "../styles/button.module.css";
 
 export default function DiningHallButton({ id, routeDiningHall }) {
   const [busy, setBusy] = useState();
-  const [busyColor, setBusyColor] = useState();
+  //const [busyColor, setBusyColor] = useState();
   const [tables, setTables] = useState();
 
   const [date, setDate] = useState(new Date()); // eslint-disable-line no-unused-vars
@@ -44,8 +45,7 @@ export default function DiningHallButton({ id, routeDiningHall }) {
   return (
     <>
       <button
-        className="dining-hall-button"
-        style={busyColor}
+        className={styles.dining_hall}
         onClick={() => {
           routeDiningHall(id);
         }}
