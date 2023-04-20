@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import DiningHallView from "../components/DiningHallView";
+import ServiceView from "../components/ServiceView";
 import { useRouter } from "next/router";
 
 export default function MealHow() {
@@ -24,6 +25,7 @@ export default function MealHow() {
       <main>
         <h1 className="title">MealHow</h1>
         <DiningHallView routeDiningHall={routeDiningHall} />
+        <ServiceView routeDiningHall={routeDiningHall} />
       </main>
 
       <footer>CS 312 Project</footer>
