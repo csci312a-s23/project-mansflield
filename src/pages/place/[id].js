@@ -6,7 +6,6 @@ import BusynessView from "@/components/BusynessView";
 import TablesView from "@/components/TablesView";
 import MenuView from "@/components/MenuView";
 import { useRouter } from "next/router";
-import styles from "../../styles/button.module.css";
 
 export default function PlacePage({}) {
   const router = useRouter();
@@ -63,15 +62,19 @@ export default function PlacePage({}) {
   }, [id, date]);
 
   return (
-    <div>
+    <div className="bg-light border border-success">
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous"
+      />
       <Head>
         <title>{id}</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1 className="title" class={styles.dining_hall}>
-          {id}
-        </h1>
+        <h1 className="title">{id}</h1>
         <BusynessView busy={busy} busyColor={busyColor} />
         <TablesView id={id} tables={tables} />
         {menu ? (
