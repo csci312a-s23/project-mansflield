@@ -1,17 +1,26 @@
-/*
-  MenuItem.js
+const React = require("react");
+const { List, ListItem, ListItemText, Typography } = require("@mui/material");
 
-  This component provides the menu item in MenuView. 
-*/
+const MenuItems = ({ items }) => {
+  const listItems = items.map((item) => {
+    if (item.is_title) {
+      return (
+        <Typography variant="h6" key={item.id}>
+          {item.name}
+        </Typography>
+      );
+    } else {
+      return (
+        <ListItem key={item.id} sx={{ paddingY: 0.5 }}>
+          <ListItemText
+            primary={item.name}
+            secondary={item.price && `$${item.price.toFixed(2)}`}
+          />
+        </ListItem>
+      );
+    }
+  });
+  return <List>{listItems}</List>;
+};
 
-// import { useState } from "react";
-
-export default function MenuItem({ item }) {
-  return (
-    <li key={item.name}>
-      <p>{item.name}</p>
-      <p>{item.description}</p>
-      <p>{item.rating}/5.0</p>
-    </li>
-  );
-}
+module.exports = MenuItems;
