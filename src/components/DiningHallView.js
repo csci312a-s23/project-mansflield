@@ -7,6 +7,7 @@
 // import { useState } from "react";
 
 import DiningHallButton from "./DiningHallButton.js";
+// import styles1 from "../styles/Home.module.css";
 
 export default function DiningHallView({ routeDiningHall }) {
   return (

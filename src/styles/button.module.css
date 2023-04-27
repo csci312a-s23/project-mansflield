@@ -1,6 +1,5 @@
 /* CSS */
 .dining_hall {
-  align-items: center;
   background-image: linear-gradient(144deg, #af40ff, #5b42f3 50%, #00ddeb);
   border: 0;
   border-radius: 8px;
@@ -11,6 +10,7 @@
   font-family: Phantomsans, sans-serif;
   font-size: 20px;
   justify-content: center;
+  margin: auto;
   line-height: 1em;
   max-width: 100%;
   min-width: 140px;
@@ -21,11 +21,20 @@
   touch-action: manipulation;
   white-space: nowrap;
   cursor: pointer;
+  font-family: monospace;
+}
+
+.newFont {
+  font-family: monospace;
+}
+
+.mainHover button:hover {
+  background-color: aliceblue;
 }
 
 .dining_hall:active,
 .dining_hall:hover {
-  outline: 0;
+  outline: rgba(151, 65, 252, 0.2);
 }
 
 @media (min-width: 768px) {
