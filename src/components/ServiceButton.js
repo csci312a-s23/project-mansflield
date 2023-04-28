@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import styles from "../styles/button.module.css";
 
-export default function ServiceButton({ id, routeDiningHall }) {
+export default function ServiceButton({ id, routeService }) {
   const [busy, setBusy] = useState();
   //const [busyColor, setBusyColor] = useState();
 
@@ -28,7 +28,7 @@ export default function ServiceButton({ id, routeDiningHall }) {
       <button
         className={styles.dining_hall}
         onClick={() => {
-          routeDiningHall(id);
+          routeService(id);
         }}
       >
         {serviceName}

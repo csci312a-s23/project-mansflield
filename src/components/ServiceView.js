@@ -1,11 +1,12 @@
 import ServiceButton from "./ServiceButton";
 
-export default function DiningHallView({ routeDiningHall }) {
+export default function DiningHallView({ routeService }) {
   return (
     <div>
       <hr />
-      <ServiceButton id="grille" routeDiningHall={routeDiningHall} />
-      <ServiceButton id="middxpress" routeDiningHall={routeDiningHall} />
+      <h3>Other</h3>
+      <ServiceButton id="grille" routeService={routeService} />
+      <ServiceButton id="middxpress" routeService={routeService} />
     </div>
   );
 }
