@@ -31,7 +31,7 @@ export default function BusynessView({ id, busy, busyColor }) {
 
   return (
     <>
-      <button className="busyness-view" style={busyColor}>
+      <button type="button" class="btn btn-outline-success">
         {busy}
       </button>
       <br />
