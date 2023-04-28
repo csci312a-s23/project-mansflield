@@ -1,7 +1,6 @@
 //import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import Head from "next/head";
 import BusynessView from "@/components/BusynessView";
 import TablesView from "@/components/TablesView";
 import MenuView from "@/components/MenuView";
@@ -62,27 +61,11 @@ export default function PlacePage({}) {
   }, [id, date]);
 
   return (
-    <div className="bg-light border border-success">
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous"
-      />
-      <Head>
-        <title>{id}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
-        <h1 className="title">{id}</h1>
-        <BusynessView busy={busy} busyColor={busyColor} />
-        <TablesView id={id} tables={tables} />
-        {menu ? (
-          <MenuView menu={menu} date={date} id={id} />
-        ) : (
-          <p>Loading...</p>
-        )}
-      </main>
-    </div>
+    <>
+      <h1 className="title">{id}</h1>
+      <BusynessView busy={busy} busyColor={busyColor} />
+      <TablesView id={id} tables={tables} />
+      {menu ? <MenuView menu={menu} date={date} id={id} /> : <p>Loading...</p>}
+    </>
   );
 }

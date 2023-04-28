@@ -5,8 +5,6 @@
 */
 
 import { useEffect, useState } from "react";
-import styles from "../styles/button.module.css";
-import styles1 from "../styles/Home.module.css";
 
 export default function DiningHallButton({ id, routeDiningHall }) {
   const [busy, setBusy] = useState();
@@ -46,14 +44,13 @@ export default function DiningHallButton({ id, routeDiningHall }) {
   return (
     <>
       <button
-        className={`${styles.dining_hall} ${styles.mainHover}`}
         onClick={() => {
           routeDiningHall(id);
         }}
       >
         {diningHallName}
       </button>
-      <p className={styles1.margin1}>{busy}</p>
+      <p>{busy}</p>
       <p>{tables}</p>
     </>
   );
