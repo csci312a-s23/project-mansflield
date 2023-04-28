@@ -6,21 +6,34 @@
 
 // import { useState } from "react";
 
-import MenuItem from "./MenuItem.js";
+import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 
-export default function MenuView({ menu, date, id }) {
+// eslint-disable-next-line no-unused-vars
+export default function MenuView({ menu, date, hall }) {
   // TODO: change menu based on date
-  const itemList = menu.map((item) => <MenuItem key={item.key} item={item} />);
-  const locale = (navigator && navigator.language) || "en-US";
-
-  const diningHallName = id.charAt(0).toUpperCase() + id.slice(1);
+  const listItems = menu.map((item) => {
+    if (item.is_title) {
+      return (
+        <Typography variant="h6" key={item.id}>
+          {item.name}
+        </Typography>
+      );
+    } else {
+      return (
+        <ListItem key={item.id} sx={{ paddingY: 0.5 }}>
+          <ListItemText
+            primary={item.name}
+            secondary={item.price && `$${item.price.toFixed(2)}`}
+          />
+        </ListItem>
+      );
+    }
+  });
 
   return (
-    <div>
-      <h2>
-        Menu for {diningHallName} at {date.toLocaleDateString(locale)}
-      </h2>
-      <ul>{itemList}</ul>
-    </div>
+    <Box>
+      <Typography variant="h4">Menu</Typography>
+      <List>{listItems}</List>
+    </Box>
   );
 }

@@ -2,7 +2,7 @@
 
 import DiningHallView from "../components/DiningHallView";
 import { useRouter } from "next/router";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Stack, Container, Typography } from "@mui/material";
 
 export default function MealHow() {
   const router = useRouter();
@@ -36,9 +36,14 @@ export default function MealHow() {
       </header>
       <main>
         <Container maxWidth="xl">
-          <Box display="flex" justifyContent="center" alignItems="center">
+          <Stack
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+            spacing={2}
+          >
             <DiningHallView routeDiningHall={routeDiningHall} />
-          </Box>
+          </Stack>
         </Container>
       </main>
     </>

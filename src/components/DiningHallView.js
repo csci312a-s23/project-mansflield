@@ -14,14 +14,12 @@ import halls from "@/data/halls.json";
 export default function DiningHallView({ routeDiningHall }) {
   const buttons = halls.map((hall) => {
     return (
-      <>
-        <DiningHallButton
-          key={hall.id}
-          hall={hall}
-          routeDiningHall={routeDiningHall}
-        />
-      </>
+      <DiningHallButton
+        key={hall.id}
+        hall={hall}
+        routeDiningHall={routeDiningHall}
+      />
     );
   });
-  return <List sx={{ width: "100%", maxWidth: 360 }}>{buttons}</List>;
+  return <List sx={{ minWidth: 360 }}>{buttons}</List>;
 }

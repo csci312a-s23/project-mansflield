@@ -34,7 +34,7 @@ describe("End-to-end testing", () => {
     await act(() => {
       render(<PlacePage />);
     });
-    const named = await screen.findByText(/marinated/i);
+    const named = await screen.findByText(/Radicchio/i);
     expect(named).toBeInTheDocument();
   });
   //

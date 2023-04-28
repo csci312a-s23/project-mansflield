@@ -6,17 +6,14 @@ import TablesView from "@/components/TablesView";
 import MenuView from "@/components/MenuView";
 import { useRouter } from "next/router";
 
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, Stack, Skeleton } from "@mui/material";
 
 import halls from "@/data/halls.json";
 
 export default function PlacePage({}) {
   const router = useRouter();
 
-  const [busy, setBusy] = useState();
-  const [busyColor, setBusyColor] = useState();
-  const [tables, setTables] = useState();
-  const [menu, setMenu] = useState();
+  const [info, setInfo] = useState();
 
   const [date, setDate] = useState(new Date()); // eslint-disable-line no-unused-vars
 
@@ -24,42 +21,19 @@ export default function PlacePage({}) {
 
   // TODO: send date
   useEffect(() => {
-    fetch(`/api/${hall.id}/busy`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setBusy(data.busy);
-        setBusyColor(data.busyColor);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
-
-    fetch(`/api/${hall.id}/tables`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTables(data.tables);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
-
-    fetch(`/api/${hall.id}/menu`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setMenu(data.menu);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
+    if (hall) {
+      fetch(`/api/hall/${hall.id}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setInfo(data);
+        })
+        .catch((err) => console.log(err)); // eslint-disable-line no-console
+    }
   }, [hall, date]);
 
   return (
@@ -75,23 +49,43 @@ export default function PlacePage({}) {
           }}
         >
           <Typography component="h1" variant="h3" align="center">
-            {hall.name}
+            {hall ? (
+              hall.name
+            ) : (
+              <Skeleton
+                variant="text"
+                width={120}
+                sx={{ fontSize: "0.8rem" }}
+              />
+            )}
           </Typography>
           <Typography component="p" className="tagline" align="center">
-            {hall.desc}
+            {hall ? (
+              hall.desc
+            ) : (
+              <Skeleton
+                variant="text"
+                width={120}
+                sx={{ fontSize: "0.8rem" }}
+              />
+            )}
           </Typography>
         </Box>
       </header>
       <main>
         <Container maxWidth="xl">
           <Box display="flex" justifyContent="center" alignItems="center">
-            <BusynessView busy={busy} busyColor={busyColor} />
-            <TablesView id={hall.id} tables={tables} />
-            {menu ? (
-              <MenuView menu={menu} date={date} id={hall.id} />
-            ) : (
-              <p>Loading...</p>
-            )}
+            <Stack direction="column" justifyContent="center" spacing={2}>
+              {info ? (
+                <>
+                  <BusynessView busy={info.busy} busyColor={info.busyColor} />
+                  <TablesView id={hall.id} tables={info.tables} />
+                  <MenuView menu={info.menu} date={date} hall={hall} />
+                </>
+              ) : (
+                <p>Loading...</p>
+              )}
+            </Stack>
           </Box>
         </Container>
       </main>
