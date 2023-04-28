@@ -1,0 +1,82 @@
+{
+  "busy": "Very busy",
+  "busyVal": 3,
+  "tables": "Some tables left",
+  "tablesVal": 2,
+  "menu": [
+    {
+      "id": 68357839,
+      "position": 0,
+      "is_title": false,
+      "name": "Potato Leek Soup",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68357842,
+      "position": 1,
+      "is_title": false,
+      "name": "Hungarian Mushroom Soup",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68357844,
+      "position": 2,
+      "is_title": false,
+      "name": "Vegetarian Baked Beans",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68357848,
+      "position": 3,
+      "is_title": false,
+      "name": "Marinated Baked Chicken"
+    },
+    {
+      "id": 68357853,
+      "position": 4,
+      "is_title": false,
+      "name": "Quinoa with Caramelized Onions and Mushrooms",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68357856,
+      "position": 5,
+      "is_title": false,
+      "name": "Fresh Green Beans",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68357863,
+      "position": 6,
+      "is_title": false,
+      "name": "Grilled Cheeseburgers",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68357868,
+      "position": 7,
+      "is_title": false,
+      "name": "Burger Bar"
+    },
+    {
+      "id": 68357874,
+      "position": 8,
+      "is_title": false,
+      "name": "Impossible Burger"
+    },
+    {
+      "id": 68357877,
+      "position": 9,
+      "is_title": false,
+      "name": "Onion Rings",
+      "subtext": "",
+      "price": null
+    }
+  ]
+}

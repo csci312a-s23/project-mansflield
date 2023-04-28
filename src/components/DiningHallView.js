@@ -11,12 +11,13 @@ import { List } from "@mui/material";
 
 import halls from "@/data/halls.json";
 
-export default function DiningHallView({ routeDiningHall }) {
+export default function DiningHallView({ routeDiningHall, time }) {
   const buttons = halls.map((hall) => {
     return (
       <DiningHallButton
         key={hall.id}
         hall={hall}
+        time={time}
         routeDiningHall={routeDiningHall}
       />
     );

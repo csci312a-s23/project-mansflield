@@ -15,12 +15,12 @@ jest.mock("next/router", () => require("next-router-mock"));
 
 import fetchMock from "fetch-mock-jest";
 
-import res from "@/data/test-data.json";
+import proctor from "@/data/test-proctor.json";
 
 describe("End-to-end testing", () => {
   beforeAll(() => {
     fetchMock.get("*", () => {
-      return res;
+      return proctor;
     });
   });
 

@@ -1,11 +1,18 @@
-// import { useState } from "react";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
 import DiningHallView from "../components/DiningHallView";
-import { useRouter } from "next/router";
+
 import { Box, Stack, Container, Typography } from "@mui/material";
+
+import dayjs from "dayjs";
 
 export default function MealHow() {
   const router = useRouter();
+
+  // eslint-disable-next-line no-unused-vars
+  const [time, setTime] = useState(dayjs());
+
   function routeDiningHall(diningHall) {
     if (diningHall) {
       router.push(`/place/${diningHall}`);
@@ -42,7 +49,7 @@ export default function MealHow() {
             alignItems="center"
             spacing={2}
           >
-            <DiningHallView routeDiningHall={routeDiningHall} />
+            <DiningHallView routeDiningHall={routeDiningHall} time={time} />
           </Stack>
         </Container>
       </main>

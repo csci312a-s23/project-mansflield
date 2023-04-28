@@ -2,13 +2,13 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import DiningHallView from "./DiningHallView";
 
 import fetchMock from "fetch-mock-jest";
-import res from "@/data/test-data.json";
+import ross from "@/data/test-ross.json";
 
 describe("DiningHallView", () => {
   const mockRouteDiningHall = jest.fn();
   beforeAll(() => {
     fetchMock.get("*", () => {
-      return res;
+      return ross;
     });
   });
 

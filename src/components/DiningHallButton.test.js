@@ -3,13 +3,13 @@ import { act } from "react-dom/test-utils";
 import DiningHallButton from "./DiningHallButton";
 
 import fetchMock from "fetch-mock-jest";
-import res from "@/data/test-data.json";
+import proctor from "@/data/test-proctor.json";
 import halls from "@/data/halls.json";
 
 describe("DiningHallButton", () => {
   beforeAll(() => {
     fetchMock.get("*", () => {
-      return res;
+      return proctor;
     });
   });
 
@@ -31,7 +31,7 @@ describe("DiningHallButton", () => {
       );
     });
 
-    const busyElement = await screen.findByText(/Not busy/i);
+    const busyElement = await screen.findByText(/Very busy/i);
     expect(busyElement).toBeInTheDocument();
   });
 
@@ -42,7 +42,7 @@ describe("DiningHallButton", () => {
       );
     });
 
-    const tableElement = await screen.findByText(/Few/i);
+    const tableElement = await screen.findByText(/Some tables left/i);
     expect(tableElement).toBeInTheDocument();
   });
 

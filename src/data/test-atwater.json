@@ -1,0 +1,74 @@
+{
+  "busy": "Not busy",
+  "busyVal": 0,
+  "tables": "Empty tables",
+  "tablesVal": 0,
+  "menu": [
+    {
+      "id": 73707039,
+      "position": 0,
+      "is_title": false,
+      "name": "Tortilla Soup"
+    },
+    {
+      "id": 73707040,
+      "position": 1,
+      "is_title": false,
+      "name": "Soup du Jour"
+    },
+    {
+      "id": 73707041,
+      "position": 2,
+      "is_title": false,
+      "name": "Caesar Salad"
+    },
+    {
+      "id": 73707042,
+      "position": 3,
+      "is_title": false,
+      "name": "Penne Salad with Roasted Asparagus, Tomato & Goat Cheese"
+    },
+    {
+      "id": 73707043,
+      "position": 4,
+      "is_title": false,
+      "name": "Grilled Lime Chicken"
+    },
+    {
+      "id": 73707044,
+      "position": 5,
+      "is_title": false,
+      "name": "Beef Tacos"
+    },
+    {
+      "id": 73707045,
+      "position": 6,
+      "is_title": false,
+      "name": "Roasted Butternut Squash Tacos"
+    },
+    {
+      "id": 73707046,
+      "position": 7,
+      "is_title": false,
+      "name": "Stacked Enchiladas"
+    },
+    {
+      "id": 73707047,
+      "position": 8,
+      "is_title": false,
+      "name": "Spanish Rice"
+    },
+    {
+      "id": 73707048,
+      "position": 9,
+      "is_title": false,
+      "name": "Corn with Peppers"
+    },
+    {
+      "id": 73707049,
+      "position": 10,
+      "is_title": false,
+      "name": "Nacho Cheese Sauce & Taco Bar"
+    }
+  ]
+}

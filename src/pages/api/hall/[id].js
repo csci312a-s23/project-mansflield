@@ -1,15 +1,50 @@
 import { createRouter } from "next-connect";
 
-const router = createRouter();
+import dayjs from "dayjs";
 
-import example from "@/data/test-data.json";
+import halls from "@/data/halls.json";
+import { findOpenMenu } from "@/utils/findOpenMenu";
+
+import proctor from "@/data/test-proctor.json";
+import ross from "@/data/test-ross.json";
+import atwater from "@/data/test-atwater.json";
+
+const closed = {
+  busy: "Closed",
+  busyVal: -1,
+  tables: "Check back later",
+  tablesVal: -1,
+};
+
+const router = createRouter();
 
 router.get((req, res) => {
   const { id, t } = req.query; // eslint-disable-line no-unused-vars
 
-  // TODO: process from database
+  // Is it open?
+  const time = dayjs(t);
+  const hall = halls.find((h) => {
+    return h.id === id;
+  });
+  const menu = findOpenMenu(hall, time);
 
-  res.status(200).json(example);
+  if (menu) {
+    // TODO: process from database
+
+    let example = proctor;
+
+    if (id === "ross") {
+      example = ross;
+    }
+
+    if (id === "atwater") {
+      example = atwater;
+    }
+
+    res.status(200).json(example);
+  } else {
+    res.status(200).json(closed);
+  }
 });
 
 router.all((req, res) => {

@@ -1,9 +1,8 @@
 {
-  "busy": "Not busy",
-  "busyColor": {
-    "background": "#008140"
-  },
-  "tables": "Few",
+  "busy": "Absolutely packed",
+  "busyVal": 4,
+  "tables": "A few tables left",
+  "tablesVal": 3,
   "menu": [
     {
       "id": 68306452,
