@@ -7,13 +7,21 @@
 // import { useState } from "react";
 
 import DiningHallButton from "./DiningHallButton.js";
+import { List } from "@mui/material";
+
+import halls from "@/data/halls.json";
 
 export default function DiningHallView({ routeDiningHall }) {
-  return (
-    <div>
-      <DiningHallButton id="Proctor" routeDiningHall={routeDiningHall} />
-      <DiningHallButton id="Ross" routeDiningHall={routeDiningHall} />
-      <DiningHallButton id="Atwater" routeDiningHall={routeDiningHall} />
-    </div>
-  );
+  const buttons = halls.map((hall) => {
+    return (
+      <>
+        <DiningHallButton
+          key={hall.id}
+          hall={hall}
+          routeDiningHall={routeDiningHall}
+        />
+      </>
+    );
+  });
+  return <List sx={{ width: "100%", maxWidth: 360 }}>{buttons}</List>;
 }

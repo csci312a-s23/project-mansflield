@@ -3,7 +3,8 @@ import { act } from "react-dom/test-utils";
 import DiningHallButton from "./DiningHallButton";
 
 import fetchMock from "fetch-mock-jest";
-import res from "../../data/test-data.json";
+import res from "@/data/test-data.json";
+import halls from "@/data/halls.json";
 
 describe("DiningHallButton", () => {
   beforeAll(() => {
@@ -12,11 +13,13 @@ describe("DiningHallButton", () => {
     });
   });
 
-  const id = "proctor";
+  const hall = halls[0];
   const mockRouteDiningHall = jest.fn();
 
   it("renders button with dining hall name", async () => {
-    render(<DiningHallButton id={id} routeDiningHall={mockRouteDiningHall} />);
+    render(
+      <DiningHallButton hall={hall} routeDiningHall={mockRouteDiningHall} />
+    );
     const buttonElement = await screen.findByText(/Proctor/i);
     expect(buttonElement).toBeInTheDocument();
   });
@@ -24,7 +27,7 @@ describe("DiningHallButton", () => {
   it("displays busy status", async () => {
     await act(async () => {
       render(
-        <DiningHallButton id={id} routeDiningHall={mockRouteDiningHall} />
+        <DiningHallButton hall={hall} routeDiningHall={mockRouteDiningHall} />
       );
     });
 
@@ -35,7 +38,7 @@ describe("DiningHallButton", () => {
   it("displays table count", async () => {
     await act(async () => {
       render(
-        <DiningHallButton id={id} routeDiningHall={mockRouteDiningHall} />
+        <DiningHallButton hall={hall} routeDiningHall={mockRouteDiningHall} />
       );
     });
 
@@ -44,10 +47,12 @@ describe("DiningHallButton", () => {
   });
 
   it("calls routeDiningHall function on button click", () => {
-    render(<DiningHallButton id={id} routeDiningHall={mockRouteDiningHall} />);
+    render(
+      <DiningHallButton hall={hall} routeDiningHall={mockRouteDiningHall} />
+    );
     const buttonElement = screen.getByText(/Proctor/i);
     buttonElement.click();
     expect(mockRouteDiningHall).toHaveBeenCalledTimes(1);
-    expect(mockRouteDiningHall).toHaveBeenCalledWith(id);
+    expect(mockRouteDiningHall).toHaveBeenCalledWith("proctor");
   });
 });

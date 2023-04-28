@@ -2,7 +2,7 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import DiningHallView from "./DiningHallView";
 
 import fetchMock from "fetch-mock-jest";
-import res from "../../data/test-data.json";
+import res from "@/data/test-data.json";
 
 describe("DiningHallView", () => {
   const mockRouteDiningHall = jest.fn();
@@ -26,6 +26,6 @@ describe("DiningHallView", () => {
     const button = screen.getByText("Ross");
     fireEvent.click(button);
     expect(mockRouteDiningHall).toHaveBeenCalledTimes(1);
-    expect(mockRouteDiningHall).toHaveBeenCalledWith("Ross");
+    expect(mockRouteDiningHall).toHaveBeenCalledWith("ross");
   });
 });

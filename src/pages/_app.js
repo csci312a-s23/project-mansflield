@@ -1,13 +1,6 @@
 import Head from "next/head";
 
-import {
-  Typography,
-  Link,
-  Stack,
-  Box,
-  Container,
-  CssBaseline,
-} from "@mui/material";
+import { Typography, Link, Stack, CssBaseline } from "@mui/material";
 import theme from "../material/theme";
 import createEmotionCache from "../material/createEmotionCache";
 import { ThemeProvider } from "@mui/material/styles";
@@ -30,29 +23,7 @@ export default function MainApp({
       </Head>
       <ThemeProvider theme={theme}>
         <CssBaseline />
-        <main>
-          <header>
-            <Box
-              sx={{
-                marginTop: 2,
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                marginBottom: 2,
-              }}
-            >
-              <Typography component="h1" variant="h3" align="center">
-                MealHow
-              </Typography>
-              <Typography component="p" className="tagline" align="center">
-                How will you eat next?
-              </Typography>
-            </Box>
-          </header>
-          <Container maxWidth="xl">
-            <Component {...pageProps} />
-          </Container>
-        </main>
+        <Component {...pageProps} />
         <footer>
           <Stack
             direction="row"

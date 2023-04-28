@@ -15,7 +15,7 @@ jest.mock("next/router", () => require("next-router-mock"));
 
 import fetchMock from "fetch-mock-jest";
 
-import res from "../../data/test-data.json";
+import res from "@/data/test-data.json";
 
 describe("End-to-end testing", () => {
   beforeAll(() => {
