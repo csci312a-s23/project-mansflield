@@ -1,3 +1,30 @@
+.headerSet {
+  line-height: 3;
+}
+
+.footerSet {
+  line-height: 6;
+}
+
+.margin1 {
+  margin-top: 0.6%;
+  margin-bottom: 0.6%;
+}
+
+.mainBack {
+  background-image: url("../pics/midd_pic.png");
+  background-repeat: no-repeat;
+  background-size: 1850px;
+}
+
+.mainBack1 {
+  opacity: 1.5;
+}
+
+.mainBack2 button:hover {
+  background-color: blue;
+}
+
 .main {
   display: flex;
   flex-direction: column;

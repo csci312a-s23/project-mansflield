@@ -26,6 +26,6 @@ describe("DiningHallView", () => {
     const button = screen.getByText("Ross");
     fireEvent.click(button);
     expect(mockRouteDiningHall).toHaveBeenCalledTimes(1);
-    expect(mockRouteDiningHall).toHaveBeenCalledWith("ross");
+    expect(mockRouteDiningHall).toHaveBeenCalledWith("Ross");
   });
 });

@@ -7,13 +7,14 @@
 // import { useState } from "react";
 
 import DiningHallButton from "./DiningHallButton.js";
+// import styles1 from "../styles/Home.module.css";
 
 export default function DiningHallView({ routeDiningHall }) {
   return (
     <div>
-      <DiningHallButton id="proctor" routeDiningHall={routeDiningHall} />
-      <DiningHallButton id="ross" routeDiningHall={routeDiningHall} />
-      <DiningHallButton id="atwater" routeDiningHall={routeDiningHall} />
+      <DiningHallButton id="Proctor" routeDiningHall={routeDiningHall} />
+      <DiningHallButton id="Ross" routeDiningHall={routeDiningHall} />
+      <DiningHallButton id="Atwater" routeDiningHall={routeDiningHall} />
     </div>
   );
 }
