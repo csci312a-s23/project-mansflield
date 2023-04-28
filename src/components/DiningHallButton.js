@@ -15,14 +15,12 @@ import {
 import SignalWifi0BarIcon from "@mui/icons-material/SignalWifi0Bar";
 
 export default function DiningHallButton({ hall, routeDiningHall }) {
-  const [busy, setBusy] = useState();
-  //const [busyColor, setBusyColor] = useState();
-  const [tables, setTables] = useState();
+  const [info, setInfo] = useState();
 
   const [date, setDate] = useState(new Date()); // eslint-disable-line no-unused-vars
 
   useEffect(() => {
-    fetch(`/api/${hall.id}/busy`)
+    fetch(`/api/hall/${hall.id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(response.statusText);
@@ -30,20 +28,7 @@ export default function DiningHallButton({ hall, routeDiningHall }) {
         return response.json();
       })
       .then((data) => {
-        setBusy(data.busy);
-        setBusyColor(data.busyColor);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
-
-    fetch(`/api/${hall.id}/tables`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTables(data.tables);
+        setInfo(data);
       })
       .catch((err) => console.log(err)); // eslint-disable-line no-console
   }, [hall, date]);
@@ -64,14 +49,14 @@ export default function DiningHallButton({ hall, routeDiningHall }) {
         primary={hall.name}
         secondary={
           <>
-            {busy ? (
-              busy
+            {info ? (
+              info.busy
             ) : (
               <Skeleton variant="text" width={160} x={{ fontSize: "0.6rem" }} />
             )}
             <br />
-            {tables ? (
-              tables
+            {info ? (
+              info.tables
             ) : (
               <Skeleton
                 variant="text"
