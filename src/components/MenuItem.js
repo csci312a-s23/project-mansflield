@@ -1,7 +1,7 @@
-const React = require("react");
-const { List, ListItem, ListItemText, Typography } = require("@mui/material");
+import React from "react";
+import { List, ListItem, ListItemText, Typography } from "@mui/material";
 
-const MenuItems = ({ items }) => {
+export default function MenuItem({ items }) {
   const listItems = items.map((item) => {
     if (item.is_title) {
       return (
@@ -21,6 +21,4 @@ const MenuItems = ({ items }) => {
     }
   });
   return <List>{listItems}</List>;
-};
-
-module.exports = MenuItems;
+}

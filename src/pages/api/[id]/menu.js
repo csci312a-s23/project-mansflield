@@ -1,6 +1,6 @@
-const { send } = require("micro");
-const fetch = require("node-fetch-cache");
-const { parse } = require("url");
+import { send } from "micro";
+import fetch from "node-fetch-cache";
+import { parse } from "url";
 //const { NextApiRequest } = require("next/dist/next-server/server/api-utils");
 //const ApiResponse = require("../models/ApiResponse").default;
 
