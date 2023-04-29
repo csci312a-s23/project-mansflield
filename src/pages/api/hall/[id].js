@@ -14,6 +14,7 @@ const closed = {
   busyVal: -1,
   tables: "Check back later",
   tablesVal: -1,
+  menu: [],
 };
 
 const router = createRouter();

@@ -7,8 +7,8 @@
 import { useState, useEffect, useRef } from "react"; // eslint-disable-line no-unused-vars
 
 // eslint-disable-next-line no-unused-vars
-export default function BusynessView({ id, busy, busyColor }) {
-  const [busyness, setBusyness] = useState(50);
+export default function BusynessView({ info }) {
+  const [busyness, setBusyness] = useState(info.busyVal);
 
   const onChange = (event) => {
     setBusyness(parseInt(event.target.value));
@@ -32,13 +32,13 @@ export default function BusynessView({ id, busy, busyColor }) {
   return (
     <>
       <button type="button" class="btn btn-outline-success">
-        {busy}
+        {info.busy}
       </button>
       <br />
       <input
         type="range"
-        min="1"
-        max="100"
+        min="0"
+        max="4"
         value={busyness}
         className="slider"
         onChange={onChange}

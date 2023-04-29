@@ -78,8 +78,8 @@ export default function PlacePage({}) {
             <Stack direction="column" justifyContent="center" spacing={2}>
               {info ? (
                 <>
-                  <BusynessView busy={info.busy} busyColor={info.busyColor} />
-                  <TablesView id={hall.id} tables={info.tables} />
+                  <BusynessView info={info} />
+                  <TablesView hall={hall} info={info} />
                   <MenuView menu={info.menu} date={date} hall={hall} />
                 </>
               ) : (
