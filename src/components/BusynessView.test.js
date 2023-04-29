@@ -2,8 +2,11 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import BusynessView from "./BusynessView";
 
 describe("BusynessView", () => {
+  const info = {
+    busy: "Busy",
+  };
   it("displays busyness button and slider", () => {
-    render(<BusynessView id="test" busy="Busy" busyColor={{}} />);
+    render(<BusynessView info={info} />);
     const button = screen.getByText(/Busy/i);
     const slider = screen.getByRole("slider");
     expect(button).toBeInTheDocument();
@@ -11,9 +14,9 @@ describe("BusynessView", () => {
   });
 
   it("updates busyness state when the slider value changes", () => {
-    render(<BusynessView id="test" busy="Busy" busyColor={{}} />);
+    render(<BusynessView info={info} />);
     const slider = screen.getByRole("slider");
-    fireEvent.change(slider, { target: { value: 75 } });
-    expect(+slider.value).toBe(75);
+    fireEvent.change(slider, { target: { value: 3 } });
+    expect(+slider.value).toBe(3);
   });
 });

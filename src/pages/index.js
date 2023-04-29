@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useRouter } from "next/router";
 
-import DiningHallView from "../components/DiningHallView";
+import DiningHallView from "@/components/DiningHallView";
+import ServiceView from "@/components/ServiceView";
 
 import { Box, Stack, Container, Typography } from "@mui/material";
 
@@ -16,6 +17,14 @@ export default function MealHow() {
   function routeDiningHall(diningHall) {
     if (diningHall) {
       router.push(`/place/${diningHall}`);
+    } else {
+      router.back;
+    }
+  }
+
+  function routeService(service) {
+    if (service) {
+      router.push(`/service/${service}`);
     } else {
       router.back;
     }
@@ -43,13 +52,15 @@ export default function MealHow() {
       </header>
       <main>
         <Container maxWidth="xl">
-          <Stack
-            direction="column"
-            justifyContent="center"
-            alignItems="center"
-            spacing={2}
-          >
+          <Stack direction="column" justifyContent="center" alignItems="center">
+            <Typography component="h5" variant="h5">
+              Dining
+            </Typography>
             <DiningHallView routeDiningHall={routeDiningHall} time={time} />
+            <Typography component="h5" variant="h5">
+              Retail
+            </Typography>
+            <ServiceView routeService={routeService} time={time} />
           </Stack>
         </Container>
       </main>
