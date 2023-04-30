@@ -12,6 +12,7 @@ import DiningHallButton from "./DiningHallButton.js";
 export default function DiningHallView({ routeDiningHall }) {
   return (
     <div>
+      <h3>Dining Halls</h3>
       <DiningHallButton id="Proctor" routeDiningHall={routeDiningHall} />
       <DiningHallButton id="Ross" routeDiningHall={routeDiningHall} />
       <DiningHallButton id="Atwater" routeDiningHall={routeDiningHall} />

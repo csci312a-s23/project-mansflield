@@ -2,6 +2,7 @@
 
 import Head from "next/head";
 import DiningHallView from "../components/DiningHallView";
+import ServiceView from "../components/ServiceView";
 import { useRouter } from "next/router";
 import styles from "../styles/button.module.css";
 import styles1 from "../styles/Home.module.css";
@@ -11,6 +12,14 @@ export default function MealHow() {
   function routeDiningHall(diningHall) {
     if (diningHall) {
       router.push(`/place/${diningHall}`);
+    } else {
+      router.back;
+    }
+  }
+
+  function routeService(service) {
+    if (service) {
+      router.push(`/service/${service}`);
     } else {
       router.back;
     }
@@ -37,6 +46,7 @@ export default function MealHow() {
           className={styles1.mainBack1}
           routeDiningHall={routeDiningHall}
         />
+        <ServiceView routeService={routeService} />
       </main>
 
       <footer className={`text-center bg-secondary ${styles1.footerSet}`}>
