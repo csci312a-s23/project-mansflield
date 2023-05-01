@@ -6,8 +6,8 @@
 
 import { useState } from "react";
 
-export default function TablesView({ id, tables }) {
-  const [value, setValue] = useState(50);
+export default function TablesView({ hall, info }) {
+  const [value, setValue] = useState(info.tablesVal);
   const onChange = (event) => {
     setValue(parseInt(event.target.value));
   };
@@ -15,12 +15,12 @@ export default function TablesView({ id, tables }) {
   return (
     <>
       <p>
-        Tables at {id}: {tables}
+        Tables at {hall.name}: {info.tables}
       </p>
       <input
         type="range"
-        min="1"
-        max="100"
+        min="0"
+        max="4"
         value={value}
         className="slider"
         onChange={onChange}

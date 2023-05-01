@@ -2,26 +2,30 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import TablesView from "./TablesView";
 
 describe("TablesView", () => {
-  const tables = "Few";
-  const id = "ross";
+  const hall = {
+    name: "Ross",
+  };
+  const info = {
+    tables: "Few tables",
+  };
 
   it("displays the correct name and table strings", () => {
-    render(<TablesView id={id} tables={tables} />);
-    expect(screen.getByText(`Tables at ${id}: ${tables}`)).toBeInTheDocument();
+    render(<TablesView hall={hall} info={info} />);
+    expect(screen.getByText(new RegExp(info.tables))).toBeInTheDocument();
   });
 
   it("updates the state value when the slider is changed", () => {
-    render(<TablesView id={id} tables={tables} />);
+    render(<TablesView hall={hall} info={info} />);
     const slider = screen.getByRole("slider");
-    fireEvent.change(slider, { target: { value: 80 } });
-    expect(screen.getByText(`Tables at ${id}: ${tables}`)).toBeInTheDocument();
-    expect(+slider.value).toBe(80);
+    fireEvent.change(slider, { target: { value: 2 } });
+    expect(screen.getByText(new RegExp(info.tables))).toBeInTheDocument();
+    expect(+slider.value).toBe(2);
   });
 
   it("sets the slider range correctly", () => {
-    render(<TablesView id={id} tables={tables} />);
+    render(<TablesView hall={hall} info={info} />);
     const slider = screen.getByRole("slider");
-    expect(slider).toHaveAttribute("min", "1");
-    expect(slider).toHaveAttribute("max", "100");
+    expect(slider).toHaveAttribute("min", "0");
+    expect(slider).toHaveAttribute("max", "4");
   });
 });

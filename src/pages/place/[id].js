@@ -1,88 +1,94 @@
 //import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import Head from "next/head";
 import BusynessView from "@/components/BusynessView";
 import TablesView from "@/components/TablesView";
 import MenuView from "@/components/MenuView";
 import { useRouter } from "next/router";
 
+import { Box, Container, Typography, Stack, Skeleton } from "@mui/material";
+
+import halls from "@/data/halls.json";
+
 export default function PlacePage({}) {
   const router = useRouter();
 
-  const [busy, setBusy] = useState();
-  const [busyColor, setBusyColor] = useState();
-  const [tables, setTables] = useState();
-  const [menu, setMenu] = useState();
+  const [info, setInfo] = useState();
 
   const [date, setDate] = useState(new Date()); // eslint-disable-line no-unused-vars
 
-  const { id } = router.query;
-
-  // TODO: opening times
+  const hall = halls.find((eachHall) => eachHall.id === router.query.id);
 
   // TODO: send date
   useEffect(() => {
-    fetch(`/api/${id}/busy`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setBusy(data.busy);
-        setBusyColor(data.busyColor);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
-
-    fetch(`/api/${id}/tables`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTables(data.tables);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
-
-    fetch(`/api/${id}/menu`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setMenu(data.menu);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
-  }, [id, date]);
+    if (hall) {
+      fetch(`/api/hall/${hall.id}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setInfo(data);
+        })
+        .catch((err) => console.log(err)); // eslint-disable-line no-console
+    }
+  }, [hall, date]);
 
   return (
-    <div className="bg-light border border-success">
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous"
-      />
-      <Head>
-        <title>{id}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <header>
+        <Box
+          sx={{
+            marginTop: 2,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginBottom: 2,
+          }}
+        >
+          <Typography component="h1" variant="h3" align="center">
+            {hall ? (
+              hall.name
+            ) : (
+              <Skeleton
+                variant="text"
+                width={120}
+                sx={{ fontSize: "0.8rem" }}
+              />
+            )}
+          </Typography>
+          <Typography component="p" className="tagline" align="center">
+            {hall ? (
+              hall.desc
+            ) : (
+              <Skeleton
+                variant="text"
+                width={120}
+                sx={{ fontSize: "0.8rem" }}
+              />
+            )}
+          </Typography>
+        </Box>
+      </header>
       <main>
-        <h1 className="title">{id}</h1>
-        <BusynessView busy={busy} busyColor={busyColor} />
-        <TablesView id={id} tables={tables} />
-        {menu ? (
-          <MenuView menu={menu} date={date} id={id} />
-        ) : (
-          <p>Loading...</p>
-        )}
+        <Container maxWidth="xl">
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <Stack direction="column" justifyContent="center" spacing={2}>
+              {info ? (
+                <>
+                  <BusynessView info={info} />
+                  <TablesView hall={hall} info={info} />
+                  <MenuView menu={info.menu} date={date} hall={hall} />
+                </>
+              ) : (
+                <p>Loading...</p>
+              )}
+            </Stack>
+          </Box>
+        </Container>
       </main>
-    </div>
+    </>
   );
 }

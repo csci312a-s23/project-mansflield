@@ -1,51 +1,96 @@
 //import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
-import Head from "next/head";
 import BusynessView from "@/components/BusynessView";
+import MenuView from "@/components/MenuView";
 import { useRouter } from "next/router";
-import styles from "../../styles/button.module.css";
 
-export default function PlacePage({}) {
+import { Box, Container, Typography, Stack, Skeleton } from "@mui/material";
+
+import retail from "@/data/retail.json";
+
+export default function RetailPage({}) {
   const router = useRouter();
 
-  const [busy, setBusy] = useState();
-  const [busyColor, setBusyColor] = useState();
+  const [info, setInfo] = useState();
 
   const [date, setDate] = useState(new Date()); // eslint-disable-line no-unused-vars
 
-  const { id } = router.query;
-
-  // TODO: opening times
+  const place = retail.find((eachHall) => eachHall.id === router.query.id);
 
   // TODO: send date
   useEffect(() => {
-    fetch(`/api/${id}/busy`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setBusy(data.busy);
-        setBusyColor(data.busyColor);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
-  }, [id, date]);
+    if (place) {
+      fetch(`/api/retail/${place.id}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setInfo(data);
+        })
+        .catch((err) => console.log(err)); // eslint-disable-line no-console
+    }
+  }, [place, date]);
 
   return (
-    <div>
-      <Head>
-        <title>{id}</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <>
+      <header>
+        <Box
+          sx={{
+            marginTop: 2,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginBottom: 2,
+          }}
+        >
+          <Typography component="h1" variant="h3" align="center">
+            {place ? (
+              place.name
+            ) : (
+              <Skeleton
+                variant="text"
+                width={120}
+                sx={{ fontSize: "0.8rem" }}
+              />
+            )}
+          </Typography>
+          <Typography component="p" className="tagline" align="center">
+            {place ? (
+              place.desc
+            ) : (
+              <Skeleton
+                variant="text"
+                width={120}
+                sx={{ fontSize: "0.8rem" }}
+              />
+            )}
+          </Typography>
+        </Box>
+      </header>
       <main>
-        <h1 className="title" class={styles.dining_hall}>
-          {id}
-        </h1>
-        <BusynessView busy={busy} busyColor={busyColor} />
+        <Container maxWidth="xl">
+          <Box display="flex" justifyContent="center" alignItems="center">
+            <Stack direction="column" justifyContent="center" spacing={2}>
+              {info ? (
+                <>
+                  <BusynessView info={info} />
+                  {place && place.has_menu ? (
+                    <MenuView menu={info.menu} date={date} hall={place} />
+                  ) : (
+                    <></>
+                  )}
+                </>
+              ) : (
+                <p>Loading...</p>
+              )}
+            </Stack>
+          </Box>
+        </Container>
       </main>
-    </div>
-  ); //Add a view for whether it's open?
+    </>
+  );
 }
