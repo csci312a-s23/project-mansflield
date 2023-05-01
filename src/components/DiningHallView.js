@@ -23,4 +23,5 @@ export default function DiningHallView({ routeDiningHall, time }) {
     );
   });
   return <List sx={{ minWidth: 360 }}>{buttons}</List>;
+
 }
