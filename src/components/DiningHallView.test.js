@@ -12,7 +12,7 @@ describe("DiningHallView", () => {
     });
   });
 
-  it("renders three dining hall buttons", () => {
+  test("renders three dining hall buttons", () => {
     render(<DiningHallView routeDiningHall={mockRouteDiningHall} />);
     const buttons = screen.getAllByRole("button");
     expect(buttons).toHaveLength(3);
@@ -21,7 +21,7 @@ describe("DiningHallView", () => {
     expect(screen.getByText("Atwater")).toBeInTheDocument();
   });
 
-  it("calls the routeDiningHall function with the correct argument when a button is clicked", () => {
+  test("calls the routeDiningHall function with the correct argument when a button is clicked", () => {
     render(<DiningHallView routeDiningHall={mockRouteDiningHall} />);
     const button = screen.getByText("Ross");
     fireEvent.click(button);
