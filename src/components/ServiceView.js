@@ -8,6 +8,7 @@
 
 import ServiceButton from "./ServiceButton";
 import { List } from "@mui/material";
+import PropTypes from "prop-types";
 
 import retail from "@/data/retail.json";
 
@@ -24,3 +25,8 @@ export default function DiningHallView({ routeService, time }) {
   });
   return <List sx={{ minWidth: 360 }}>{buttons}</List>;
 }
+
+DiningHallView.propTypes = {
+  routeService: PropTypes.func.isRequired,
+  time: PropTypes.object.isRequired,
+};

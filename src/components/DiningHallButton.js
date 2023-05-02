@@ -18,6 +18,7 @@ import SignalWifi2BarIcon from "@mui/icons-material/SignalWifi2Bar";
 import SignalWifi3BarIcon from "@mui/icons-material/SignalWifi3Bar";
 import SignalWifi4BarIcon from "@mui/icons-material/SignalWifi4Bar";
 import SignalWifiOffIcon from "@mui/icons-material/SignalWifiOff";
+import PropTypes from "prop-types";
 
 export default function DiningHallButton({ hall, routeDiningHall, time }) {
   const [info, setInfo] = useState();
@@ -96,3 +97,9 @@ export default function DiningHallButton({ hall, routeDiningHall, time }) {
     </ListItemButton>
   );
 }
+
+DiningHallButton.propTypes = {
+  hall: PropTypes.object.isRequired,
+  routeDiningHall: PropTypes.func.isRequired,
+  time: PropTypes.object.isRequired,
+};
