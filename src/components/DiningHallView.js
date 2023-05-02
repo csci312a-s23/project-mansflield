@@ -8,6 +8,7 @@
 
 import DiningHallButton from "./DiningHallButton.js";
 import { List } from "@mui/material";
+import PropTypes from "prop-types";
 
 import halls from "@/data/halls.json";
 
@@ -23,5 +24,9 @@ export default function DiningHallView({ routeDiningHall, time }) {
     );
   });
   return <List sx={{ minWidth: 360 }}>{buttons}</List>;
-
 }
+
+DiningHallView.propTypes = {
+  routeDiningHall: PropTypes.func.isRequired,
+  time: PropTypes.object.isRequired,
+};

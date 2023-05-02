@@ -5,6 +5,7 @@
 */
 
 import { useState, useEffect, useRef } from "react"; // eslint-disable-line no-unused-vars
+import PropTypes from "prop-types";
 
 // eslint-disable-next-line no-unused-vars
 export default function BusynessView({ info }) {
@@ -46,3 +47,13 @@ export default function BusynessView({ info }) {
     </>
   );
 }
+
+BusynessView.propTypes = {
+  info: PropTypes.shape({
+    busy: PropTypes.string.isRequired,
+    busyVal: PropTypes.number.isRequired,
+    tables: PropTypes.string.isRequired,
+    tablesVal: PropTypes.number.isRequired,
+    menu: PropTypes.arrayOf(PropTypes.number).isRequired,
+  }),
+};
