@@ -5,6 +5,7 @@
 */
 
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 export default function TablesView({ hall, info }) {
   const [value, setValue] = useState(info.tablesVal);
@@ -28,3 +29,14 @@ export default function TablesView({ hall, info }) {
     </>
   );
 }
+
+TablesView.propTypes = {
+  hall: PropTypes.object.isRequired,
+  info: PropTypes.shape({
+    busy: PropTypes.number.isRequired,
+    busyVal: PropTypes.number.isRequired,
+    tables: PropTypes.string.isRequired,
+    tablesVal: PropTypes.number.isRequired,
+    menu: PropTypes.arrayOf(PropTypes.number).isRequired,
+  }),
+};

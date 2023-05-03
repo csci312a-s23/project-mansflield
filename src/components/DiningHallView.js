@@ -8,6 +8,7 @@
 
 import DiningHallButton from "./DiningHallButton.js";
 import { List } from "@mui/material";
+import PropTypes from "prop-types";
 
 import halls from "@/data/halls.json";
 import style1 from "../styles/main.module.css";
@@ -29,3 +30,8 @@ export default function DiningHallView({ routeDiningHall, time }) {
     </List>
   );
 }
+
+DiningHallView.propTypes = {
+  routeDiningHall: PropTypes.func.isRequired,
+  time: PropTypes.object.isRequired,
+};

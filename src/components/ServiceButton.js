@@ -18,13 +18,13 @@ import SignalWifi2BarIcon from "@mui/icons-material/SignalWifi2Bar";
 import SignalWifi3BarIcon from "@mui/icons-material/SignalWifi3Bar";
 import SignalWifi4BarIcon from "@mui/icons-material/SignalWifi4Bar";
 import SignalWifiOffIcon from "@mui/icons-material/SignalWifiOff";
+import PropTypes from "prop-types";
 
 export default function ServiceButton({ place, routeService, time }) {
   const [info, setInfo] = useState();
 
   useEffect(() => {
     fetch(`/api/retail/${place.id}?t=${time}`)
-
       .then((response) => {
         if (!response.ok) {
           throw new Error(response.statusText);
@@ -85,3 +85,9 @@ export default function ServiceButton({ place, routeService, time }) {
     </ListItemButton>
   );
 }
+
+ServiceButton.propTypes = {
+  place: PropTypes.object.isRequired,
+  routeService: PropTypes.func.isRequired,
+  time: PropTypes.object.isRequired,
+};
