@@ -10,9 +10,15 @@ import PropTypes from "prop-types";
 // eslint-disable-next-line no-unused-vars
 export default function BusynessView({ info }) {
   const [busyness, setBusyness] = useState(info.busyVal);
+  const [busyVal, setBusyVal] = useState(info.busyVal);
 
-  const onChange = (event) => {
-    setBusyness(parseInt(event.target.value));
+  const slideChange = (event) => {
+    setBusyVal(parseInt(event.target.value));
+  };
+
+  const submitChange = () => {
+    setBusyness(parseInt(busyVal));
+    console.log(busyness);
   };
 
   /*
@@ -32,7 +38,7 @@ export default function BusynessView({ info }) {
 
   return (
     <>
-      <button type="button" class="btn btn-outline-success">
+      <button type="button" className="btn btn-outline-success">
         {info.busy}
       </button>
       <br />
@@ -40,10 +46,14 @@ export default function BusynessView({ info }) {
         type="range"
         min="0"
         max="4"
-        value={busyness}
+        value={busyVal}
         className="slider"
-        onChange={onChange}
+        id="busySlider"
+        onChange={slideChange}
       />
+      <button onClick={submitChange} type="button">
+        Submit
+      </button>
     </>
   );
 }
