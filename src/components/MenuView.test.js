@@ -18,7 +18,7 @@ describe("MenuView", () => {
   ];
   const date = new Date();
 
-  it("renders menu items correctly", () => {
+  test("renders menu items correctly", () => {
     render(<MenuView menu={menu} date={date} id="ross" />);
     const items = screen.getAllByRole("listitem");
     expect(items).toHaveLength(menu.length);

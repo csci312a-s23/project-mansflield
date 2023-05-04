@@ -9,12 +9,12 @@ describe("TablesView", () => {
     tables: "Few tables",
   };
 
-  it("displays the correct name and table strings", () => {
+  test("displays the correct name and table strings", () => {
     render(<TablesView hall={hall} info={info} />);
     expect(screen.getByText(new RegExp(info.tables))).toBeInTheDocument();
   });
 
-  it("updates the state value when the slider is changed", () => {
+  test("updates the state value when the slider is changed", () => {
     render(<TablesView hall={hall} info={info} />);
     const slider = screen.getByRole("slider");
     fireEvent.change(slider, { target: { value: 2 } });
@@ -22,7 +22,7 @@ describe("TablesView", () => {
     expect(+slider.value).toBe(2);
   });
 
-  it("sets the slider range correctly", () => {
+  test("sets the slider range correctly", () => {
     render(<TablesView hall={hall} info={info} />);
     const slider = screen.getByRole("slider");
     expect(slider).toHaveAttribute("min", "0");
