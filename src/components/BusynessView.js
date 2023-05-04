@@ -3,7 +3,7 @@
 
   This component provides the busyness button and slider in individial pages.
 */
-
+import { Box, Button, Container, Typography } from "@mui/material";
 import { useState, useEffect, useRef } from "react"; // eslint-disable-line no-unused-vars
 import PropTypes from "prop-types";
 
@@ -35,25 +35,31 @@ export default function BusynessView({ info }) {
       }, 400);
     }, []);
   */
-
+  // <button type="button" className="btn btn-outline-success">
+  //   {info.busy}
+  // </button>
   return (
     <>
-      <button type="button" className="btn btn-outline-success">
-        {info.busy}
-      </button>
+      <Box>
+        <Typography align="center" variant="h5">
+          {info.busy}
+        </Typography>
+      </Box>
       <br />
-      <input
-        type="range"
-        min="0"
-        max="4"
-        value={busyVal}
-        className="slider"
-        id="busySlider"
-        onChange={slideChange}
-      />
-      <button onClick={submitChange} type="button">
-        Submit
-      </button>
+      <Container>
+        <input
+          type="range"
+          min="0"
+          max="4"
+          value={busyVal}
+          className="slider"
+          id="busySlider"
+          onChange={slideChange}
+        />
+        <Button onClick={submitChange} type="button">
+          Submit
+        </Button>
+      </Container>
     </>
   );
 }
