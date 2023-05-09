@@ -1,10 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import ServiceView from "./ServiceView";
-import retail from "../data/retail.json";
 
 // From the library retail, we are mocking 2 objects to be used on tests.
 
-jest.mock(retail, () => [
+jest.mock("../data/retail.json", () => [
   {
     id: "grille",
     menu_id: "the-grille",
@@ -56,7 +55,7 @@ describe("ServiceView", () => {
 
   test("Service View is rendering ServiceButton", async () => {
     const newRoute = jest.fn();
-    const testTime = new Date.now();
+    const testTime = Date.now();
     render(<ServiceView routeService={newRoute} time={testTime} />);
     // rendered as list -> role item = listitem & also as button so listitembutton
     const serviceButtons = await screen.findAllByRole("listitembutton");
@@ -66,7 +65,7 @@ describe("ServiceView", () => {
   test("calls routeService when a ServiceButton is clicked", () => {
     const mockFn = jest.fn();
     const place = "Ross";
-    const time = new Date.now();
+    const time = Date.now();
     render(<ServiceView place={place} routeService={mockFn} time={time} />);
     button.click();
     expect(routeService).toHaveBeenCalled();

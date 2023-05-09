@@ -2,22 +2,26 @@ import { render, screen } from "@testing-library/react";
 import ServiceButton from "./ServiceButton";
 
 describe("ServiceButton", () => {
-  const place = "Ross";
+  const place = { id: 1, name: "Ross" };
+  const routeService = jest.fn();
+  const time = "2023-05-08T12:00:00Z";
 
   test("Place name is rendered", async () => {
-    render(<ServiceButton place={place} routeService={() => {}} time={0} />);
-    const placeName = await screen.findByText("Ross");
-
+    render(
+      <ServiceButton place={place} routeService={routeService} time={time} />
+    );
+    const placeName = await screen.findByText(place.name);
     expect(placeName).toBeInTheDocument();
   });
 
   test("calls routeService when button is clicked", async () => {
-    const mockFn = jest.fn();
-    render(<ServiceButton place={place} routeService={mockFn} time={0} />);
+    render(
+      <ServiceButton place={place} routeService={routeService} time={time} />
+    );
 
     const button = await screen.findByRole("button");
     button.click();
 
-    expect(mockFn).toHaveBeenCalledWith("Ross");
+    expect(routeService).toHaveBeenCalledWith(place.id);
   });
 });

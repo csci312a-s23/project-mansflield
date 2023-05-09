@@ -6,12 +6,16 @@ describe("TablesView", () => {
     name: "Ross",
   };
   const info = {
-    tables: "Few tables",
+    tables: 3,
+    tablesVal: 3,
   };
 
   test("displays the correct name and table strings", () => {
-    render(<TablesView hall={hall} info={info} />);
-    expect(screen.getByText(new RegExp(info.tables))).toBeInTheDocument();
+    const { getByText } = render(<TablesView hall={hall} info={info} />);
+    expect(getByText(/Tables at Ross:/)).toBeInTheDocument();
+    expect(getByText(/3/)).toBeInTheDocument();
+    // render(<TablesView hall={hall} info={info} />);
+    // expect(screen.getByText(new RegExp(info.tables))).toBeInTheDocument();
   });
 
   test("updates the state value when the slider is changed", () => {
