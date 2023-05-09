@@ -28,4 +28,14 @@ describe("TablesView", () => {
     expect(slider).toHaveAttribute("min", "0");
     expect(slider).toHaveAttribute("max", "4");
   });
+
+  //https://stackoverflow.com/questions/48180499/testing-onchange-function-in-jest
+
+  test("Onchange function is called when changes happen", () => {
+    const mockFn = jest.fn();
+    render(<TablesView hall={hall} info={info} onChange={mockFn} />);
+    const slider = screen.getByRole("slider");
+    fireEvent.change(slider, { target: { value: 4 } });
+    expect(mockFn).toBeCalledWith(4);
+  });
 });
