@@ -5,6 +5,11 @@ import theme from "../material/theme";
 import createEmotionCache from "../material/createEmotionCache";
 import { ThemeProvider } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./component/Navbar";
+import MealHow from ".";
+import { Chat } from "@mui/icons-material";
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -15,6 +20,13 @@ export default function MainApp({
 }) {
   return (
     <CacheProvider value={emotionCache}>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/" component={MealHow} />
+          <Route path="/" component={Chat} />
+        </Switch>
+      </Router>
       <Head>
         <title>MealHow</title>
         <link rel="icon" type="image/svg+xml" href="favicon.svg" />
