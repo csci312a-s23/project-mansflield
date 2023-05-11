@@ -4,6 +4,8 @@ import { useRouter } from "next/router";
 
 import DiningHallView from "@/components/DiningHallView";
 import ServiceView from "@/components/ServiceView";
+import PostButton from "@/components/PostButton";
+import PostPage from "@/components/PostPage";
 
 import { Box, Stack, Container, Typography } from "@mui/material";
 
@@ -14,6 +16,7 @@ export default function MealHow() {
 
   // eslint-disable-next-line no-unused-vars
   const [time, setTime] = useState(dayjs());
+  const [posts, setPosts] = useState([]);
 
   function routeDiningHall(diningHall) {
     if (diningHall) {
@@ -29,6 +32,11 @@ export default function MealHow() {
     } else {
       router.back;
     }
+  }
+
+  function routePosts() {
+    router.push(`/posts`);
+    return <PostPage posts={posts} setPosts={setPosts} />;
   }
 
   return (
@@ -62,6 +70,7 @@ export default function MealHow() {
               Retail
             </Typography>
             <ServiceView routeService={routeService} time={time} />
+            <PostButton routePosts={routePosts} />
           </Stack>
         </Container>
       </main>
