@@ -79,7 +79,7 @@ export default function PlacePage({}) {
               {info ? (
                 <>
                   <BusynessView info={info} />
-                  <TablesView hall={hall} info={info} />
+                  <TablesView hall={hall} info={info} setInfo={setInfo} />
                   <MenuView menu={info.menu} date={date} hall={hall} />
                 </>
               ) : (

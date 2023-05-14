@@ -8,7 +8,7 @@ import { useState } from "react";
 import { Button, Slider, Stack, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 
-export default function TablesView({ hall, info }) {
+export default function TablesView({ hall, info, setInfo }) {
   const [value, setValue] = useState(info.tablesVal);
 
   function Tvaluetext(Tvalue) {
@@ -27,9 +27,13 @@ export default function TablesView({ hall, info }) {
     setValue(newValue);
   };
 
-  const SubmitChange = (event) => {
-    setValue(parseInt(event.target.value));
+  const handleSubmit = () => {
+    setInfo({ ...info, tablesVal: value });
   };
+
+  // const SubmitChange = (event) => {
+  //   setValue(parseInt(event.target.value));
+  // };
 
   return (
     <>
@@ -50,7 +54,7 @@ export default function TablesView({ hall, info }) {
           aria-labelledby="non-linear-slider2"
           onChange={handleChange} // Added the onChange event handler
         />
-        <Button onClick={SubmitChange} type="button">
+        <Button onClick={handleSubmit} type="button">
           Submit
         </Button>
       </Stack>
@@ -67,4 +71,5 @@ TablesView.propTypes = {
     tablesVal: PropTypes.number.isRequired,
     menu: PropTypes.arrayOf(PropTypes.number).isRequired,
   }),
+  setInfo: PropTypes.func.isRequired,
 };
