@@ -5,17 +5,17 @@
 */
 import * as React from "react";
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
-import { useState, useEffect, useRef } from "react"; // eslint-disable-line no-unused-vars
+import { useState, useEffect } from "react"; // eslint-disable-line no-unused-vars
 import PropTypes from "prop-types";
 
 // eslint-disable-next-line no-unused-vars
 export default function BusynessView({ info }) {
   const [busyness, setBusyness] = useState(info.busyVal);
   const [busyVal, setBusyVal] = useState(info.busyVal);
+  const [Bvalue, setBValue] = React.useState(10);
 
   useEffect(() => {
-    console.log(`Busyness input: ${  busyness}`); // eslint-disable-line no-console
-    console.log(`BusyVal:  ${  busyVal}`); // eslint-disable-line no-console
+    console.log(`Busyness input: ${busyness}`); // eslint-disable-line no-console
   }, [busyness]);
 
   function valuetext(value) {
@@ -30,12 +30,15 @@ export default function BusynessView({ info }) {
     return `${buzyness[buzynessIndex]}`;
   }
 
-  const slideChange = (event) => {
+  const slideChange = (event, newValue) => {
+    if (typeof newValue === "number") {
+      setBValue(newValue);
+    }
     setBusyVal(parseInt(event.target.value));
   };
 
   const submitChange = () => {
-    setBusyness(busyVal);
+    setBusyness(parseInt(busyVal));
   };
 
   return (
@@ -48,7 +51,8 @@ export default function BusynessView({ info }) {
       <br />
       <Stack direction="row" spacing={2}>
         <Slider
-          value={busyVal}
+          value={Bvalue}
+          defaultValue={0}
           step={1}
           marks
           min={0}
