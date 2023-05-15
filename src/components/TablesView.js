@@ -65,11 +65,11 @@ export default function TablesView({ hall, info, setInfo }) {
 TablesView.propTypes = {
   hall: PropTypes.object.isRequired,
   info: PropTypes.shape({
-    busy: PropTypes.number.isRequired,
+    busy: PropTypes.string.isRequired,
     busyVal: PropTypes.number.isRequired,
     tables: PropTypes.string.isRequired,
     tablesVal: PropTypes.number.isRequired,
-    menu: PropTypes.arrayOf(PropTypes.number).isRequired,
+    menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
   setInfo: PropTypes.func.isRequired,
 };

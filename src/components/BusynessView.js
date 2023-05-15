@@ -12,7 +12,11 @@ import PropTypes from "prop-types";
 export default function BusynessView({ info }) {
   const [busyness, setBusyness] = useState(info.busyVal);
   const [busyVal, setBusyVal] = useState(info.busyVal);
-  const [Bvalue, setBValue] = React.useState(10);
+
+  useEffect(() => {
+    console.log(`Busyness input: ${  busyness}`); // eslint-disable-line no-console
+    console.log(`BusyVal:  ${  busyVal}`); // eslint-disable-line no-console
+  }, [busyness]);
 
   function valuetext(value) {
     const buzyness = [
@@ -26,16 +30,12 @@ export default function BusynessView({ info }) {
     return `${buzyness[buzynessIndex]}`;
   }
 
-  const slideChange = (event, newValue) => {
-    if (typeof newValue === "number") {
-      setBValue(newValue);
-    }
+  const slideChange = (event) => {
     setBusyVal(parseInt(event.target.value));
   };
 
   const submitChange = () => {
-    setBusyness(parseInt(busyVal));
-    console.log(busyness);
+    setBusyness(busyVal);
   };
 
   return (
@@ -48,8 +48,7 @@ export default function BusynessView({ info }) {
       <br />
       <Stack direction="row" spacing={2}>
         <Slider
-          value={Bvalue}
-          defaultValue={0}
+          value={busyVal}
           step={1}
           marks
           min={0}
@@ -74,6 +73,6 @@ BusynessView.propTypes = {
     busyVal: PropTypes.number.isRequired,
     tables: PropTypes.string.isRequired,
     tablesVal: PropTypes.number.isRequired,
-    menu: PropTypes.arrayOf(PropTypes.number).isRequired,
+    menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
 };
