@@ -7,7 +7,7 @@ describe("BusynessView", () => {
   };
   it("displays busyness button and slider", () => {
     render(<BusynessView info={info} />);
-    const button = screen.getByText(/Busy/i);
+    const button = screen.getAllByText(/Busy/i)[0];
     const slider = screen.getByRole("slider");
     expect(button).toBeInTheDocument();
     expect(slider).toBeInTheDocument();

@@ -92,6 +92,41 @@ router.get(async (req, res) => {
   }
 });
 
+router.post(async (req, res) => {
+  const { id, t, type, val } = req.body; // eslint-disable-line no-unused-vars
+
+  // Is it open?
+  // const time = dayjs(t);
+  const time = dayjs("2023-05-15T23:40:15.000Z");
+  const hall = halls.find((h) => {
+    return h.id === id;
+  });
+  const menu = findOpenMenu(hall, time);
+
+  // validate
+  if (type !== "line" && type !== "table") {
+    throw new Error("Invalid type value. Must be 'line' or 'table'.");
+  }
+
+  if (val < 0 || val > 4) {
+    throw new Error("Invalid busyness value. Must be between 0 and 4.");
+  }
+
+  const newBusyness = await knex("busyness").insert({
+    place: hall.id,
+    meal: menu.id,
+    dateStr: time.format("YYYY-MM-DD"),
+    type: type,
+    busyness: val,
+  });
+
+  // Respond with the newly created busyness data
+  res.status(201).json({
+    message: "Busyness created successfully",
+    busyness: newBusyness,
+  });
+});
+
 router.all((req, res) => {
   res.status(405).json({
     error: "Method not allowed",

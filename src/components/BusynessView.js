@@ -3,20 +3,14 @@
 
   This component provides the busyness button and slider in individial pages.
 */
-import * as React from "react";
+// import dayjs from "dayjs";
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
 import { useState, useEffect } from "react"; // eslint-disable-line no-unused-vars
 import PropTypes from "prop-types";
 
 // eslint-disable-next-line no-unused-vars
-export default function BusynessView({ info }) {
+export default function BusynessView({ hall, info, date }) {
   const [busyness, setBusyness] = useState(info.busyVal);
-  const [busyVal, setBusyVal] = useState(info.busyVal);
-  const [Bvalue, setBValue] = React.useState(10);
-
-  useEffect(() => {
-    console.log(`Busyness input: ${busyness}`); // eslint-disable-line no-console
-  }, [busyness]);
 
   function valuetext(value) {
     const buzyness = [
@@ -26,19 +20,43 @@ export default function BusynessView({ info }) {
       "Very Busy",
       "Fully Packed",
     ];
-    const buzynessIndex = value;
-    return `${buzyness[buzynessIndex]}`;
+    return `${buzyness[value]}`;
   }
 
   const slideChange = (event, newValue) => {
     if (typeof newValue === "number") {
-      setBValue(newValue);
+      setBusyness(newValue);
     }
-    setBusyVal(parseInt(event.target.value));
+    setBusyness(parseInt(event.target.value));
   };
 
-  const submitChange = () => {
-    setBusyness(parseInt(busyVal));
+  const submitChange = async () => {
+    const t = date.toISOString().split("T")[0];
+    try {
+      const response = await fetch(`/api/hall/${hall.id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: hall.id,
+          t: t,
+          type: "line",
+          val: busyness,
+        }),
+      });
+
+      if (response.ok) {
+        // TODO: display message or sth
+        console.log("OK, added to DB");
+      } else {
+        // TODO: display message or sth
+        console.log(response.statusText);
+      }
+    } catch (error) {
+      // TODO: display message or sth
+      console.log(error.message);
+    }
   };
 
   return (
@@ -51,7 +69,7 @@ export default function BusynessView({ info }) {
       <br />
       <Stack direction="row" spacing={2}>
         <Slider
-          value={Bvalue}
+          value={busyness}
           defaultValue={2}
           step={1}
           marks
@@ -74,9 +92,9 @@ export default function BusynessView({ info }) {
 BusynessView.propTypes = {
   info: PropTypes.shape({
     busy: PropTypes.string.isRequired,
-    busyVal: PropTypes.number.isRequired,
-    tables: PropTypes.string.isRequired,
-    tablesVal: PropTypes.number.isRequired,
+    busyness: PropTypes.number,
+    tables: PropTypes.string,
+    tablesVal: PropTypes.number,
     menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
 };
