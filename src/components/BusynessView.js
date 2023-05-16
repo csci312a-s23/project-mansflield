@@ -52,7 +52,7 @@ export default function BusynessView({ info }) {
       <Stack direction="row" spacing={2}>
         <Slider
           value={Bvalue}
-          defaultValue={0}
+          defaultValue={2}
           step={1}
           marks
           min={0}
