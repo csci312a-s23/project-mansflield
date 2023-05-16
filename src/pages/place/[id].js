@@ -1,4 +1,5 @@
-//import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
+// import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 
 import BusynessView from "@/components/BusynessView";
@@ -78,8 +79,8 @@ export default function PlacePage({}) {
             <Stack direction="column" justifyContent="center" spacing={2}>
               {info ? (
                 <>
-                  <BusynessView info={info} />
-                  <TablesView hall={hall} info={info} />
+                  <BusynessView hall={hall} info={info} date={date} />
+                  <TablesView hall={hall} info={info} date={date} />
                   <MenuView menu={info.menu} date={date} hall={hall} />
                 </>
               ) : (

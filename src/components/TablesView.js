@@ -3,12 +3,11 @@
 
   This component provides the how many tables text and slider in individial dining hall pages.
 */
-import * as React from "react";
 import { useState } from "react";
 import { Button, Slider, Stack, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 
-export default function TablesView({ hall, info }) {
+export default function TablesView({ hall, info, date }) {
   const [value, setValue] = useState(info.tablesVal);
 
   function Tvaluetext(Tvalue) {
@@ -27,9 +26,33 @@ export default function TablesView({ hall, info }) {
     setValue(newValue);
   };
 
-  const SubmitChange = (event) => {
-    setValue(parseInt(event.target.value));
+  const submitChange = async () => {
+    const t = date.toISOString().split("T")[0];
+    try {
+      const response = await fetch(`/api/hall/${hall.id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ id: hall.id, t: t, type: "table", val: value }),
+      });
+
+      if (response.ok) {
+        // TODO: display message or sth
+        console.log("OK, added to DB");
+      } else {
+        // TODO: display message or sth
+        console.log(response.statusText);
+      }
+    } catch (error) {
+      // TODO: display message or sth
+      console.log(error.message);
+    }
   };
+
+  // const SubmitChange = (event) => {
+  //   setValue(parseInt(event.target.value));
+  // };
 
   return (
     <>
@@ -50,7 +73,7 @@ export default function TablesView({ hall, info }) {
           aria-labelledby="non-linear-slider2"
           onChange={handleChange} // Added the onChange event handler
         />
-        <Button onClick={SubmitChange} type="button">
+        <Button onClick={submitChange} type="button">
           Submit
         </Button>
       </Stack>
@@ -61,10 +84,11 @@ export default function TablesView({ hall, info }) {
 TablesView.propTypes = {
   hall: PropTypes.object.isRequired,
   info: PropTypes.shape({
-    busy: PropTypes.number.isRequired,
+    busy: PropTypes.string.isRequired,
     busyVal: PropTypes.number.isRequired,
     tables: PropTypes.string.isRequired,
     tablesVal: PropTypes.number.isRequired,
-    menu: PropTypes.arrayOf(PropTypes.number).isRequired,
+    menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
+  date: PropTypes.instanceOf(Date).isRequired,
 };
