@@ -1,0 +1,56 @@
+{
+  "busy": "Absolutely packed",
+  "busyVal": 4,
+  "tables": "A few tables left",
+  "tablesVal": 3,
+  "menu": [
+    {
+      "id": 68306452,
+      "position": 0,
+      "is_title": false,
+      "name": "Lentil Mushroom Soup",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68306455,
+      "position": 1,
+      "is_title": false,
+      "name": "Corn Chowder",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68306458,
+      "position": 2,
+      "is_title": false,
+      "name": "Philly Cheese Steak",
+      "subtext": "",
+      "price": 8.5
+    },
+    {
+      "id": 68306462,
+      "position": 3,
+      "is_title": false,
+      "name": "Butternut Squash with Radicchio, Farro and Miso",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68306466,
+      "position": 4,
+      "is_title": false,
+      "name": "Chipotle Miso Tofu with Vegetables",
+      "subtext": "",
+      "price": null
+    },
+    {
+      "id": 68306472,
+      "position": 5,
+      "is_title": false,
+      "name": "Fresh Green Beans",
+      "subtext": "",
+      "price": null
+    }
+  ]
+}

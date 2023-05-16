@@ -1,75 +1,333 @@
 [
   {
-    "id": "proctor-dining-hall",
+    "id": "proctor",
+    "menu_id": "proctor-dining-hall",
     "name": "Proctor",
-    "options": [
+    "desc": "The lounge has cozy couches.",
+    "menus": [
       {
         "id": "breakfast",
-        "name": "Breakfast"
+        "name": "Breakfast",
+        "schedule": [
+          {
+            "day": 0,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 1,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 2,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 3,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 4,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 5,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 6,
+            "open": 700,
+            "close": 1100
+          }
+        ]
       },
       {
         "id": "lunch",
-        "name": "Lunch"
+        "name": "Lunch",
+        "schedule": [
+          {
+            "day": 0,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 1,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 2,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 3,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 4,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 5,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 6,
+            "open": 1100,
+            "close": 1400
+          }
+        ]
       },
       {
         "id": "dinner",
-        "name": "Dinner"
+        "name": "Dinner",
+        "schedule": [
+          {
+            "day": 0,
+            "open": 1630,
+            "close": 2000
+          },
+          {
+            "day": 1,
+            "open": 1630,
+            "close": 2000
+          },
+          {
+            "day": 2,
+            "open": 1630,
+            "close": 2000
+          },
+          {
+            "day": 3,
+            "open": 1630,
+            "close": 2000
+          },
+          {
+            "day": 4,
+            "open": 1630,
+            "close": 2000
+          },
+          {
+            "day": 5,
+            "open": 1630,
+            "close": 2000
+          },
+          {
+            "day": 6,
+            "open": 1630,
+            "close": 2000
+          }
+        ]
       }
     ]
   },
   {
-    "id": "ross-dining-hall",
+    "id": "ross",
+    "menu_id": "ross-dining-hall",
     "name": "Ross",
-    "options": [
+    "desc": "Amazing views of the sunset.",
+    "menus": [
       {
         "id": "breakfast",
-        "name": "Breakfast"
+        "name": "Breakfast",
+        "schedule": [
+          {
+            "day": 0,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 1,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 2,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 3,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 4,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 5,
+            "open": 700,
+            "close": 1100
+          },
+          {
+            "day": 6,
+            "open": 700,
+            "close": 1100
+          }
+        ]
       },
       {
         "id": "lunch",
-        "name": "Lunch"
+        "name": "Lunch",
+        "schedule": [
+          {
+            "day": 0,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 1,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 2,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 3,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 4,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 5,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 6,
+            "open": 1100,
+            "close": 1400
+          }
+        ]
       },
       {
         "id": "dinner",
-        "name": "Dinner"
+        "name": "Dinner",
+        "schedule": [
+          {
+            "day": 0,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 1,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 2,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 3,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 4,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 5,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 6,
+            "open": 1700,
+            "close": 2030
+          }
+        ]
       }
     ]
   },
   {
-    "id": "atwater-dining-hall",
+    "id": "atwater",
+    "menu_id": "atwater-dining-hall",
     "name": "Atwater",
-    "options": [
+    "desc": "Natural light and views toward the town.",
+    "menus": [
       {
         "id": "lunch",
-        "name": "Lunch"
+        "name": "Lunch",
+        "schedule": [
+          {
+            "day": 1,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 2,
+            "open": 1100,
+            "close": 1530
+          },
+          {
+            "day": 3,
+            "open": 1100,
+            "close": 1400
+          },
+          {
+            "day": 4,
+            "open": 1100,
+            "close": 1530
+          },
+          {
+            "day": 5,
+            "open": 1100,
+            "close": 1400
+          }
+        ]
       },
       {
         "id": "dinner",
-        "name": "Dinner"
-      }
-    ]
-  },
-  {
-    "id": "the-grille",
-    "name": "The Grille",
-    "options": [
-      {
-        "id": "grille-menu-2022",
-        "name": "Grille"
-      }
-    ]
-  },
-  {
-    "id": "wilson-cafe",
-    "name": "Wilson Cafe",
-    "options": [
-      {
-        "id": "coffee-and-drinks",
-        "name": "Drinks"
-      },
-      {
-        "id": "bagels-and-sandwiches",
-        "name": "Food"
+        "name": "Dinner",
+        "schedule": [
+          {
+            "day": 1,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 2,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 3,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 4,
+            "open": 1700,
+            "close": 2030
+          },
+          {
+            "day": 5,
+            "open": 1700,
+            "close": 2030
+          }
+        ]
       }
     ]
   }

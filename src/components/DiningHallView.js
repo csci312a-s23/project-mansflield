@@ -7,14 +7,26 @@
 // import { useState } from "react";
 
 import DiningHallButton from "./DiningHallButton.js";
-// import styles1 from "../styles/Home.module.css";
+import { List } from "@mui/material";
+import PropTypes from "prop-types";
 
-export default function DiningHallView({ routeDiningHall }) {
-  return (
-    <div>
-      <DiningHallButton id="Proctor" routeDiningHall={routeDiningHall} />
-      <DiningHallButton id="Ross" routeDiningHall={routeDiningHall} />
-      <DiningHallButton id="Atwater" routeDiningHall={routeDiningHall} />
-    </div>
-  );
+import halls from "@/data/halls.json";
+
+export default function DiningHallView({ routeDiningHall, time }) {
+  const buttons = halls.map((hall) => {
+    return (
+      <DiningHallButton
+        key={hall.id}
+        hall={hall}
+        time={time}
+        routeDiningHall={routeDiningHall}
+      />
+    );
+  });
+  return <List sx={{ minWidth: 360 }}>{buttons}</List>;
 }
+
+DiningHallView.propTypes = {
+  routeDiningHall: PropTypes.func.isRequired,
+  time: PropTypes.object.isRequired,
+};

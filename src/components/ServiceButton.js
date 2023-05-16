@@ -1,7 +1,7 @@
 /*
-  DiningHallButton.js
+  ServiceButton.js
 
-  This component provides the indivual buttons in DiningHallView. 
+  This component provides the indivual buttons in ServiceView. 
 */
 
 import { useEffect, useState } from "react";
@@ -20,11 +20,11 @@ import SignalWifi4BarIcon from "@mui/icons-material/SignalWifi4Bar";
 import SignalWifiOffIcon from "@mui/icons-material/SignalWifiOff";
 import PropTypes from "prop-types";
 
-export default function DiningHallButton({ hall, routeDiningHall, time }) {
+export default function ServiceButton({ place, routeService, time }) {
   const [info, setInfo] = useState();
 
   useEffect(() => {
-    fetch(`/api/hall/${hall.id}?t=${time}`)
+    fetch(`/api/retail/${place.id}?t=${time}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error(response.statusText);
@@ -35,7 +35,7 @@ export default function DiningHallButton({ hall, routeDiningHall, time }) {
         setInfo(data);
       })
       .catch((err) => console.log(err)); // eslint-disable-line no-console
-  }, [hall, time]);
+  }, [place, time]);
 
   function getButton(n) {
     switch (n) {
@@ -60,7 +60,7 @@ export default function DiningHallButton({ hall, routeDiningHall, time }) {
     <ListItemButton
       alignItems="flex-start"
       onClick={() => {
-        routeDiningHall(hall.id);
+        routeService(place.id);
       }}
     >
       <ListItemAvatar>
@@ -73,33 +73,21 @@ export default function DiningHallButton({ hall, routeDiningHall, time }) {
         </Avatar>
       </ListItemAvatar>
       <ListItemText
-        primary={hall.name}
+        primary={place.name}
         secondary={
-          <>
-            {info ? (
-              info.busy
-            ) : (
-              <Skeleton variant="text" width={160} x={{ fontSize: "0.6rem" }} />
-            )}
-            <br />
-            {info ? (
-              info.tables
-            ) : (
-              <Skeleton
-                variant="text"
-                width={160}
-                sx={{ fontSize: "0.6rem" }}
-              />
-            )}
-          </>
+          info ? (
+            info.busy
+          ) : (
+            <Skeleton variant="text" width={160} x={{ fontSize: "0.6rem" }} />
+          )
         }
       />
     </ListItemButton>
   );
 }
 
-DiningHallButton.propTypes = {
-  hall: PropTypes.object.isRequired,
-  routeDiningHall: PropTypes.func.isRequired,
+ServiceButton.propTypes = {
+  place: PropTypes.object.isRequired,
+  routeService: PropTypes.func.isRequired,
   time: PropTypes.object.isRequired,
 };

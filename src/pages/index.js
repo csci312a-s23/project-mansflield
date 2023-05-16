@@ -1,13 +1,20 @@
-// import { useState } from "react";
+import { useState } from "react";
 
-import Head from "next/head";
-import DiningHallView from "../components/DiningHallView";
 import { useRouter } from "next/router";
-import styles from "../styles/button.module.css";
-import styles1 from "../styles/Home.module.css";
+
+import DiningHallView from "@/components/DiningHallView";
+import ServiceView from "@/components/ServiceView";
+
+import { Box, Stack, Container, Typography } from "@mui/material";
+
+import dayjs from "dayjs";
 
 export default function MealHow() {
   const router = useRouter();
+
+  // eslint-disable-next-line no-unused-vars
+  const [time, setTime] = useState(dayjs());
+
   function routeDiningHall(diningHall) {
     if (diningHall) {
       router.push(`/place/${diningHall}`);
@@ -16,32 +23,48 @@ export default function MealHow() {
     }
   }
 
+  function routeService(service) {
+    if (service) {
+      router.push(`/service/${service}`);
+    } else {
+      router.back;
+    }
+  }
+
   return (
-    <div>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous"
-      />
-      <Head className={styles1.mainBack}>
-        <title>MealHow</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main
-        className={`text-center ${styles.newFont} ${styles1.mainBack} border border-primary`}
-      >
-        <h1 className={`${styles1.headerSet}`}>MealHow</h1>
-        <DiningHallView
-          className={styles1.mainBack1}
-          routeDiningHall={routeDiningHall}
-        />
+    <>
+      <header>
+        <Box
+          sx={{
+            marginTop: 2,
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            marginBottom: 2,
+          }}
+        >
+          <Typography component="h1" variant="h3" align="center">
+            MealHow
+          </Typography>
+          <Typography component="p" className="tagline" align="center">
+            How will you eat next?
+          </Typography>
+        </Box>
+      </header>
+      <main>
+        <Container maxWidth="xl">
+          <Stack direction="column" justifyContent="center" alignItems="center">
+            <Typography component="h5" variant="h5">
+              Dining
+            </Typography>
+            <DiningHallView routeDiningHall={routeDiningHall} time={time} />
+            <Typography component="h5" variant="h5">
+              Retail
+            </Typography>
+            <ServiceView routeService={routeService} time={time} />
+          </Stack>
+        </Container>
       </main>
-
-      <footer className={`text-center bg-secondary ${styles1.footerSet}`}>
-        CS 312 Project
-      </footer>
-    </div>
+    </>
   );
 }
