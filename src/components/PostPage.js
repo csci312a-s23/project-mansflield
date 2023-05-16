@@ -5,7 +5,7 @@ There will be a separate file that creates the posts and posts them to the datab
 //import { useState } from "react";
 import Post from "./Post";
 
-export default function PostPage(posts, setPosts) {
+export default function PostPage({ posts, setPosts }) {
   // fetch data from api
   fetch("/api/posts")
     .then((response) => response.json())
@@ -24,7 +24,8 @@ export default function PostPage(posts, setPosts) {
   return (
     <div>
       {postComponents}
-      <button onClick={() => CreatePost()}>+</button>
+      <button onClick={() => CreatePost()}> + </button>{" "}
+      {/*Still need to make CreatePost but idk where yet*/}
     </div>
   );
 }
