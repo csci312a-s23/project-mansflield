@@ -5,7 +5,7 @@
 */
 import * as React from "react";
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
-import { useState, useEffect, useRef } from "react"; // eslint-disable-line no-unused-vars
+import { useState, useEffect } from "react"; // eslint-disable-line no-unused-vars
 import PropTypes from "prop-types";
 
 // eslint-disable-next-line no-unused-vars
@@ -13,6 +13,10 @@ export default function BusynessView({ info }) {
   const [busyness, setBusyness] = useState(info.busyVal);
   const [busyVal, setBusyVal] = useState(info.busyVal);
   const [Bvalue, setBValue] = React.useState(10);
+
+  useEffect(() => {
+    console.log(`Busyness input: ${busyness}`); // eslint-disable-line no-console
+  }, [busyness]);
 
   function valuetext(value) {
     const buzyness = [
@@ -35,7 +39,6 @@ export default function BusynessView({ info }) {
 
   const submitChange = () => {
     setBusyness(parseInt(busyVal));
-    console.log(busyness);
   };
 
   return (
@@ -74,6 +77,6 @@ BusynessView.propTypes = {
     busyVal: PropTypes.number.isRequired,
     tables: PropTypes.string.isRequired,
     tablesVal: PropTypes.number.isRequired,
-    menu: PropTypes.arrayOf(PropTypes.number).isRequired,
+    menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
 };
