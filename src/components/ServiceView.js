@@ -6,7 +6,7 @@
 
 // import { useState } from "react";
 
-import ServiceButton from "./ServiceButton";
+import ServiceButton from "./ServiceButton.js";
 import { List } from "@mui/material";
 import PropTypes from "prop-types";
 
@@ -28,5 +28,5 @@ export default function ServiceView({ routeService, time }) {
 
 ServiceView.propTypes = {
   routeService: PropTypes.func.isRequired,
-  time: PropTypes.object.isRequired,
+  time: PropTypes.number.isRequired,
 };

@@ -17,7 +17,7 @@ describe("DiningHallButton", () => {
   const hall = halls[0];
   const mockRouteDiningHall = jest.fn();
 
-  it("renders button with dining hall name", async () => {
+  test("renders button with dining hall name", async () => {
     render(
       <DiningHallButton
         hall={hall}
@@ -29,7 +29,7 @@ describe("DiningHallButton", () => {
     expect(buttonElement).toBeInTheDocument();
   });
 
-  it("displays busy status", async () => {
+  test("displays busy status", async () => {
     await act(async () => {
       render(
         <DiningHallButton
@@ -44,7 +44,7 @@ describe("DiningHallButton", () => {
     expect(busyElement).toBeInTheDocument();
   });
 
-  it("displays table count", async () => {
+  test("displays table count", async () => {
     await act(async () => {
       render(
         <DiningHallButton
@@ -59,7 +59,7 @@ describe("DiningHallButton", () => {
     expect(tableElement).toBeInTheDocument();
   });
 
-  it("calls routeDiningHall function on button click", () => {
+  test("calls routeDiningHall function on button click", () => {
     render(
       <DiningHallButton
         hall={hall}

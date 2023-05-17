@@ -11,6 +11,7 @@ import { List } from "@mui/material";
 import PropTypes from "prop-types";
 
 import halls from "@/data/halls.json";
+import style1 from "../styles/main.module.css";
 
 export default function DiningHallView({ routeDiningHall, time }) {
   const buttons = halls.map((hall) => {
@@ -23,7 +24,11 @@ export default function DiningHallView({ routeDiningHall, time }) {
       />
     );
   });
-  return <List sx={{ minWidth: 360 }}>{buttons}</List>;
+  return (
+    <List className={style1.colorTitle} sx={{ minWidth: 360 }}>
+      {buttons}
+    </List>
+  );
 }
 
 DiningHallView.propTypes = {

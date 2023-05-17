@@ -16,7 +16,7 @@ import PropTypes from "prop-types";
 import { getButton } from "@/utils/getButton";
 
 export default function ServiceButton({ place, routeService, time }) {
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState(null);
 
   useEffect(() => {
     if (time) {
@@ -67,5 +67,5 @@ export default function ServiceButton({ place, routeService, time }) {
 ServiceButton.propTypes = {
   place: PropTypes.object.isRequired,
   routeService: PropTypes.func.isRequired,
-  time: PropTypes.object.isRequired,
+  time: PropTypes.number.isRequired,
 };
