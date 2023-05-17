@@ -23,7 +23,7 @@ export default function RetailPage({}) {
   const place = retail.find((eachHall) => eachHall.id === router.query.id);
 
   useEffect(() => {
-    const dateQuery = dayjs(timeStorage.value);
+    const dateQuery = timeStorage.value ? dayjs(timeStorage.value) : dayjs();
     if (place) {
       fetch(`/api/retail/${place.id}?t=${+dateQuery}`)
         .then((response) => {

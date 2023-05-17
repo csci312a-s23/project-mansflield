@@ -24,7 +24,7 @@ export default function PlacePage({}) {
   const hall = halls.find((eachHall) => eachHall.id === router.query.id);
 
   useEffect(() => {
-    const dateQuery = dayjs(timeStorage.value);
+    const dateQuery = timeStorage.value ? dayjs(timeStorage.value) : dayjs();
     if (hall) {
       fetch(`/api/hall/${hall.id}?t=${+dateQuery}`)
         .then((response) => {
