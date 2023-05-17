@@ -24,10 +24,9 @@ export default function DiningHallView({ routeDiningHall, time }) {
     );
   });
   return <List sx={{ minWidth: 360 }}>{buttons}</List>;
-
 }
 
 DiningHallView.propTypes = {
   routeDiningHall: PropTypes.func.isRequired,
-  time: PropTypes.object.isRequired,
+  date: PropTypes.instanceOf(dayjs),
 };

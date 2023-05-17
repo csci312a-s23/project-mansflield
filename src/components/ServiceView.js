@@ -28,5 +28,5 @@ export default function ServiceView({ routeService, time }) {
 
 ServiceView.propTypes = {
   routeService: PropTypes.func.isRequired,
-  time: PropTypes.number.isRequired,
+  time: PropTypes.instanceOf(dayjs),
 };

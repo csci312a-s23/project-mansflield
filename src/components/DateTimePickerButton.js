@@ -1,3 +1,9 @@
+/*
+  DateTimePickerButton.js
+
+  This component provides the floating action button for choosing a date and time.
+*/
+
 import { useState } from "react";
 import {
   Dialog,

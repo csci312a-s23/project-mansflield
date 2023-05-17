@@ -79,5 +79,5 @@ export default function DiningHallButton({ hall, routeDiningHall, time }) {
 DiningHallButton.propTypes = {
   hall: PropTypes.object.isRequired,
   routeDiningHall: PropTypes.func.isRequired,
-  time: PropTypes.object.isRequired,
+  date: PropTypes.instanceOf(dayjs),
 };
