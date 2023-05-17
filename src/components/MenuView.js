@@ -5,8 +5,10 @@
 */
 
 // import { useState } from "react";
+// import dayjs from "dayjs";
 
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
+import PropTypes from "prop-types";
 
 // eslint-disable-next-line no-unused-vars
 export default function MenuView({ menu, date, hall }) {
@@ -37,3 +39,9 @@ export default function MenuView({ menu, date, hall }) {
     </Box>
   );
 }
+
+MenuView.propTypes = {
+  menu: PropTypes.arrayOf(String).isRequired,
+  date: PropTypes.instanceOf(Date).isRequired,
+  hall: PropTypes.object.isRequired,
+};
