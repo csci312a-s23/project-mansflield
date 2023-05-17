@@ -10,8 +10,6 @@ import { Box, Stack, Container, Typography } from "@mui/material";
 
 import dayjs from "dayjs";
 
-import style1 from "../styles/main.module.css";
-
 export default function MealHow() {
   const router = useRouter();
 
@@ -48,7 +46,7 @@ export default function MealHow() {
 
   return (
     <>
-      <header className={style1.colorTitle}>
+      <header>
         <Box
           sx={{
             marginTop: 2,
@@ -58,32 +56,18 @@ export default function MealHow() {
             marginBottom: 2,
           }}
         >
-          <Typography
-            component="h1"
-            variant="h3"
-            align="center"
-            fontFamily={"Helvetica Neue"}
-          >
+          <Typography component="h1" variant="h3" align="center">
             MealHow
           </Typography>
-          <Typography
-            component="p"
-            className={`tagline`}
-            align="center"
-            fontFamily={"Helvetica Neue"}
-          >
+          <Typography component="p" className="tagline" align="center">
             How will you eat next?
           </Typography>
         </Box>
       </header>
-      <main className={style1.mainBody}>
+      <main>
         <Container maxWidth="xl">
           <Stack direction="column" justifyContent="center" alignItems="center">
-            <Typography
-              component="h5"
-              variant="h5"
-              fontFamily={"Helvetica Neue"}
-            >
+            <Typography component="h5" variant="h5">
               Dining
             </Typography>
             <DiningHallView routeDiningHall={routeDiningHall} time={time} />
