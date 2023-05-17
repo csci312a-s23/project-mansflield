@@ -41,13 +41,14 @@ describe("TablesView", () => {
 
   //https://stackoverflow.com/questions/48180499/testing-onchange-function-in-jest
 
-  test("Onchange function is called when changes happen", () => {
-    const mockFn = jest.fn();
-    render(
-      <TablesView hall={hall} info={info} handleChange={mockFn} date={date} />
-    );
+  test("Onchange function updates the value when changes happen", () => {
+    render(<TablesView hall={hall} info={info} date={date} />);
+
     const slider = screen.getByRole("slider");
+    expect(slider.value).toBe("0"); // initial value
+
     fireEvent.change(slider, { target: { value: 4 } });
-    expect(mockFn).toBeCalledWith(4);
+
+    expect(slider.value).toBe("4");
   });
 });

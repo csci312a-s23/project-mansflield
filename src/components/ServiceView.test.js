@@ -1,5 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import ServiceView from "./ServiceView";
+import fetch from "node-fetch";
+global.fetch = fetch;
 
 // From the library retail, we are mocking 2 objects to be used on tests.
 
@@ -50,14 +52,26 @@ jest.mock("../data/retail.json", () => [
   },
 ]);
 
+jest.spyOn(global, "fetch").mockImplementation(() =>
+  Promise.resolve({
+    ok: true,
+    json: () => Promise.resolve([]), // Replace [] with the data you want fetch to return
+  })
+);
+
 describe("ServiceView", () => {
   test("Service View is rendering ServiceButton", async () => {
     const newRoute = jest.fn();
     const testTime = Date.now();
     render(<ServiceView routeService={newRoute} time={testTime} />);
     // rendered as list -> role item = listitem & also as button so listitembutton
-    const serviceButtons = await screen.findAllByRole("listitembutton");
+    const serviceButtons = await screen.findAllByRole("button");
     expect(serviceButtons).toHaveLength(2);
+  });
+
+  // Make sure to clear all mocks after the test is done.
+  afterEach(() => {
+    jest.resetAllMocks();
   });
 });
 
