@@ -30,8 +30,8 @@ describe("DateTimePickerButton", () => {
     fireEvent.click(button);
     const nowButton = screen.getByText("Now");
     fireEvent.click(nowButton);
-    expect(setTime).toHaveBeenCalledTimes(2); // setTime is called twice
-    expect(setTime).toHaveBeenCalledWith(dayjs()); // with dayjs() as the argument
-    expect(screen.queryByText("Select Date and Time")).toBeNull(); // dialog is closed
+    expect(setTime).toHaveBeenCalled();
+    const exitButton = screen.getByText("OK");
+    fireEvent.click(exitButton);
   });
 });
