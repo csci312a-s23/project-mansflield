@@ -18,8 +18,11 @@ export default function TablesView({ hall, info, date }) {
       "Barely Find One",
       "No Tables Left",
     ];
-    const TableIndex = Tvalue;
-    return `${TableAmount[TableIndex]}`;
+    const TableIndex = Tvalue || 0;
+    if (TableIndex >= 0 && TableIndex < TableAmount.length) {
+      return `${TableAmount[TableIndex]}`;
+    }
+    return "";
   }
 
   const handleChange = (event, newValue) => {
@@ -49,10 +52,6 @@ export default function TablesView({ hall, info, date }) {
       console.log(error.message);
     }
   };
-
-  // const SubmitChange = (event) => {
-  //   setValue(parseInt(event.target.value));
-  // };
 
   return (
     <>
@@ -86,7 +85,7 @@ TablesView.propTypes = {
   info: PropTypes.shape({
     busy: PropTypes.string.isRequired,
     busyVal: PropTypes.number.isRequired,
-    tables: PropTypes.string.isRequired,
+    tables: PropTypes.number.isRequired,
     tablesVal: PropTypes.number.isRequired,
     menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),

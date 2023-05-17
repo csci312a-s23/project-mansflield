@@ -67,7 +67,8 @@ describe("ServiceView", () => {
     const place = "Ross";
     const time = Date.now();
     render(<ServiceView place={place} routeService={mockFn} time={time} />);
+    const button = screen.getByRole("listitembutton");
     button.click();
-    expect(routeService).toHaveBeenCalled();
+    expect(mockFn).toHaveBeenCalled();
   });
 });

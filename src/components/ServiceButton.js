@@ -89,5 +89,5 @@ export default function ServiceButton({ place, routeService, time }) {
 ServiceButton.propTypes = {
   place: PropTypes.object.isRequired,
   routeService: PropTypes.func.isRequired,
-  time: PropTypes.object.isRequired,
+  time: PropTypes.string.isRequired,
 };
