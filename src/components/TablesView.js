@@ -7,16 +7,22 @@ import { useState } from "react";
 import { Button, Slider, Stack, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 import { formatTableValue } from "@/utils/formatTableValue";
+import AlertSnackBar from "./AlertSnackBar";
 
 export default function TablesView({ hall, info, date }) {
   const [value, setValue] = useState(info.tablesVal);
+
+  const [severity, setSeverity] = useState("success");
+  const [message, setMessage] = useState("Thank you!");
+
+  const [open, setOpen] = useState(false);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
   const submitChange = async () => {
-    const t = date.toISOString().split("T")[0];
+    const t = date.valueOf();
     try {
       const response = await fetch(`/api/hall/${hall.id}`, {
         method: "POST",
@@ -27,14 +33,19 @@ export default function TablesView({ hall, info, date }) {
       });
 
       if (response.ok) {
-        // TODO: display message or sth
-        console.log("OK, added to DB");
+        setSeverity("success");
+        setMessage("Thank you!");
+        setOpen(true);
       } else {
-        // TODO: display message or sth
+        setSeverity("error");
+        setMessage("Something went wrong.");
+        setOpen(true);
         console.log(response.statusText);
       }
     } catch (error) {
-      // TODO: display message or sth
+      setSeverity("error");
+      setMessage("Something went wrong.");
+      setOpen(true);
       console.log(error.message);
     }
   };
@@ -61,6 +72,12 @@ export default function TablesView({ hall, info, date }) {
         <Button onClick={submitChange} type="button">
           Submit
         </Button>
+        <AlertSnackBar
+          severity={severity}
+          message={message}
+          open={open}
+          setOpen={setOpen}
+        />
       </Stack>
     </>
   );

@@ -3,15 +3,21 @@
 
   This component provides the busyness button and slider in individial pages.
 */
+
 // import dayjs from "dayjs";
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
-import { useState, useEffect } from "react"; // eslint-disable-line no-unused-vars
+import { useState } from "react";
 import PropTypes from "prop-types";
 import { formatBusyValue } from "@/utils/formatBusyValue";
+import AlertSnackBar from "./AlertSnackBar";
 
-// eslint-disable-next-line no-unused-vars
 export default function BusynessView({ hall, info, date, type }) {
   const [busyness, setBusyness] = useState(info.busyVal);
+
+  const [severity, setSeverity] = useState("success");
+  const [message, setMessage] = useState("Thank you!");
+
+  const [open, setOpen] = useState(false);
 
   const slideChange = (event, newValue) => {
     if (typeof newValue === "number") {
@@ -21,7 +27,7 @@ export default function BusynessView({ hall, info, date, type }) {
   };
 
   const submitChange = async () => {
-    const t = date.toISOString().split("T")[0];
+    const t = date.valueOf();
     try {
       const response = await fetch(`/api/${type}/${hall.id}`, {
         method: "POST",
@@ -37,14 +43,19 @@ export default function BusynessView({ hall, info, date, type }) {
       });
 
       if (response.ok) {
-        // TODO: display message or sth
-        console.log("OK, added to DB");
+        setSeverity("success");
+        setMessage("Thank you!");
+        setOpen(true);
       } else {
-        // TODO: display message or sth
+        setSeverity("error");
+        setMessage("Something went wrong.");
+        setOpen(true);
         console.log(response.statusText);
       }
     } catch (error) {
-      // TODO: display message or sth
+      setSeverity("error");
+      setMessage("Something went wrong.");
+      setOpen(true);
       console.log(error.message);
     }
   };
@@ -75,6 +86,12 @@ export default function BusynessView({ hall, info, date, type }) {
           <Button onClick={submitChange} type="button">
             Submit
           </Button>
+          <AlertSnackBar
+            severity={severity}
+            message={message}
+            open={open}
+            setOpen={setOpen}
+          />
         </Stack>
       ) : (
         <p>Check back later.</p>
