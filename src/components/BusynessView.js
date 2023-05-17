@@ -57,24 +57,28 @@ export default function BusynessView({ hall, info, date, type }) {
         </Typography>
       </Box>
       <br />
-      <Stack direction="row" spacing={2}>
-        <Slider
-          value={busyness}
-          defaultValue={2}
-          step={1}
-          marks
-          min={0}
-          max={4}
-          getAriaValueText={formatBusyValue}
-          valueLabelFormat={formatBusyValue}
-          onChange={slideChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="non-linear-slider"
-        />
-        <Button onClick={submitChange} type="button">
-          Submit
-        </Button>
-      </Stack>
+      {info.busyVal !== -1 ? (
+        <Stack direction="row" spacing={2}>
+          <Slider
+            value={busyness}
+            defaultValue={2}
+            step={1}
+            marks
+            min={0}
+            max={4}
+            getAriaValueText={formatBusyValue}
+            valueLabelFormat={formatBusyValue}
+            onChange={slideChange}
+            valueLabelDisplay="auto"
+            aria-labelledby="non-linear-slider"
+          />
+          <Button onClick={submitChange} type="button">
+            Submit
+          </Button>
+        </Stack>
+      ) : (
+        <p>Check back later.</p>
+      )}
     </>
   );
 }

@@ -4,14 +4,8 @@ import dayjs from "dayjs";
 
 import retail from "@/data/retail.json";
 import { findService } from "@/utils/findService";
-import { getMenu } from "@/utils/getMenu";
+import { getRetailMenu } from "@/utils/getRetailMenu";
 import { formatBusyValue } from "@/utils/formatBusyValue";
-
-const closed = {
-  busy: "Closed",
-  busyVal: -1,
-  menu: [],
-};
 
 const router = createRouter();
 
@@ -31,21 +25,21 @@ router.get(async (req, res) => {
       parseInt(time.format("HHmm"), 10) < s.close
   );
 
-  const menuInfo = store.has_menu
-    ? await getMenu(store.menu_id, store.menus[0].id, time.format("YYYY-MM-DD"))
-    : [];
+  // Get menu anyways
+  const menuInfo = getRetailMenu(store.id);
 
-  if (isOpen) {
-    const busyVal = await findService(store.id, time.format("YYYY-MM-DD"));
-    const info = {
-      busy: formatBusyValue(busyVal),
-      busyVal: busyVal,
-      menu: menuInfo.items,
-    };
-    res.status(200).json(info);
-  } else {
-    res.status(200).json(closed);
-  }
+  const busyVal = isOpen
+    ? await findService(store.id, time.format("YYYY-MM-DD"))
+    : -1;
+  const busy = busyVal !== -1 ? formatBusyValue(busyVal) : "Check back later.";
+
+  const info = {
+    busy: busy,
+    busyVal: busyVal,
+    menu: menuInfo,
+  };
+
+  res.status(200).json(info);
 });
 
 router.post(async (req, res) => {

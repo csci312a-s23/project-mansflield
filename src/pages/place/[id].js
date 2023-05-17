@@ -96,7 +96,11 @@ export default function PlacePage({}) {
                     date={date}
                     type={"hall"}
                   />
-                  <TablesView hall={hall} info={info} date={date} />
+                  {info.busyVal !== -1 ? (
+                    <TablesView hall={hall} info={info} date={date} />
+                  ) : (
+                    <></>
+                  )}
                   <MenuView menu={info.menu} date={date} hall={hall} />
                 </>
               ) : (
