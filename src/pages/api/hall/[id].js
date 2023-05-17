@@ -94,7 +94,7 @@ router.post(async (req, res) => {
 
   // Respond with the newly created busyness data
   res.status(201).json({
-    message: "Busyness created successfully",
+    message: "Busyness for dining created successfully",
     busyness: newBusyness,
   });
 });
