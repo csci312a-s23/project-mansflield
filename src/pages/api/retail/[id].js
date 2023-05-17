@@ -1,14 +1,10 @@
 import { createRouter } from "next-connect";
-
+// import { knex } from "../../../../knex/knex.js";
 import dayjs from "dayjs";
 
 import retail from "@/data/retail.json";
-
-const testBusy = {
-  busy: "Very busy",
-  busyVal: 3,
-  menu: [],
-};
+import { findService } from "@/utils/findService";
+import { getMenu } from "@/utils/getMenu";
 
 const closed = {
   busy: "Closed",
@@ -18,11 +14,12 @@ const closed = {
 
 const router = createRouter();
 
-router.get((req, res) => {
+router.get(async (req, res) => {
   const { id, t } = req.query; // eslint-disable-line no-unused-vars
 
   // Is it open?
-  const time = dayjs(t);
+  // const time = dayjs(t);
+  const time = dayjs("2023-05-15T15:40:15.000Z");
   const store = retail.find((h) => {
     return h.id === id;
   });
@@ -33,13 +30,18 @@ router.get((req, res) => {
       parseInt(time.format("HHmm"), 10) < s.close
   );
 
-  if (store.has_menu) {
-    // TODO: Get menu
-  }
+  const menuInfo = store.has_menu
+    ? await getMenu(store.menu_id, store.menus[0].id, time.format("YYYY-MM-DD"))
+    : [];
 
   if (isOpen) {
-    // TODO: process from database
-    res.status(200).json(testBusy);
+    const busyVal = await findService(store.id, time.format("YYYY-MM-DD"));
+    const info = {
+      busy: "Very busy",
+      busyVal: busyVal,
+      menu: menuInfo.items,
+    };
+    res.status(200).json(info);
   } else {
     res.status(200).json(closed);
   }

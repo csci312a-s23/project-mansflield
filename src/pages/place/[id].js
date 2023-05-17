@@ -76,7 +76,18 @@ export default function PlacePage({}) {
       <main>
         <Container maxWidth="xl">
           <Box display="flex" justifyContent="center" alignItems="center">
-            <Stack direction="column" justifyContent="center" spacing={2}>
+            <Stack
+              direction="column"
+              justifyContent="center"
+              spacing={2}
+              sx={{
+                minWidth: {
+                  xs: "80%",
+                  sm: "60%",
+                  md: "40%",
+                },
+              }}
+            >
               {info ? (
                 <>
                   <BusynessView hall={hall} info={info} date={date} />
