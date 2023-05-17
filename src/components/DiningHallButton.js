@@ -24,17 +24,19 @@ export default function DiningHallButton({ hall, routeDiningHall, time }) {
   const [info, setInfo] = useState();
 
   useEffect(() => {
-    fetch(`/api/hall/${hall.id}?t=${time}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setInfo(data);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
+    if (time) {
+      fetch(`/api/hall/${hall.id}?t=${+time}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setInfo(data);
+        })
+        .catch((err) => console.log(err)); // eslint-disable-line no-console
+    }
   }, [hall, time]);
 
   function getButton(n) {

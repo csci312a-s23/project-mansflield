@@ -1,5 +1,8 @@
 import { knex } from "../../knex/knex.js";
 
+const BASEVAL = 2;
+const WEIGHT = 0.5;
+
 export const findBusyness = async (place, meal, type, date) => {
   const busyDB = await knex("busyness")
     .where({
@@ -11,8 +14,8 @@ export const findBusyness = async (place, meal, type, date) => {
     .avg("busyness as busyVal")
     .first();
 
-  const defaultBusy = 2;
-  const busy = busyDB.busyVal || defaultBusy;
+  const busy = busyDB.busyVal || BASEVAL;
+  const weighed = (BASEVAL + busy * WEIGHT) / (WEIGHT + 1);
 
-  return busy;
+  return Math.round(weighed);
 };

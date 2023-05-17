@@ -10,7 +10,7 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex("busyness").insert([
         {
-          id: 1,
+          id: 998244353,
           place: "proctor",
           meal: "breakfast",
           dateStr: "2023-05-15",
@@ -18,7 +18,7 @@ exports.seed = function (knex) {
           busyness: 2,
         },
         {
-          id: 2,
+          id: 1597463007,
           place: "ross",
           meal: "breakfast",
           dateStr: "2023-05-15",
@@ -26,7 +26,7 @@ exports.seed = function (knex) {
           busyness: 3,
         },
         {
-          id: 3,
+          id: 1061109567,
           place: "atwater",
           meal: "lunch",
           dateStr: "2023-05-15",
