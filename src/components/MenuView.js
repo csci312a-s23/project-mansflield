@@ -10,8 +10,7 @@
 import { Box, List, ListItem, ListItemText, Typography } from "@mui/material";
 import PropTypes from "prop-types";
 
-// eslint-disable-next-line no-unused-vars
-export default function MenuView({ menu, date, hall }) {
+export default function MenuView({ menu }) {
   // TODO: change menu based on date
   const listItems = menu.map((item) => {
     if (item.is_title) {
@@ -47,6 +46,4 @@ export default function MenuView({ menu, date, hall }) {
 
 MenuView.propTypes = {
   menu: PropTypes.arrayOf(String).isRequired,
-  date: PropTypes.instanceOf(Date).isRequired,
-  hall: PropTypes.object.isRequired,
 };
