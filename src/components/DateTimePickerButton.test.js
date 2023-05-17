@@ -1,8 +1,8 @@
 import { render, screen, fireEvent } from "@testing-library/react";
 import DateTimePickerButton from "./DateTimePickerButton";
 import dayjs from "dayjs";
-import { LocalizationProvider } from "@mui/lab";
-import AdapterDateFns from "@mui/lab/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 
 describe("DateTimePickerButton", () => {
   const setTime = jest.fn();
@@ -10,7 +10,7 @@ describe("DateTimePickerButton", () => {
 
   test("renders date time picker button", async () => {
     render(
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateTimePickerButton time={time} setTime={setTime} />
       </LocalizationProvider>
     );
@@ -22,7 +22,7 @@ describe("DateTimePickerButton", () => {
 
   test("updates time when 'Now' button is clicked", async () => {
     render(
-      <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateTimePickerButton time={time} setTime={setTime} />
       </LocalizationProvider>
     );
