@@ -7,21 +7,11 @@
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
 import { useState, useEffect } from "react"; // eslint-disable-line no-unused-vars
 import PropTypes from "prop-types";
+import { formatBusyValue } from "@/utils/formatBusyValue";
 
 // eslint-disable-next-line no-unused-vars
-export default function BusynessView({ hall, info, date }) {
+export default function BusynessView({ hall, info, date, type }) {
   const [busyness, setBusyness] = useState(info.busyVal);
-
-  function valuetext(value) {
-    const buzyness = [
-      "Not Busy",
-      "Just Fine",
-      "Busy",
-      "Very Busy",
-      "Fully Packed",
-    ];
-    return `${buzyness[value]}`;
-  }
 
   const slideChange = (event, newValue) => {
     if (typeof newValue === "number") {
@@ -33,7 +23,7 @@ export default function BusynessView({ hall, info, date }) {
   const submitChange = async () => {
     const t = date.toISOString().split("T")[0];
     try {
-      const response = await fetch(`/api/hall/${hall.id}`, {
+      const response = await fetch(`/api/${type}/${hall.id}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,8 +65,8 @@ export default function BusynessView({ hall, info, date }) {
           marks
           min={0}
           max={4}
-          getAriaValueText={valuetext}
-          valueLabelFormat={valuetext}
+          getAriaValueText={formatBusyValue}
+          valueLabelFormat={formatBusyValue}
           onChange={slideChange}
           valueLabelDisplay="auto"
           aria-labelledby="non-linear-slider"
@@ -92,9 +82,10 @@ export default function BusynessView({ hall, info, date }) {
 BusynessView.propTypes = {
   info: PropTypes.shape({
     busy: PropTypes.string.isRequired,
-    busyness: PropTypes.number,
+    busyVal: PropTypes.number,
     tables: PropTypes.string,
     tablesVal: PropTypes.number,
     menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
+  type: PropTypes.oneOf(["hall", "retail"]).isRequired,
 };

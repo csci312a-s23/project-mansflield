@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 
 import retail from "@/data/retail.json";
 
-export default function DiningHallView({ routeService, time }) {
+export default function ServiceView({ routeService, time }) {
   const buttons = retail.map((place) => {
     return (
       <ServiceButton
@@ -26,7 +26,7 @@ export default function DiningHallView({ routeService, time }) {
   return <List sx={{ minWidth: 360 }}>{buttons}</List>;
 }
 
-DiningHallView.propTypes = {
+ServiceView.propTypes = {
   routeService: PropTypes.func.isRequired,
   time: PropTypes.object.isRequired,
 };

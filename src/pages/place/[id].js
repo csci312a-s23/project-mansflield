@@ -1,5 +1,5 @@
 // import { useRouter } from "next/router";
-// import dayjs from "dayjs";
+import dayjs from "dayjs";
 import { useEffect, useState } from "react";
 
 import BusynessView from "@/components/BusynessView";
@@ -16,7 +16,7 @@ export default function PlacePage({}) {
 
   const [info, setInfo] = useState();
 
-  const [date, setDate] = useState(new Date()); // eslint-disable-line no-unused-vars
+  const [date, setDate] = useState(dayjs()); // eslint-disable-line no-unused-vars
 
   const hall = halls.find((eachHall) => eachHall.id === router.query.id);
 
@@ -90,7 +90,12 @@ export default function PlacePage({}) {
             >
               {info ? (
                 <>
-                  <BusynessView hall={hall} info={info} date={date} />
+                  <BusynessView
+                    hall={hall}
+                    info={info}
+                    date={date}
+                    type={"hall"}
+                  />
                   <TablesView hall={hall} info={info} date={date} />
                   <MenuView menu={info.menu} date={date} hall={hall} />
                 </>

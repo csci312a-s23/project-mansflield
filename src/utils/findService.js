@@ -1,6 +1,7 @@
 import { knex } from "../../knex/knex.js";
 
-const BASEVAL = 2;
+// const BASEVAL = 2;
+const BASEVAL = Math.floor(Math.random() * 5);
 const WEIGHT = 0.5;
 
 export const findService = async (place, date) => {

@@ -5,6 +5,7 @@ import dayjs from "dayjs";
 import retail from "@/data/retail.json";
 import { findService } from "@/utils/findService";
 import { getMenu } from "@/utils/getMenu";
+import { formatBusyValue } from "@/utils/formatBusyValue";
 
 const closed = {
   busy: "Closed",
@@ -37,7 +38,7 @@ router.get(async (req, res) => {
   if (isOpen) {
     const busyVal = await findService(store.id, time.format("YYYY-MM-DD"));
     const info = {
-      busy: "Very busy",
+      busy: formatBusyValue(busyVal),
       busyVal: busyVal,
       menu: menuInfo.items,
     };

@@ -6,6 +6,8 @@ import halls from "@/data/halls.json";
 import { findOpenMenu } from "@/utils/findOpenMenu";
 import { findBusyness } from "@/utils/findBusyness";
 import { getMenu } from "@/utils/getMenu";
+import { formatBusyValue } from "@/utils/formatBusyValue";
+import { formatTableValue } from "@/utils/formatTableValue";
 
 const closed = {
   busy: "Closed",
@@ -49,9 +51,9 @@ router.get(async (req, res) => {
     );
 
     const info = {
-      busy: "Not busy",
+      busy: formatBusyValue(busyVal),
       busyVal: busyVal,
-      tables: "Many",
+      tables: formatTableValue(tablesVal),
       tablesVal: tablesVal,
       menu: menuInfo.items,
     };
