@@ -1,0 +1,234 @@
+[
+  {
+    "id": 19171107,
+    "position": 0,
+    "is_title": true,
+    "name": "Coffee"
+  },
+  {
+    "id": 19171108,
+    "position": 1,
+    "is_title": false,
+    "name": "Latte",
+    "price": 3.65
+  },
+  {
+    "id": 19171109,
+    "position": 2,
+    "is_title": false,
+    "name": "Espresso",
+    "price": 2.25
+  },
+  {
+    "id": 19171110,
+    "position": 3,
+    "is_title": false,
+    "name": "American",
+    "price": 2.25
+  },
+  {
+    "id": 19171111,
+    "position": 4,
+    "is_title": false,
+    "name": "Cold Brew",
+    "price": 2.3
+  },
+  {
+    "id": 19171112,
+    "position": 5,
+    "is_title": false,
+    "name": "Mint Mojito",
+    "price": 4.6
+  },
+  {
+    "id": 19171113,
+    "position": 6,
+    "is_title": false,
+    "name": "Cappuccino",
+    "price": 3.65
+  },
+  {
+    "id": 19171114,
+    "position": 7,
+    "is_title": false,
+    "name": "Mocha",
+    "price": 4.6
+  },
+  {
+    "id": 19171115,
+    "position": 8,
+    "is_title": false,
+    "name": "Dirty Chai",
+    "price": 4.6
+  },
+  {
+    "id": 19171116,
+    "position": 9,
+    "is_title": false,
+    "name": "Maple Latte",
+    "price": 4.6
+  },
+  {
+    "id": 19171117,
+    "position": 10,
+    "is_title": false,
+    "name": "Honeybee Latte",
+    "price": 4.6
+  },
+  {
+    "id": 19171118,
+    "position": 11,
+    "is_title": false,
+    "name": "Hot Chocolate",
+    "price": 3.65
+  },
+  {
+    "id": 19171119,
+    "position": 12,
+    "is_title": true,
+    "name": "Tea"
+  },
+  {
+    "id": 19171120,
+    "position": 13,
+    "is_title": false,
+    "name": "Matcha Latte",
+    "price": 4
+  },
+  {
+    "id": 19171121,
+    "position": 14,
+    "is_title": false,
+    "name": "Chai Latte",
+    "price": 3.65
+  },
+  {
+    "id": 19171122,
+    "position": 15,
+    "is_title": false,
+    "name": "London Fog",
+    "price": 3.65
+  },
+  {
+    "id": 19171123,
+    "position": 16,
+    "is_title": false,
+    "name": "Hot Tazo Tea",
+    "price": 2.25
+  },
+  {
+    "id": 19171124,
+    "position": 17,
+    "is_title": true,
+    "name": "Smoothies & Shakes"
+  },
+  {
+    "id": 19171125,
+    "position": 18,
+    "is_title": false,
+    "name": "Chocolate / Vanilla",
+    "price": 5.75
+  },
+  {
+    "id": 19171126,
+    "position": 19,
+    "is_title": false,
+    "name": "Felix",
+    "subtext": "Espresso shot, chocolate ice cream",
+    "price": 5.75
+  },
+  {
+    "id": 19171127,
+    "position": 20,
+    "is_title": false,
+    "name": "Brewster",
+    "subtext": "Strawberries, banana, chocolate ice cream",
+    "price": 5.75
+  },
+  {
+    "id": 19171128,
+    "position": 21,
+    "is_title": false,
+    "name": "Vermonter",
+    "subtext": "Espresso shot, maple syrup, vanilla ice cream",
+    "price": 5.75
+  },
+  {
+    "id": 19171129,
+    "position": 22,
+    "is_title": false,
+    "name": "Chai Shake",
+    "price": 5.75
+  },
+  {
+    "id": 19171130,
+    "position": 23,
+    "is_title": false,
+    "name": "Matcha Shake",
+    "price": 5.75
+  },
+  {
+    "id": 19171201,
+    "position": 24,
+    "is_title": false,
+    "name": "Classic",
+    "subtext": "Strawberries, banana, yogurt, OJ",
+    "price": 5.15
+  },
+  {
+    "id": 19171202,
+    "position": 25,
+    "is_title": false,
+    "name": "Kitchen Sink",
+    "subtext": "Strawberries, blueberries, mangoes, peaches, pineapple juice",
+    "price": 5.15
+  },
+  {
+    "id": 19171203,
+    "position": 26,
+    "is_title": false,
+    "name": "Anna Cabaña",
+    "subtext": "Raspberries, peaches, mangoes, apple juice, OJ",
+    "price": 5.15
+  },
+  {
+    "id": 19171204,
+    "position": 27,
+    "is_title": false,
+    "name": "Berry Blaster",
+    "subtext": "Strawberries, blueberries, raspberries, banana, apple juice",
+    "price": 5.15
+  },
+  {
+    "id": 19171205,
+    "position": 28,
+    "is_title": false,
+    "name": "Bedtime Story",
+    "subtext": "Blueberries, banana, soymilk, cinnamon, honey",
+    "price": 5.15
+  },
+  {
+    "id": 19171206,
+    "position": 29,
+    "is_title": false,
+    "name": "Coco Loco",
+    "subtext": "Strawberries, mangoes, banana, pineapple, coconut milk",
+    "price": 5.75
+  },
+  {
+    "id": 19171207,
+    "position": 30,
+    "is_title": false,
+    "name": "Green Goddess",
+    "subtext": "Spinach, peaches, mangoes, apple juice, almond milk",
+    "price": 5.75
+  },
+  {
+    "id": 19171208,
+    "position": 31,
+    "is_title": false,
+    "name": "The Machine",
+    "subtext": "OJ, banana, spinach, strawberries, raspberries, mangoes",
+    "price": 5.15
+  }
+]

@@ -22,11 +22,16 @@ export default function MenuView({ menu, date, hall }) {
       );
     } else {
       return (
-        <ListItem key={item.id} sx={{ paddingY: 0.5 }}>
-          <ListItemText
-            primary={item.name}
-            secondary={item.price && `$${item.price.toFixed(2)}`}
-          />
+        <ListItem
+          key={item.id}
+          sx={{ paddingY: 0.5, justifyContent: "space-between" }}
+        >
+          <ListItemText primary={item.name} secondary={item.subtext} />
+          {item.price && (
+            <Typography variant="p" color="text.secondary">
+              ${item.price.toFixed(2)}
+            </Typography>
+          )}
         </ListItem>
       );
     }

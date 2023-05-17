@@ -4,30 +4,24 @@
  */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
-  await knex("busyness").del();
-  await knex("busyness").insert([
+  await knex("service").del();
+  await knex("service").insert([
     {
       id: 998244353,
-      place: "proctor",
-      meal: "breakfast",
+      place: "grille",
       dateStr: "2023-05-15",
-      type: "line",
       busyness: 2,
     },
     {
       id: 1597463007,
-      place: "ross",
-      meal: "breakfast",
+      place: "wilson",
       dateStr: "2023-05-15",
-      type: "table",
       busyness: 3,
     },
     {
       id: 1061109567,
-      place: "atwater",
-      meal: "lunch",
+      place: "crossroads",
       dateStr: "2023-05-15",
-      type: "line",
       busyness: 0,
     },
   ]);

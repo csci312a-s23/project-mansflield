@@ -5,37 +5,9 @@ import dayjs from "dayjs";
 import halls from "@/data/halls.json";
 import { findOpenMenu } from "@/utils/findOpenMenu";
 import { findBusyness } from "@/utils/findBusyness";
-import { fetchExternalMenu } from "@/utils/fetchExternalMenu";
-
-const getMenu = async (place, meal, dateStr) => {
-  const menu =
-    place === "wilson-cafe" || place === "the-grille"
-      ? await knex("menudb")
-          .select()
-          .where({
-            place: place,
-            meal: meal,
-          })
-          .first()
-      : await knex("menudb")
-          .select()
-          .where({
-            place: place,
-            date: dateStr,
-            meal: meal,
-          })
-          .first();
-
-  if (menu) {
-    if (typeof menu.items === "string") {
-      menu.items = JSON.parse(menu.items);
-    }
-    return menu;
-  } else {
-    const menuInfo = await fetchExternalMenu(dateStr, place, meal);
-    return menuInfo;
-  }
-};
+import { getMenu } from "@/utils/getMenu";
+import { formatBusyValue } from "@/utils/formatBusyValue";
+import { formatTableValue } from "@/utils/formatTableValue";
 
 const closed = {
   busy: "Closed",
@@ -48,11 +20,11 @@ const closed = {
 const router = createRouter();
 
 router.get(async (req, res) => {
-  const { id, t } = req.query; // eslint-disable-line no-unused-vars
+  const { id, t } = req.query;
 
   // Is it open?
-  // const time = dayjs(t);
-  const time = dayjs("2023-05-15T23:40:15.000Z");
+  const time = dayjs(+t);
+  // const time = dayjs("2023-05-15T23:40:15.000Z");
   const hall = halls.find((h) => {
     return h.id === id;
   });
@@ -60,28 +32,14 @@ router.get(async (req, res) => {
 
   if (menu) {
     // Get values from backend
-    const busyVal = await findBusyness(
-      hall.id,
-      menu.id,
-      "line",
-      time.format("YYYY-MM-DD")
-    );
-    const tablesVal = await findBusyness(
-      hall.id,
-      menu.id,
-      "table",
-      time.format("YYYY-MM-DD")
-    );
-    const menuInfo = await getMenu(
-      hall.menu_id,
-      menu.id,
-      time.format("YYYY-MM-DD")
-    );
+    const busyVal = await findBusyness(hall.id, menu.id, "line", time);
+    const tablesVal = await findBusyness(hall.id, menu.id, "table", time);
+    const menuInfo = await getMenu(hall.menu_id, menu.id, time);
 
     const info = {
-      busy: "Not busy",
+      busy: formatBusyValue(busyVal),
       busyVal: busyVal,
-      tables: "Many",
+      tables: formatTableValue(tablesVal),
       tablesVal: tablesVal,
       menu: menuInfo.items,
     };
@@ -122,7 +80,7 @@ router.post(async (req, res) => {
 
   // Respond with the newly created busyness data
   res.status(201).json({
-    message: "Busyness created successfully",
+    message: "Busyness for dining created successfully",
     busyness: newBusyness,
   });
 });
