@@ -14,7 +14,7 @@ export default function MealHow() {
   const router = useRouter();
 
   const timeStorage = useSessionStorageValue("date");
-  const time = dayjs(timeStorage.value);
+  const time = timeStorage.value ? dayjs(timeStorage.value) : dayjs();
 
   const routeDiningHall = (diningHall, t) => {
     if (diningHall) {

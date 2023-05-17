@@ -28,9 +28,7 @@ router.get(async (req, res) => {
   // Get menu anyways
   const menuInfo = getRetailMenu(store.id);
 
-  const busyVal = isOpen
-    ? await findService(store.id, time.format("YYYY-MM-DD"))
-    : -1;
+  const busyVal = isOpen ? await findService(store.id, time) : -1;
   const busy = busyVal !== -1 ? formatBusyValue(busyVal) : "Closed";
 
   const info = {

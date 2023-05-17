@@ -32,23 +32,9 @@ router.get(async (req, res) => {
 
   if (menu) {
     // Get values from backend
-    const busyVal = await findBusyness(
-      hall.id,
-      menu.id,
-      "line",
-      time.format("YYYY-MM-DD")
-    );
-    const tablesVal = await findBusyness(
-      hall.id,
-      menu.id,
-      "table",
-      time.format("YYYY-MM-DD")
-    );
-    const menuInfo = await getMenu(
-      hall.menu_id,
-      menu.id,
-      time.format("YYYY-MM-DD")
-    );
+    const busyVal = await findBusyness(hall.id, menu.id, "line", time);
+    const tablesVal = await findBusyness(hall.id, menu.id, "table", time);
+    const menuInfo = await getMenu(hall.menu_id, menu.id, time);
 
     const info = {
       busy: formatBusyValue(busyVal),

@@ -19,13 +19,14 @@ export default function PlacePage({}) {
   const [info, setInfo] = useState();
 
   const timeStorage = useSessionStorageValue("date");
-  const date = dayjs(timeStorage.value);
+  const date = timeStorage.value ? dayjs(timeStorage.value) : dayjs();
 
   const hall = halls.find((eachHall) => eachHall.id === router.query.id);
 
   useEffect(() => {
+    const dateQuery = dayjs(timeStorage.value);
     if (hall) {
-      fetch(`/api/hall/${hall.id}?t=${+date}`)
+      fetch(`/api/hall/${hall.id}?t=${+dateQuery}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(response.statusText);
@@ -37,7 +38,7 @@ export default function PlacePage({}) {
         })
         .catch((err) => console.log(err)); // eslint-disable-line no-console
     }
-  }, [hall, date]);
+  }, [hall, timeStorage.value]);
 
   return (
     <>

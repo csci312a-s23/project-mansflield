@@ -18,13 +18,14 @@ export default function RetailPage({}) {
   const [info, setInfo] = useState();
 
   const timeStorage = useSessionStorageValue("date");
-  const date = dayjs(timeStorage.value);
+  const date = timeStorage.value ? dayjs(timeStorage.value) : dayjs();
 
   const place = retail.find((eachHall) => eachHall.id === router.query.id);
 
   useEffect(() => {
+    const dateQuery = dayjs(timeStorage.value);
     if (place) {
-      fetch(`/api/retail/${place.id}?t=${+date}`)
+      fetch(`/api/retail/${place.id}?t=${+dateQuery}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(response.statusText);
@@ -36,7 +37,7 @@ export default function RetailPage({}) {
         })
         .catch((err) => console.log(err)); // eslint-disable-line no-console
     }
-  }, [place, date, timeStorage.value]);
+  }, [place, timeStorage.value]);
 
   return (
     <>
