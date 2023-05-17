@@ -7,8 +7,8 @@ export const transformItems = (items) => {
     } else if (item.food) {
       const is_title = false;
       const { id, position } = item;
-      const { name, subtext, price } = item.food;
-      return { id, position, is_title, name, subtext, price };
+      const { name, price } = item.food;
+      return { id, position, is_title, name, price };
     } else {
       const is_title = false;
       const { id, position, text } = item;

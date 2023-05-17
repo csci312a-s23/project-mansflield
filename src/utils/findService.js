@@ -5,19 +5,17 @@ import { manipulateDate } from "@/utils/manipulateDate";
 const BASEVAL = Math.floor(Math.random() * 5);
 const WEIGHT = 0.5;
 
-export const findBusyness = async (place, meal, type, date) => {
+export const findService = async (place, date) => {
   const dateQuery = manipulateDate(date);
-  const busyDB = await knex("busyness")
+  const serviceDB = await knex("service")
     .where({
       place: place,
-      meal: meal,
-      type: type,
       dateStr: dateQuery.format("YYYY-MM-DD"),
     })
     .avg("busyness as busyVal")
     .first();
 
-  const busy = busyDB.busyVal || BASEVAL;
+  const busy = serviceDB.busyVal || BASEVAL;
   const weighed = (BASEVAL + busy * WEIGHT) / (WEIGHT + 1);
 
   return Math.round(weighed);

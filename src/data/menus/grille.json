@@ -1,0 +1,140 @@
+[
+  {
+    "id": 66576009,
+    "position": 0,
+    "is_title": true,
+    "name": "Appetizers"
+  },
+  {
+    "id": 66576010,
+    "position": 1,
+    "is_title": false,
+    "name": "Mozzarella Sticks",
+    "subtext": "Served with Marinara Sauce",
+    "price": 6
+  },
+  {
+    "id": 66576011,
+    "position": 2,
+    "is_title": false,
+    "name": "Chicken Tender Side",
+    "price": 5.5
+  },
+  {
+    "id": 66576012,
+    "position": 3,
+    "is_title": false,
+    "name": "Grille fries",
+    "price": 10
+  },
+  {
+    "id": 66576013,
+    "position": 4,
+    "is_title": false,
+    "name": "Side of fries",
+    "price": 2.5
+  },
+  {
+    "id": 66576014,
+    "position": 5,
+    "is_title": true,
+    "name": "Burgers"
+  },
+  {
+    "id": 66576015,
+    "position": 6,
+    "is_title": false,
+    "name": "Classic Cheese Burger",
+    "price": 9
+  },
+  {
+    "id": 66576016,
+    "position": 7,
+    "is_title": false,
+    "name": "Hamburger",
+    "price": 9
+  },
+  {
+    "id": 66576017,
+    "position": 8,
+    "is_title": false,
+    "name": "Bacon & Blue Cheese Burger",
+    "price": 9.5
+  },
+  {
+    "id": 66576018,
+    "position": 9,
+    "is_title": false,
+    "name": "Maple BBQ Cheddar Burger",
+    "price": null
+  },
+  {
+    "id": 66576019,
+    "position": 10,
+    "is_title": false,
+    "name": "Jalapeno Cheddar",
+    "price": 9.5
+  },
+  {
+    "id": 66576020,
+    "position": 11,
+    "is_title": true,
+    "name": "Sandwiches"
+  },
+  {
+    "id": 66576021,
+    "position": 12,
+    "is_title": false,
+    "name": "BLT",
+    "price": 6
+  },
+  {
+    "id": 66576022,
+    "position": 13,
+    "is_title": false,
+    "name": "Turkey Club",
+    "price": 7
+  },
+  {
+    "id": 66576023,
+    "position": 14,
+    "is_title": false,
+    "name": "Love me Tender wrap",
+    "price": 6.5
+  },
+  {
+    "id": 66576024,
+    "position": 15,
+    "is_title": false,
+    "name": "Buffalo Chicken wrap",
+    "price": 7.5
+  },
+  {
+    "id": 66576025,
+    "position": 16,
+    "is_title": false,
+    "name": "Falafel Wrap",
+    "price": 8
+  },
+  {
+    "id": 66576026,
+    "position": 17,
+    "is_title": false,
+    "name": "Even Steven",
+    "price": 7
+  },
+  {
+    "id": 66576027,
+    "position": 18,
+    "is_title": false,
+    "name": "Grille Cheese",
+    "price": 5
+  },
+  {
+    "id": 66576028,
+    "position": 19,
+    "is_title": false,
+    "name": "Dr. Feel-Good",
+    "price": 6.5
+  }
+]

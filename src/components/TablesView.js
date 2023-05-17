@@ -6,24 +6,10 @@
 import { useState } from "react";
 import { Button, Slider, Stack, Typography } from "@mui/material";
 import PropTypes from "prop-types";
+import { formatTableValue } from "@/utils/formatTableValue";
 
 export default function TablesView({ hall, info, date }) {
   const [value, setValue] = useState(info.tablesVal);
-
-  function Tvaluetext(Tvalue) {
-    const TableAmount = [
-      "Completely Empty",
-      "Many Tables",
-      "A Few Tables Left",
-      "Barely Find One",
-      "No Tables Left",
-    ];
-    const TableIndex = Tvalue || 0;
-    if (TableIndex >= 0 && TableIndex < TableAmount.length) {
-      return `${TableAmount[TableIndex]}`;
-    }
-    return "";
-  }
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -66,8 +52,8 @@ export default function TablesView({ hall, info, date }) {
           marks
           min={0}
           max={4}
-          getAriaValueText={Tvaluetext}
-          valueLabelFormat={Tvaluetext}
+          getAriaValueText={formatTableValue}
+          valueLabelFormat={formatTableValue}
           valueLabelDisplay="auto"
           aria-labelledby="non-linear-slider2"
           onChange={handleChange} // Added the onChange event handler
