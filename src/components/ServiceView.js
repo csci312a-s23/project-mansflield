@@ -6,7 +6,7 @@
 
 // import { useState } from "react";
 
-import ServiceButton from "./ServiceButton";
+import ServiceButton from "./ServiceButton.js";
 import { List } from "@mui/material";
 import PropTypes from "prop-types";
 

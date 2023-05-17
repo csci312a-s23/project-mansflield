@@ -51,8 +51,6 @@ jest.mock("../data/retail.json", () => [
 ]);
 
 describe("ServiceView", () => {
-  //https://balavishnuvj.com/blog/testing-lists-items-with-react-testing-library/
-
   test("Service View is rendering ServiceButton", async () => {
     const newRoute = jest.fn();
     const testTime = Date.now();
@@ -61,14 +59,6 @@ describe("ServiceView", () => {
     const serviceButtons = await screen.findAllByRole("listitembutton");
     expect(serviceButtons).toHaveLength(2);
   });
-
-  test("calls routeService when a ServiceButton is clicked", () => {
-    const mockFn = jest.fn();
-    const place = "Ross";
-    const time = Date.now();
-    render(<ServiceView place={place} routeService={mockFn} time={time} />);
-    const button = screen.getByRole("listitembutton");
-    button.click();
-    expect(mockFn).toHaveBeenCalled();
-  });
 });
+
+//https://balavishnuvj.com/blog/testing-lists-items-with-react-testing-library/

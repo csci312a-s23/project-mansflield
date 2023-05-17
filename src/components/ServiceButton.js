@@ -21,7 +21,7 @@ import SignalWifiOffIcon from "@mui/icons-material/SignalWifiOff";
 import PropTypes from "prop-types";
 
 export default function ServiceButton({ place, routeService, time }) {
-  const [info, setInfo] = useState();
+  const [info, setInfo] = useState(null);
 
   useEffect(() => {
     fetch(`/api/retail/${place.id}?t=${time}`)
@@ -89,5 +89,5 @@ export default function ServiceButton({ place, routeService, time }) {
 ServiceButton.propTypes = {
   place: PropTypes.object.isRequired,
   routeService: PropTypes.func.isRequired,
-  time: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
 };
