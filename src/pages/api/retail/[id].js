@@ -10,7 +10,7 @@ import { formatBusyValue } from "@/utils/formatBusyValue";
 const router = createRouter();
 
 router.get(async (req, res) => {
-  const { id, t } = req.query; // eslint-disable-line no-unused-vars
+  const { id, t } = req.query;
 
   // Is it open?
   const time = dayjs(+t);
@@ -41,11 +41,11 @@ router.get(async (req, res) => {
 });
 
 router.post(async (req, res) => {
-  const { id, t, val } = req.body; // eslint-disable-line no-unused-vars
+  const { id, t, val } = req.body;
 
   // Is it open?
-  // const time = dayjs(t);
-  const time = dayjs("2023-05-15T23:40:15.000Z");
+  const time = dayjs(+t);
+  // const time = dayjs("2023-05-15T23:40:15.000Z");
   const hall = retail.find((h) => {
     return h.id === id;
   });
@@ -66,6 +66,7 @@ router.post(async (req, res) => {
   res.status(201).json({
     message: "Busyness for retail created successfully",
     busyness: newBusyness,
+    time: time.format(),
   });
 });
 
