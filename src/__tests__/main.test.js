@@ -1,5 +1,6 @@
 import Home from "@/pages/index";
 import PlacePage from "@/pages/place/[id]";
+import RetailPage from "@/pages/service/[id]";
 import { render, screen } from "@testing-library/react";
 import { act } from "react-dom/test-utils";
 
@@ -9,6 +10,7 @@ mockRouter.useParser(
   createDynamicRouteParser([
     // These paths should match those found in the `/pages` folder
     "/place/[id]",
+    "/service/[id]",
   ])
 );
 jest.mock("next/router", () => require("next-router-mock"));
@@ -16,11 +18,15 @@ jest.mock("next/router", () => require("next-router-mock"));
 import fetchMock from "fetch-mock-jest";
 
 import proctor from "@/data/test-proctor.json";
+import crossroads from "@/data/test-crossroads.json";
 
 describe("End-to-end testing", () => {
   beforeAll(() => {
-    fetchMock.get("*", () => {
+    fetchMock.get(/^\/api\/hall\/.+$/i, () => {
       return proctor;
+    });
+    fetchMock.get(/^\/api\/retail\/.+$/i, () => {
+      return crossroads;
     });
   });
 
@@ -35,6 +41,14 @@ describe("End-to-end testing", () => {
       render(<PlacePage />);
     });
     const named = await screen.findByText(/Mushrooms/i);
+    expect(named).toBeInTheDocument();
+  });
+  test("Render page for Crossroads Cafe", async () => {
+    mockRouter.push("/service/crossroads/");
+    await act(() => {
+      render(<RetailPage />);
+    });
+    const named = await screen.findByText(/Honeybee/i);
     expect(named).toBeInTheDocument();
   });
   //
