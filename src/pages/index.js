@@ -1,9 +1,10 @@
-import { useState } from "react";
-
+// import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import DiningHallView from "@/components/DiningHallView";
 import ServiceView from "@/components/ServiceView";
+import DateTimePickerButton from "@/components/DateTimePickerButton";
+import { useSessionStorageValue } from "@react-hookz/web";
 
 import { Box, Stack, Container, Typography } from "@mui/material";
 
@@ -12,24 +13,36 @@ import dayjs from "dayjs";
 export default function MealHow() {
   const router = useRouter();
 
-  // eslint-disable-next-line no-unused-vars
-  const [time, setTime] = useState(dayjs());
+  const timeStorage = useSessionStorageValue("date");
+  const time = timeStorage.value ? dayjs(timeStorage.value) : dayjs();
 
-  function routeDiningHall(diningHall) {
+  const routeDiningHall = (diningHall, t) => {
     if (diningHall) {
-      router.push(`/place/${diningHall}`);
+      router.push(
+        {
+          pathname: `/place/${diningHall}`,
+          query: { t: t },
+        },
+        `/place/${diningHall}`
+      );
     } else {
       router.back;
     }
-  }
+  };
 
-  function routeService(service) {
+  const routeService = (service, t) => {
     if (service) {
-      router.push(`/service/${service}`);
+      router.push(
+        {
+          pathname: `/service/${service}`,
+          query: { t: t },
+        },
+        `/service/${service}`
+      );
     } else {
       router.back;
     }
-  }
+  };
 
   return (
     <>
@@ -64,6 +77,7 @@ export default function MealHow() {
             <ServiceView routeService={routeService} time={time} />
           </Stack>
         </Container>
+        <DateTimePickerButton time={time} setTime={timeStorage.set} />
       </main>
     </>
   );

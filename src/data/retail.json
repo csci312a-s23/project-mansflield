@@ -87,7 +87,7 @@
     "id": "crossroads",
     "name": "Crossroads Cafe",
     "desc": "Located in the McCullough Student Center.",
-    "has_menu": false,
+    "has_menu": true,
     "schedule": [
       {
         "day": 1,

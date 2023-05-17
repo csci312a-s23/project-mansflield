@@ -9,7 +9,6 @@
       "position": 0,
       "is_title": false,
       "name": "Potato Leek Soup",
-      "subtext": "",
       "price": null
     },
     {
@@ -17,7 +16,6 @@
       "position": 1,
       "is_title": false,
       "name": "Hungarian Mushroom Soup",
-      "subtext": "",
       "price": null
     },
     {
@@ -25,7 +23,6 @@
       "position": 2,
       "is_title": false,
       "name": "Vegetarian Baked Beans",
-      "subtext": "",
       "price": null
     },
     {
@@ -39,7 +36,6 @@
       "position": 4,
       "is_title": false,
       "name": "Quinoa with Caramelized Onions and Mushrooms",
-      "subtext": "",
       "price": null
     },
     {
@@ -47,7 +43,6 @@
       "position": 5,
       "is_title": false,
       "name": "Fresh Green Beans",
-      "subtext": "",
       "price": null
     },
     {
@@ -55,7 +50,6 @@
       "position": 6,
       "is_title": false,
       "name": "Grilled Cheeseburgers",
-      "subtext": "",
       "price": null
     },
     {
@@ -75,7 +69,6 @@
       "position": 9,
       "is_title": false,
       "name": "Onion Rings",
-      "subtext": "",
       "price": null
     }
   ]
