@@ -5,6 +5,8 @@ import { useEffect, useState } from "react";
 import BusynessView from "@/components/BusynessView";
 import MenuView from "@/components/MenuView";
 import { useRouter } from "next/router";
+import DateTimePickerButton from "@/components/DateTimePickerButton";
+import { useSessionStorageValue } from "@react-hookz/web";
 
 import { Box, Container, Typography, Stack, Skeleton } from "@mui/material";
 
@@ -15,14 +17,14 @@ export default function RetailPage({}) {
 
   const [info, setInfo] = useState();
 
-  const [date, setDate] = useState(dayjs()); // eslint-disable-line no-unused-vars
+  const timeStorage = useSessionStorageValue("date");
+  const date = dayjs(timeStorage.value);
 
   const place = retail.find((eachHall) => eachHall.id === router.query.id);
 
-  // TODO: send date
   useEffect(() => {
     if (place) {
-      fetch(`/api/retail/${place.id}`)
+      fetch(`/api/retail/${place.id}?t=${+date}`)
         .then((response) => {
           if (!response.ok) {
             throw new Error(response.statusText);
@@ -34,7 +36,7 @@ export default function RetailPage({}) {
         })
         .catch((err) => console.log(err)); // eslint-disable-line no-console
     }
-  }, [place, date]);
+  }, [place, date, timeStorage.value]);
 
   return (
     <>
@@ -107,6 +109,7 @@ export default function RetailPage({}) {
             </Stack>
           </Box>
         </Container>
+        <DateTimePickerButton time={date} setTime={timeStorage.set} />
         {/* <div class="topnav">
           <a class="active" href="#home">
             Home

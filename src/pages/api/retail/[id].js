@@ -13,8 +13,8 @@ router.get(async (req, res) => {
   const { id, t } = req.query; // eslint-disable-line no-unused-vars
 
   // Is it open?
-  // const time = dayjs(t);
-  const time = dayjs("2023-05-15T15:40:15.000Z");
+  const time = dayjs(+t);
+  // const time = dayjs("2023-05-15T15:40:15.000Z");
   const store = retail.find((h) => {
     return h.id === id;
   });
@@ -31,7 +31,7 @@ router.get(async (req, res) => {
   const busyVal = isOpen
     ? await findService(store.id, time.format("YYYY-MM-DD"))
     : -1;
-  const busy = busyVal !== -1 ? formatBusyValue(busyVal) : "Check back later.";
+  const busy = busyVal !== -1 ? formatBusyValue(busyVal) : "Closed";
 
   const info = {
     busy: busy,

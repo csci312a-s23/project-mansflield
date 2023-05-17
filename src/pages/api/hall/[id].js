@@ -20,11 +20,11 @@ const closed = {
 const router = createRouter();
 
 router.get(async (req, res) => {
-  const { id, t } = req.query; // eslint-disable-line no-unused-vars
+  const { id, t } = req.query;
 
   // Is it open?
-  // const time = dayjs(t);
-  const time = dayjs("2023-05-15T23:40:15.000Z");
+  const time = dayjs(+t);
+  // const time = dayjs("2023-05-15T23:40:15.000Z");
   const hall = halls.find((h) => {
     return h.id === id;
   });

@@ -30,6 +30,8 @@
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.16",
     "@mui/material": "^5.12.1",
+    "@mui/x-date-pickers": "^6.4.0",
+    "@react-hookz/web": "^23.0.0",
     "ajv-formats": "^2.1.1",
     "bootstrap": "^5.2.3",
     "dayjs": "^1.11.7",
