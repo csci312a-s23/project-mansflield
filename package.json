@@ -29,6 +29,7 @@
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.16",
+    "@mui/lab": "^5.0.0-alpha.130",
     "@mui/material": "^5.12.1",
     "@mui/x-date-pickers": "^6.4.0",
     "@react-hookz/web": "^23.0.0",
