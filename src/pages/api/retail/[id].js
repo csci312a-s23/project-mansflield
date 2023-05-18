@@ -1,5 +1,5 @@
 import { createRouter } from "next-connect";
-// import { knex } from "../../../../knex/knex.js";
+import { knex } from "../../../../knex/knex.js";
 import dayjs from "dayjs";
 
 import retail from "@/data/retail.json";

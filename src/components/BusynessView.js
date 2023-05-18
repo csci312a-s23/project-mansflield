@@ -4,7 +4,7 @@
   This component provides the busyness button and slider in individial pages.
 */
 
-// import dayjs from "dayjs";
+import dayjs from "dayjs";
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
 import { useState } from "react";
 import PropTypes from "prop-types";
@@ -101,6 +101,10 @@ export default function BusynessView({ hall, info, date, type }) {
 }
 
 BusynessView.propTypes = {
+  hall: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
   info: PropTypes.shape({
     busy: PropTypes.string.isRequired,
     busyVal: PropTypes.number,
@@ -108,5 +112,6 @@ BusynessView.propTypes = {
     tablesVal: PropTypes.number,
     menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
+  date: PropTypes.instanceOf(dayjs),
   type: PropTypes.oneOf(["hall", "retail"]).isRequired,
 };

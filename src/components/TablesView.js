@@ -3,6 +3,7 @@
 
   This component provides the how many tables text and slider in individial dining hall pages.
 */
+import dayjs from "dayjs";
 import { useState } from "react";
 import { Button, Slider, Stack, Typography } from "@mui/material";
 import PropTypes from "prop-types";
@@ -88,9 +89,9 @@ TablesView.propTypes = {
   info: PropTypes.shape({
     busy: PropTypes.string.isRequired,
     busyVal: PropTypes.number.isRequired,
-    tables: PropTypes.number.isRequired,
+    tables: PropTypes.string.isRequired,
     tablesVal: PropTypes.number.isRequired,
     menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
-  date: PropTypes.instanceOf(Date).isRequired,
+  date: PropTypes.instanceOf(dayjs).isRequired,
 };

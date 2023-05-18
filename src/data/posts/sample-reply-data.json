@@ -1,0 +1,12 @@
+[
+  {
+    "contents": "sample reply1",
+    "user": "Alice",
+    "post_id": 1
+  },
+  {
+    "contents": "sample reply2",
+    "user": "Bob",
+    "post_id": 2
+  }
+]

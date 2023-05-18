@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { getButton } from "@/utils/getButton";
+import dayjs from "dayjs";
 
 export default function DiningHallButton({ hall, routeDiningHall, time }) {
   const [info, setInfo] = useState();
@@ -79,5 +80,5 @@ export default function DiningHallButton({ hall, routeDiningHall, time }) {
 DiningHallButton.propTypes = {
   hall: PropTypes.object.isRequired,
   routeDiningHall: PropTypes.func.isRequired,
-  time: PropTypes.object.isRequired,
+  date: PropTypes.instanceOf(dayjs),
 };
