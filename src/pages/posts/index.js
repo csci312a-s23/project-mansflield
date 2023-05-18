@@ -19,7 +19,7 @@ import PostAdd from "@mui/icons-material/PostAdd";
 
 export default function PostPage({}) {
   const router = useRouter();
-  const [posts, setPosts] = useState();
+  const [posts, setPosts] = useState([]);
 
   function routeCreate() {
     router.push(`/posts/new`);
