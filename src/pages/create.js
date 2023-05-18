@@ -1,21 +1,30 @@
 //import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import { Box, Typography } from "@mui/material";
+import Creator from "@/components/Creator";
 
 export default function PostCreator({ setPosts }) {
   // post to the database
-  fetch(`/api/create`, {
-    method: "POST",
-    body: JSON.stringify(newpost),
-    headers: new Headers({
-      Accept: "application/json",
-      "Content-Type": "application/json",
-    }),
-  })
-    .then((response) => response.json())
-    .then((data) => {
-      setPosts(data);
-    });
-
+  const router = useRouter();
+  const finished = (newpost) => {
+    if (newpost) {
+      fetch(`/api/create`, {
+        method: "POST",
+        body: JSON.stringify(newpost),
+        headers: new Headers({
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          setPosts(data);
+        })
+        .catch((error) => console.log(error));
+    } else {
+      router.back();
+    }
+  };
   return (
     <div>
       <header>
@@ -36,8 +45,7 @@ export default function PostCreator({ setPosts }) {
           </Typography>
         </Box>
       </header>
-      {postComponents}
-      <button onClick={() => routeCreate()}> + </button>
+      <Creator finished={finished} />
     </div>
   );
 }

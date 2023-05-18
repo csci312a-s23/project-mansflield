@@ -5,7 +5,15 @@ There will be a separate file that creates the posts and posts them to the datab
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import Post from "@/components/Post";
-import { Box, Typography } from "@mui/material";
+import {
+  Box,
+  Typography,
+  ListItemButton,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
+} from "@mui/material";
+import PostAdd from "@mui/icons-material/PostAdd";
 
 export default function PostPage({}) {
   const router = useRouter();
@@ -62,7 +70,15 @@ export default function PostPage({}) {
         </Box>
       </header>
       {postComponents}
-      <button onClick={() => routeCreate()}> + </button>
+
+      <ListItemButton onClick={() => routeCreate()}>
+        <ListItemAvatar>
+          <Avatar>
+            <PostAdd />
+          </Avatar>
+        </ListItemAvatar>
+        <ListItemText>Add a Post!</ListItemText>
+      </ListItemButton>
     </div>
   );
 }
