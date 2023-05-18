@@ -5,6 +5,7 @@ import DiningHallView from "@/components/DiningHallView";
 import ServiceView from "@/components/ServiceView";
 import DateTimePickerButton from "@/components/DateTimePickerButton";
 import { useSessionStorageValue } from "@react-hookz/web";
+import PostButton from "@/components/PostButton";
 
 import { Box, Stack, Container, Typography } from "@mui/material";
 
@@ -44,6 +45,10 @@ export default function MealHow() {
     }
   };
 
+  function routePosts() {
+    router.push(`/posts`);
+  }
+
   return (
     <>
       <header>
@@ -75,6 +80,10 @@ export default function MealHow() {
               Retail
             </Typography>
             <ServiceView routeService={routeService} time={time} />
+            <Typography component="h5" variant="h5">
+              Retail
+            </Typography>
+            <PostButton routePosts={routePosts} />
           </Stack>
         </Container>
         <DateTimePickerButton time={time} setTime={timeStorage.set} />
