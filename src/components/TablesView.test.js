@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { render, screen, fireEvent } from "@testing-library/react";
 import TablesView from "./TablesView";
 
@@ -6,13 +7,13 @@ describe("TablesView", () => {
     name: "Ross",
   };
   const info = {
-    tables: 3,
+    tables: "3",
     tablesVal: 0,
     busy: "",
     busyVal: 0,
     menu: [],
   };
-  const date = new Date();
+  const date = dayjs();
 
   test("displays the correct name and table strings", () => {
     const { getByText } = render(

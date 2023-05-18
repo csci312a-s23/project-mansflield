@@ -1,3 +1,4 @@
+import dayjs from "dayjs";
 import { render, screen } from "@testing-library/react";
 import ServiceView from "./ServiceView";
 import fetch from "node-fetch";
@@ -62,7 +63,7 @@ jest.spyOn(global, "fetch").mockImplementation(() =>
 describe("ServiceView", () => {
   test("Service View is rendering ServiceButton", async () => {
     const newRoute = jest.fn();
-    const testTime = Date.now();
+    const testTime = dayjs(Date.now());
     render(<ServiceView routeService={newRoute} time={testTime} />);
     // rendered as list -> role item = listitem & also as button so listitembutton
     const serviceButtons = await screen.findAllByRole("button");

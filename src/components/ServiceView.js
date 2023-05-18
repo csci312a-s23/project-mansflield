@@ -19,7 +19,7 @@ export default function ServiceView({ routeService, time }) {
       <ServiceButton
         key={place.id}
         place={place}
-        time={time}
+        time={time.format()}
         routeService={routeService}
       />
     );

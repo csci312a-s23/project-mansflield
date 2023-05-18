@@ -89,7 +89,7 @@ TablesView.propTypes = {
   info: PropTypes.shape({
     busy: PropTypes.string.isRequired,
     busyVal: PropTypes.number.isRequired,
-    tables: PropTypes.number.isRequired,
+    tables: PropTypes.string.isRequired,
     tablesVal: PropTypes.number.isRequired,
     menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
