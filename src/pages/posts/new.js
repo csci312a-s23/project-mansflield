@@ -1,24 +1,26 @@
 //import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Box, Typography } from "@mui/material";
-import Creator from "@/components/Creator";
+import PostCreator from "@/components/PostCreator";
 
-export default function PostCreator({ setPosts }) {
+export default function NewPostPage({}) {
   // post to the database
   const router = useRouter();
-  const finished = (newpost) => {
-    if (newpost) {
-      fetch(`/api/create`, {
+  const finished = (p) => {
+    console.log(p);
+    if (p && p.subject && p.contents && p.user) {
+      fetch(`/api/posts`, {
         method: "POST",
-        body: JSON.stringify(newpost),
+        body: JSON.stringify(p),
         headers: new Headers({
           Accept: "application/json",
           "Content-Type": "application/json",
         }),
       })
         .then((response) => response.json())
-        .then((data) => {
-          setPosts(data);
+        .then(() => {
+          // setPosts(data);
+          router.back();
         })
         .catch((error) => console.log(error));
     } else {
@@ -38,14 +40,14 @@ export default function PostCreator({ setPosts }) {
           }}
         >
           <Typography component="h1" variant="h3" align="center">
-            MealHow
+            Posts
           </Typography>
           <Typography component="p" className="tagline" align="center">
-            How will you eat next?
+            What are MiddKids saying?
           </Typography>
         </Box>
       </header>
-      <Creator finished={finished} />
+      <PostCreator finished={finished} />
     </div>
   );
 }

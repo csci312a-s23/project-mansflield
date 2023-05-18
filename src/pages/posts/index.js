@@ -1,10 +1,10 @@
 /*
-This will be the page that actually displays the posts
-There will be a separate file that creates the posts and posts them to the database similar to simplepeida creator
+This is the page that actually displays the posts
+There is a separate file that creates the posts and posts them to the database similar to simplepeida creator
 */
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import Post from "@/components/Post";
+import PostsView from "@/components/PostsView";
 import {
   Box,
   Typography,
@@ -12,6 +12,8 @@ import {
   ListItemAvatar,
   Avatar,
   ListItemText,
+  Container,
+  Stack,
 } from "@mui/material";
 import PostAdd from "@mui/icons-material/PostAdd";
 
@@ -20,7 +22,7 @@ export default function PostPage({}) {
   const [posts, setPosts] = useState();
 
   function routeCreate() {
-    router.push(`/create`);
+    router.push(`/posts/new`);
   }
 
   useEffect(() => {
@@ -29,28 +31,13 @@ export default function PostPage({}) {
       fetch("/api/posts")
         .then((response) => response.json())
         .then((data) => {
-          console.log("data: ", data);
           setPosts(data);
         });
     }
-  }, [posts]);
-
-  const postComponents = posts
-    ? posts.map((item) => {
-        return (
-          <Post
-            key={item.id}
-            subject={item.subject}
-            contents={item.contents}
-            owner={item.owner}
-            //replies={item.replies}
-          />
-        );
-      })
-    : [];
+  });
 
   return (
-    <div>
+    <>
       <header>
         <Box
           sx={{
@@ -62,23 +49,34 @@ export default function PostPage({}) {
           }}
         >
           <Typography component="h1" variant="h3" align="center">
-            MealHow
+            Posts
           </Typography>
           <Typography component="p" className="tagline" align="center">
-            How will you eat next?
+            What are MiddKids saying?
           </Typography>
         </Box>
       </header>
-      {postComponents}
+      <main>
+        <Container maxWidth="xl">
+          <Stack
+            spacing={2}
+            direction="column"
+            justifyContent="center"
+            alignItems="center"
+          >
+            <PostsView posts={posts} />
 
-      <ListItemButton onClick={() => routeCreate()}>
-        <ListItemAvatar>
-          <Avatar>
-            <PostAdd />
-          </Avatar>
-        </ListItemAvatar>
-        <ListItemText>Add a Post!</ListItemText>
-      </ListItemButton>
-    </div>
+            <ListItemButton onClick={() => routeCreate()}>
+              <ListItemAvatar>
+                <Avatar>
+                  <PostAdd />
+                </Avatar>
+              </ListItemAvatar>
+              <ListItemText>Add a Post!</ListItemText>
+            </ListItemButton>
+          </Stack>
+        </Container>
+      </main>
+    </>
   );
 }

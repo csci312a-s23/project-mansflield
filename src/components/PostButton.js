@@ -4,6 +4,7 @@ This will make the button that will take you to the posts page
 //import { useState } from "react";
 import Menu from "@mui/icons-material/Menu";
 import {
+  List,
   ListItemButton,
   ListItemText,
   ListItemAvatar,
@@ -12,7 +13,7 @@ import {
 
 export default function PostButton({ routePosts }) {
   return (
-    <>
+    <List sx={{ minWidth: 360 }}>
       <ListItemButton
         onClick={() => {
           routePosts();
@@ -25,6 +26,6 @@ export default function PostButton({ routePosts }) {
         </ListItemAvatar>
         <ListItemText>What are MiddKids saying?</ListItemText>
       </ListItemButton>
-    </>
+    </List>
   );
 }

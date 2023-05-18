@@ -1,10 +1,12 @@
 [
   {
     "contents": "sample reply1",
-    "owner": "abc"
+    "user": "Alice",
+    "post_id": 1
   },
   {
     "contents": "sample reply2",
-    "owner": "abc"
+    "user": "Bob",
+    "post_id": 2
   }
 ]

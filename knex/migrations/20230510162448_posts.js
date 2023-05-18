@@ -1,27 +1,26 @@
 exports.up = function (knex) {
   return knex.schema
-    .createTable("Post", (table) => {
+    .createTable("posts", (table) => {
       table.increments("id").primary();
-      table.string("subject");
-      table.text("contents");
-      table.string("owner");
+      table.string("subject").notNullable();
+      table.text("contents").notNullable();
+      table.string("user").notNullable();
+      table.timestamps(true, true);
     })
-    .createTable("Replies", (table) => {
+    .createTable("replies", (table) => {
       table.increments("id").primary();
-      table.string("owner");
-      table.text("contents");
-    })
-    .createTable("PostReplies", (table) => {
-      table.integer("postId");
-      table.integer("replyId");
-      table.foreign("postId").references("Post.id").onDelete("CASCADE");
-      table.foreign("replyId").references("Replies.id").onDelete("CASCADE");
+      table.string("user").notNullable();
+      table.text("contents").notNullable();
+      table.integer("post_id").unsigned().notNullable();
+      table
+        .foreign("post_id")
+        .references("id")
+        .inTable("posts")
+        .onDelete("CASCADE");
+      table.timestamps(true, true);
     });
 };
 
 exports.down = function (knex) {
-  return knex.schema
-    .dropTableIfExists("Post")
-    .dropTableIfExists("Replies")
-    .dropTableIfExists("PostReplies");
+  return knex.schema.dropTableIfExists("posts").dropTableIfExists("replies");
 };
