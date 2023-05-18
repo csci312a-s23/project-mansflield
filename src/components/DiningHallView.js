@@ -9,6 +9,7 @@
 import DiningHallButton from "./DiningHallButton.js";
 import { List } from "@mui/material";
 import PropTypes from "prop-types";
+import dayjs from "dayjs";
 
 import halls from "@/data/halls.json";
 
@@ -28,5 +29,5 @@ export default function DiningHallView({ routeDiningHall, time }) {
 
 DiningHallView.propTypes = {
   routeDiningHall: PropTypes.func.isRequired,
-  time: PropTypes.object.isRequired,
+  date: PropTypes.instanceOf(dayjs),
 };

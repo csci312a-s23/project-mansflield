@@ -29,19 +29,27 @@
     "@emotion/server": "^11.10.0",
     "@emotion/styled": "^11.10.6",
     "@mui/icons-material": "^5.11.16",
+    "@mui/lab": "^5.0.0-alpha.130",
     "@mui/material": "^5.12.1",
+    "@mui/x-date-pickers": "^6.4.0",
+    "@react-hookz/web": "^23.0.0",
+    "ajv-formats": "^2.1.1",
     "bootstrap": "^5.2.3",
     "dayjs": "^1.11.7",
     "knex": "^2.4.2",
+    "micro": "^10.0.1",
     "next": "13.2.4",
     "next-connect": "^1.0.0-next.3",
-    "pg": "^8.10.0",
+    "node-fetch-cache": "^3.1.2",
+    "objection": "^3.0.1",
+    "pg": "^8.11.0",
     "prop-types": "^15.8.1",
     "react": "18.2.0",
     "react-bootstrap-buttons": "^1.0.0",
     "react-bootstrap-validation": "^0.1.11",
     "react-dom": "18.2.0",
-    "sqlite3": "^5.1.6"
+    "sqlite3": "^5.1.6",
+    "url": "^0.11.0"
   },
   "lint-staged": {
     "*.js": "eslint --cache --fix",
@@ -59,7 +67,7 @@
     "jest-environment-jsdom": "^29.5.0",
     "lint-staged": "^13.2.0",
     "next-router-mock": "^0.9.3",
-    "node-fetch": "^2.6.7",
+    "node-fetch": "^2.6.11",
     "prettier": "^2.8.5"
   }
 }

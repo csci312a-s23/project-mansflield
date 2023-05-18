@@ -1,0 +1,158 @@
+[
+  {
+    "id": 57029652,
+    "position": 0,
+    "is_title": true,
+    "name": "Espresso"
+  },
+  {
+    "id": 57029653,
+    "position": 1,
+    "is_title": false,
+    "name": "Café Americano",
+    "price": 2
+  },
+  {
+    "id": 57029654,
+    "position": 2,
+    "is_title": false,
+    "name": "Café Latte",
+    "price": 3.75
+  },
+  {
+    "id": 57029655,
+    "position": 3,
+    "is_title": false,
+    "name": "Cappuccino",
+    "price": 3.5
+  },
+  {
+    "id": 57029656,
+    "position": 4,
+    "is_title": false,
+    "name": "Café Mocha",
+    "price": 4
+  },
+  {
+    "id": 57029657,
+    "position": 5,
+    "is_title": false,
+    "name": "Caramel Macchiato",
+    "price": 2.75
+  },
+  {
+    "id": 57029658,
+    "position": 6,
+    "is_title": false,
+    "name": "Espresso Con Panna",
+    "price": 4.5
+  },
+  {
+    "id": 57029659,
+    "position": 7,
+    "is_title": true,
+    "name": "Coffee"
+  },
+  {
+    "id": 57029660,
+    "position": 8,
+    "is_title": false,
+    "name": "Café Misto",
+    "price": 1.75
+  },
+  {
+    "id": 57029661,
+    "position": 9,
+    "is_title": false,
+    "name": "Freshly Brewed Coffee",
+    "price": 1.75
+  },
+  {
+    "id": 57029662,
+    "position": 10,
+    "is_title": false,
+    "name": "Iced Coffee",
+    "price": 2.5
+  },
+  {
+    "id": 57029663,
+    "position": 11,
+    "is_title": true,
+    "name": "Teavana Handcrafted Tea"
+  },
+  {
+    "id": 57029664,
+    "position": 12,
+    "is_title": false,
+    "name": "Chai Tea Latte",
+    "price": 3.75
+  },
+  {
+    "id": 57029665,
+    "position": 13,
+    "is_title": false,
+    "name": "Brewed Tea",
+    "price": 1.75
+  },
+  {
+    "id": 57029666,
+    "position": 14,
+    "is_title": false,
+    "name": "London Fog",
+    "price": 3
+  },
+  {
+    "id": 57029667,
+    "position": 15,
+    "is_title": false,
+    "name": "Shaken Iced Tea",
+    "price": 2.5
+  },
+  {
+    "id": 57029668,
+    "position": 16,
+    "is_title": true,
+    "name": "Refreshers"
+  },
+  {
+    "id": 57029669,
+    "position": 17,
+    "is_title": false,
+    "name": "Starbucks Refreshers",
+    "price": 4
+  },
+  {
+    "id": 57029671,
+    "position": 18,
+    "is_title": true,
+    "name": "Other Favorites"
+  },
+  {
+    "id": 57029673,
+    "position": 19,
+    "is_title": false,
+    "name": "Hot Chocolate",
+    "price": 2.75
+  },
+  {
+    "id": 57029675,
+    "position": 20,
+    "is_title": false,
+    "name": "Lemonade",
+    "price": 2.5
+  },
+  {
+    "id": 57029678,
+    "position": 21,
+    "is_title": false,
+    "name": "Iced Matcha Lemonade",
+    "price": 4
+  },
+  {
+    "id": 57029682,
+    "position": 22,
+    "is_title": false,
+    "name": "Steamer",
+    "price": 2.15
+  }
+]

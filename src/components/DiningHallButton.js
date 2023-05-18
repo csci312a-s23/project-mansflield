@@ -12,49 +12,28 @@ import {
   Avatar,
   Skeleton,
 } from "@mui/material";
-import SignalWifi0BarIcon from "@mui/icons-material/SignalWifi0Bar";
-import SignalWifi1BarIcon from "@mui/icons-material/SignalWifi1Bar";
-import SignalWifi2BarIcon from "@mui/icons-material/SignalWifi2Bar";
-import SignalWifi3BarIcon from "@mui/icons-material/SignalWifi3Bar";
-import SignalWifi4BarIcon from "@mui/icons-material/SignalWifi4Bar";
-import SignalWifiOffIcon from "@mui/icons-material/SignalWifiOff";
 import PropTypes from "prop-types";
+import { getButton } from "@/utils/getButton";
+import dayjs from "dayjs";
 
 export default function DiningHallButton({ hall, routeDiningHall, time }) {
   const [info, setInfo] = useState();
 
   useEffect(() => {
-    fetch(`/api/hall/${hall.id}?t=${time}`)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(response.statusText);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setInfo(data);
-      })
-      .catch((err) => console.log(err)); // eslint-disable-line no-console
-  }, [hall, time]);
-
-  function getButton(n) {
-    switch (n) {
-      case 0:
-        return <SignalWifi0BarIcon />;
-      case 1:
-        return <SignalWifi1BarIcon />;
-      case 2:
-        return <SignalWifi2BarIcon />;
-      case 3:
-        return <SignalWifi3BarIcon />;
-      case 4:
-        return <SignalWifi4BarIcon />;
-
-      default:
-        return <SignalWifiOffIcon />;
-      // throw new Error("Error in busyVal!");
+    if (time) {
+      fetch(`/api/hall/${hall.id}?t=${+time}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setInfo(data);
+        })
+        .catch((err) => console.log(err)); // eslint-disable-line no-console
     }
-  }
+  }, [hall, time]);
 
   return (
     <ListItemButton
@@ -101,5 +80,5 @@ export default function DiningHallButton({ hall, routeDiningHall, time }) {
 DiningHallButton.propTypes = {
   hall: PropTypes.object.isRequired,
   routeDiningHall: PropTypes.func.isRequired,
-  time: PropTypes.object.isRequired,
+  date: PropTypes.instanceOf(dayjs),
 };

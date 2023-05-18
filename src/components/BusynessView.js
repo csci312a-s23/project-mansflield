@@ -3,39 +3,61 @@
 
   This component provides the busyness button and slider in individial pages.
 */
-import * as React from "react";
+
+import dayjs from "dayjs";
 import { Box, Button, Slider, Stack, Typography } from "@mui/material";
-import { useState, useEffect, useRef } from "react"; // eslint-disable-line no-unused-vars
+import { useState } from "react";
 import PropTypes from "prop-types";
+import { formatBusyValue } from "@/utils/formatBusyValue";
+import AlertSnackBar from "./AlertSnackBar";
 
-// eslint-disable-next-line no-unused-vars
-export default function BusynessView({ info }) {
+export default function BusynessView({ hall, info, date, type }) {
   const [busyness, setBusyness] = useState(info.busyVal);
-  const [busyVal, setBusyVal] = useState(info.busyVal);
-  const [Bvalue, setBValue] = React.useState(10);
 
-  function valuetext(value) {
-    const buzyness = [
-      "Not Busy",
-      "Just Fine",
-      "Busy",
-      "Very Busy",
-      "Fully Packed",
-    ];
-    const buzynessIndex = value;
-    return `${buzyness[buzynessIndex]}`;
-  }
+  const [severity, setSeverity] = useState("success");
+  const [message, setMessage] = useState("Thank you!");
+
+  const [open, setOpen] = useState(false);
 
   const slideChange = (event, newValue) => {
     if (typeof newValue === "number") {
-      setBValue(newValue);
+      setBusyness(newValue);
     }
-    setBusyVal(parseInt(event.target.value));
+    setBusyness(parseInt(event.target.value));
   };
 
-  const submitChange = () => {
-    setBusyness(parseInt(busyVal));
-    console.log(busyness);
+  const submitChange = async () => {
+    const t = date.valueOf();
+    try {
+      const response = await fetch(`/api/${type}/${hall.id}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          id: hall.id,
+          t: t,
+          type: "line",
+          val: busyness,
+        }),
+      });
+
+      if (response.ok) {
+        setSeverity("success");
+        setMessage("Thank you!");
+        setOpen(true);
+      } else {
+        setSeverity("error");
+        setMessage("Something went wrong.");
+        setOpen(true);
+        console.log(response.statusText);
+      }
+    } catch (error) {
+      setSeverity("error");
+      setMessage("Something went wrong.");
+      setOpen(true);
+      console.log(error.message);
+    }
   };
 
   return (
@@ -46,34 +68,50 @@ export default function BusynessView({ info }) {
         </Typography>
       </Box>
       <br />
-      <Stack direction="row" spacing={2}>
-        <Slider
-          value={Bvalue}
-          defaultValue={0}
-          step={1}
-          marks
-          min={0}
-          max={4}
-          getAriaValueText={valuetext}
-          valueLabelFormat={valuetext}
-          onChange={slideChange}
-          valueLabelDisplay="auto"
-          aria-labelledby="non-linear-slider"
-        />
-        <Button onClick={submitChange} type="button">
-          Submit
-        </Button>
-      </Stack>
+      {info.busyVal !== -1 ? (
+        <Stack direction="row" spacing={2}>
+          <Slider
+            value={busyness}
+            defaultValue={2}
+            step={1}
+            marks
+            min={0}
+            max={4}
+            getAriaValueText={formatBusyValue}
+            valueLabelFormat={formatBusyValue}
+            onChange={slideChange}
+            valueLabelDisplay="auto"
+            aria-labelledby="non-linear-slider"
+          />
+          <Button onClick={submitChange} type="button">
+            Submit
+          </Button>
+          <AlertSnackBar
+            severity={severity}
+            message={message}
+            open={open}
+            setOpen={setOpen}
+          />
+        </Stack>
+      ) : (
+        <p>Check back later.</p>
+      )}
     </>
   );
 }
 
 BusynessView.propTypes = {
+  hall: PropTypes.shape({
+    id: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+  }),
   info: PropTypes.shape({
     busy: PropTypes.string.isRequired,
-    busyVal: PropTypes.number.isRequired,
-    tables: PropTypes.string.isRequired,
-    tablesVal: PropTypes.number.isRequired,
-    menu: PropTypes.arrayOf(PropTypes.number).isRequired,
+    busyVal: PropTypes.number,
+    tables: PropTypes.string,
+    tablesVal: PropTypes.number,
+    menu: PropTypes.arrayOf(PropTypes.object).isRequired,
   }),
+  date: PropTypes.instanceOf(dayjs),
+  type: PropTypes.oneOf(["hall", "retail"]).isRequired,
 };

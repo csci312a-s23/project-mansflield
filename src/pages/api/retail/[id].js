@@ -1,28 +1,20 @@
 import { createRouter } from "next-connect";
-
+import { knex } from "../../../../knex/knex.js";
 import dayjs from "dayjs";
 
 import retail from "@/data/retail.json";
-
-const testBusy = {
-  busy: "Very busy",
-  busyVal: 3,
-  menu: [],
-};
-
-const closed = {
-  busy: "Closed",
-  busyVal: -1,
-  menu: [],
-};
+import { findService } from "@/utils/findService";
+import { getRetailMenu } from "@/utils/getRetailMenu";
+import { formatBusyValue } from "@/utils/formatBusyValue";
 
 const router = createRouter();
 
-router.get((req, res) => {
-  const { id, t } = req.query; // eslint-disable-line no-unused-vars
+router.get(async (req, res) => {
+  const { id, t } = req.query;
 
   // Is it open?
-  const time = dayjs(t);
+  const time = dayjs(+t);
+  // const time = dayjs("2023-05-15T15:40:15.000Z");
   const store = retail.find((h) => {
     return h.id === id;
   });
@@ -33,16 +25,49 @@ router.get((req, res) => {
       parseInt(time.format("HHmm"), 10) < s.close
   );
 
-  if (store.has_menu) {
-    // TODO: Get menu
+  // Get menu anyways
+  const menuInfo = getRetailMenu(store.id);
+
+  const busyVal = isOpen ? await findService(store.id, time) : -1;
+  const busy = busyVal !== -1 ? formatBusyValue(busyVal) : "Closed";
+
+  const info = {
+    busy: busy,
+    busyVal: busyVal,
+    menu: menuInfo,
+  };
+
+  res.status(200).json(info);
+});
+
+router.post(async (req, res) => {
+  const { id, t, val } = req.body;
+
+  // Is it open?
+  const time = dayjs(+t);
+  // const time = dayjs("2023-05-15T23:40:15.000Z");
+  const hall = retail.find((h) => {
+    return h.id === id;
+  });
+
+  // validate
+
+  if (val < 0 || val > 4) {
+    throw new Error("Invalid busyness value. Must be between 0 and 4.");
   }
 
-  if (isOpen) {
-    // TODO: process from database
-    res.status(200).json(testBusy);
-  } else {
-    res.status(200).json(closed);
-  }
+  const newBusyness = await knex("service").insert({
+    place: hall.id,
+    dateStr: time.format("YYYY-MM-DD"),
+    busyness: val,
+  });
+
+  // Respond with the newly created busyness data
+  res.status(201).json({
+    message: "Busyness for retail created successfully",
+    busyness: newBusyness,
+    time: time.format(),
+  });
 });
 
 router.all((req, res) => {

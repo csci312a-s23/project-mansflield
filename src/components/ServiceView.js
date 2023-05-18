@@ -6,13 +6,14 @@
 
 // import { useState } from "react";
 
-import ServiceButton from "./ServiceButton";
+import ServiceButton from "./ServiceButton.js";
 import { List } from "@mui/material";
 import PropTypes from "prop-types";
+import dayjs from "dayjs";
 
 import retail from "@/data/retail.json";
 
-export default function DiningHallView({ routeService, time }) {
+export default function ServiceView({ routeService, time }) {
   const buttons = retail.map((place) => {
     return (
       <ServiceButton
@@ -26,7 +27,7 @@ export default function DiningHallView({ routeService, time }) {
   return <List sx={{ minWidth: 360 }}>{buttons}</List>;
 }
 
-DiningHallView.propTypes = {
+ServiceView.propTypes = {
   routeService: PropTypes.func.isRequired,
-  time: PropTypes.object.isRequired,
+  time: PropTypes.instanceOf(dayjs),
 };

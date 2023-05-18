@@ -1,13 +1,13 @@
 import { createRouter } from "next-connect";
-
+import { knex } from "../../../../knex/knex.js";
 import dayjs from "dayjs";
 
 import halls from "@/data/halls.json";
 import { findOpenMenu } from "@/utils/findOpenMenu";
-
-import proctor from "@/data/test-proctor.json";
-import ross from "@/data/test-ross.json";
-import atwater from "@/data/test-atwater.json";
+import { findBusyness } from "@/utils/findBusyness";
+import { getMenu } from "@/utils/getMenu";
+import { formatBusyValue } from "@/utils/formatBusyValue";
+import { formatTableValue } from "@/utils/formatTableValue";
 
 const closed = {
   busy: "Closed",
@@ -19,33 +19,71 @@ const closed = {
 
 const router = createRouter();
 
-router.get((req, res) => {
-  const { id, t } = req.query; // eslint-disable-line no-unused-vars
+router.get(async (req, res) => {
+  const { id, t } = req.query;
 
   // Is it open?
-  const time = dayjs(t);
+  const time = dayjs(+t);
+  // const time = dayjs("2023-05-15T23:40:15.000Z");
   const hall = halls.find((h) => {
     return h.id === id;
   });
   const menu = findOpenMenu(hall, time);
 
   if (menu) {
-    // TODO: process from database
+    // Get values from backend
+    const busyVal = await findBusyness(hall.id, menu.id, "line", time);
+    const tablesVal = await findBusyness(hall.id, menu.id, "table", time);
+    const menuInfo = await getMenu(hall.menu_id, menu.id, time);
 
-    let example = proctor;
+    const info = {
+      busy: formatBusyValue(busyVal),
+      busyVal: busyVal,
+      tables: formatTableValue(tablesVal),
+      tablesVal: tablesVal,
+      menu: menuInfo.items,
+    };
 
-    if (id === "ross") {
-      example = ross;
-    }
-
-    if (id === "atwater") {
-      example = atwater;
-    }
-
-    res.status(200).json(example);
+    res.status(200).json(info);
   } else {
     res.status(200).json(closed);
   }
+});
+
+router.post(async (req, res) => {
+  const { id, t, type, val } = req.body;
+
+  // Is it open?
+  const time = dayjs(+t);
+  // const time = dayjs("2023-05-15T23:40:15.000Z");
+  const hall = halls.find((h) => {
+    return h.id === id;
+  });
+  const menu = findOpenMenu(hall, time);
+
+  // validate
+  if (type !== "line" && type !== "table") {
+    throw new Error("Invalid type value. Must be 'line' or 'table'.");
+  }
+
+  if (val < 0 || val > 4) {
+    throw new Error("Invalid busyness value. Must be between 0 and 4.");
+  }
+
+  const newBusyness = await knex("busyness").insert({
+    place: hall.id,
+    meal: menu.id,
+    dateStr: time.format("YYYY-MM-DD"),
+    type: type,
+    busyness: val,
+  });
+
+  // Respond with the newly created busyness data
+  res.status(201).json({
+    message: "Busyness for dining created successfully",
+    busyness: newBusyness,
+    time: time.format(),
+  });
 });
 
 router.all((req, res) => {
