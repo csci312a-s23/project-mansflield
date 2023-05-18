@@ -81,7 +81,7 @@ export default function MealHow() {
             </Typography>
             <ServiceView routeService={routeService} time={time} />
             <Typography component="h5" variant="h5">
-              Retail
+              Posts
             </Typography>
             <PostButton routePosts={routePosts} />
           </Stack>
