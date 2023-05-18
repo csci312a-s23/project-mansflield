@@ -14,7 +14,7 @@ import {
 } from "@mui/material";
 import PropTypes from "prop-types";
 import { getButton } from "@/utils/getButton";
-import dayjs from "dayjs";
+//import dayjs from "dayjs";
 
 export default function ServiceButton({ place, routeService, time }) {
   const [info, setInfo] = useState(null);
@@ -68,5 +68,5 @@ export default function ServiceButton({ place, routeService, time }) {
 ServiceButton.propTypes = {
   place: PropTypes.object.isRequired,
   routeService: PropTypes.func.isRequired,
-  time: PropTypes.instanceOf(dayjs),
+  time: PropTypes.string,
 };

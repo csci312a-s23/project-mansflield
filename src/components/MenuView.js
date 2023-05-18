@@ -45,5 +45,13 @@ export default function MenuView({ menu }) {
 }
 
 MenuView.propTypes = {
-  menu: PropTypes.arrayOf(String).isRequired,
+  menu: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      is_title: PropTypes.bool,
+      name: PropTypes.string,
+      subtext: PropTypes.string,
+      price: PropTypes.number,
+    })
+  ).isRequired,
 };
