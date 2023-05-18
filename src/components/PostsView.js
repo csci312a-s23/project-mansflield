@@ -11,7 +11,7 @@ const localizedFormat = require("dayjs/plugin/localizedFormat");
 
 dayjs.extend(localizedFormat);
 
-export default function PostsView({ posts }) {
+export default function PostsView({ posts = [] }) {
   const router = useRouter();
 
   const routeReply = (id) => {
