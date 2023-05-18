@@ -1,0 +1,82 @@
+{
+  "busy": "Very Busy",
+  "busyVal": 3,
+  "menu": [
+    {
+      "id": 19171107,
+      "position": 0,
+      "is_title": true,
+      "name": "Coffee"
+    },
+    {
+      "id": 19171108,
+      "position": 1,
+      "is_title": false,
+      "name": "Latte",
+      "price": 3.65
+    },
+    {
+      "id": 19171109,
+      "position": 2,
+      "is_title": false,
+      "name": "Espresso",
+      "price": 2.25
+    },
+    {
+      "id": 19171110,
+      "position": 3,
+      "is_title": false,
+      "name": "American",
+      "price": 2.25
+    },
+    {
+      "id": 19171111,
+      "position": 4,
+      "is_title": false,
+      "name": "Cold Brew",
+      "price": 2.3
+    },
+    {
+      "id": 19171112,
+      "position": 5,
+      "is_title": false,
+      "name": "Mint Mojito",
+      "price": 4.6
+    },
+    {
+      "id": 19171113,
+      "position": 6,
+      "is_title": false,
+      "name": "Cappuccino",
+      "price": 3.65
+    },
+    {
+      "id": 19171114,
+      "position": 7,
+      "is_title": false,
+      "name": "Mocha",
+      "price": 4.6
+    },
+    {
+      "id": 19171115,
+      "position": 8,
+      "is_title": false,
+      "name": "Dirty Chai",
+      "price": 4.6
+    },
+    {
+      "id": 19171116,
+      "position": 9,
+      "is_title": false,
+      "name": "Maple Latte",
+      "price": 4.6
+    },
+    {
+      "id": 19171117,
+      "position": 10,
+      "is_title": false,
+      "name": "Honeybee Latte",
+      "price": 4.6
+    }
+  ]
+}

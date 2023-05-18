@@ -9,6 +9,7 @@
 import ServiceButton from "./ServiceButton.js";
 import { List } from "@mui/material";
 import PropTypes from "prop-types";
+import dayjs from "dayjs";
 
 import retail from "@/data/retail.json";
 
@@ -28,5 +29,5 @@ export default function ServiceView({ routeService, time }) {
 
 ServiceView.propTypes = {
   routeService: PropTypes.func.isRequired,
-  time: PropTypes.number.isRequired,
+  time: PropTypes.instanceOf(dayjs),
 };
